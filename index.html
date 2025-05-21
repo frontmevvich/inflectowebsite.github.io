@@ -3,25 +3,36 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Inflecto - Агентство для ваших идей</title>
+    <title>Inflecto - Digital Агентство</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
     <style>
-        /* Основные стили */
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            scroll-behavior: smooth;
+            font-family: 'Montserrat', sans-serif;
+        }
+
+        :root {
+            --dark-bg: #1a1a1a;
+            --dark-secondary: #252525;
+            --accent: #ffffff;
+            --text-primary: #ffffff;
+            --text-secondary: rgba(255, 255, 255, 0.8);
+            --primary-button: #ffffff;
+            --primary-button-text: #121212;
+            --secondary-button: #ffffff;
+            --secondary-button-text: #121212;
+            --card-bg: rgba(60, 60, 60, 0.6);
         }
 
         body {
-            font-family: 'Montserrat', sans-serif;
-            background-color: #121212;
-            color: #ffffff;
-            font-weight: 500;
-            line-height: 1.6;
+            background-color: var(--dark-bg);
+            color: var(--text-primary);
+            overflow-x: hidden;
+            background-image: linear-gradient(to bottom, #1a1a1a, #252525);
         }
 
         .container {
@@ -30,17 +41,20 @@
             padding: 0 20px;
         }
 
-        /* Шапка сайта */
+        /* Header Styles */
         header {
-            background-color: rgba(10, 10, 10, 0.9);
-            padding: 15px 0;
+            padding: 10px 0;
             position: fixed;
             width: 100%;
             top: 0;
-            left: 0;
-            z-index: 1000;
-            box-shadow: 0 2px 20px rgba(0, 0, 0, 0.5);
+            z-index: 100;
+            background-color: rgba(26, 26, 26, 0.7);
             backdrop-filter: blur(10px);
+            transition: all 0.3s ease;
+        }
+
+        header.scrolled {
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
         }
 
         .header-container {
@@ -50,204 +64,231 @@
         }
 
         .logo {
-            text-decoration: none;
-        }
-
-        .logo img {
-            height: 70px;
-            display: block;
-        }
-
-        nav ul {
-            display: flex;
-            list-style: none;
-        }
-
-        nav ul li {
-            margin-left: 30px;
-        }
-
-        nav ul li a {
-            color: #ffffff;
-            text-decoration: none;
-            font-weight: 600;
-            font-size: 18px;
-            transition: all 0.3s ease;
-            position: relative;
-        }
-
-        nav ul li a:after {
-            content: '';
-            position: absolute;
-            width: 0;
-            height: 3px;
-            background: #ffffff;
-            bottom: -5px;
-            left: 0;
-            transition: width 0.3s ease;
-            border-radius: 3px;
-        }
-
-        nav ul li a:hover:after {
-            width: 100%;
-        }
-
-        /* Главный экран */
-        .hero {
-            min-height: 100vh;
-            display: flex;
-            align-items: center;
-            background: linear-gradient(135deg, #1a1a1a, #0a0a0a);
-            padding: 120px 0 60px;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .hero::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: radial-gradient(circle at 70% 30%, rgba(255, 255, 255, 0.1), transparent 70%);
-            z-index: 1;
-        }
-
-        .hero-content {
-            position: relative;
-            z-index: 2;
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 50px;
-            align-items: center;
-        }
-
-        .hero-text {
-            max-width: 600px;
-        }
-
-        .hero-logo {
-            width: 100%;
-            max-width: 400px;
-            margin-bottom: 30px;
-        }
-
-        .hero-text p {
-            font-size: 26px;
-            margin-bottom: 40px;
-            font-weight: 600;
-        }
-
-        .hero-about {
-            background-color: rgba(255, 255, 255, 0.05);
-            padding: 40px;
-            border-radius: 20px;
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            backdrop-filter: blur(5px);
-            transform: translateY(0);
+            height: 100px;
             transition: transform 0.3s ease;
         }
 
-        .hero-about:hover {
-            transform: translateY(-10px);
+        .logo:hover {
+            transform: scale(1.05);
+            filter: brightness(1.2);
         }
 
-        .hero-about h2 {
-            font-size: 32px;
-            font-weight: 700;
-            margin-bottom: 20px;
+        .nav-links {
+            display: flex;
+            gap: 30px;
+        }
+
+        .nav-links a {
+            color: var(--text-primary);
+            text-decoration: none;
+            font-weight: 500;
             position: relative;
-            padding-bottom: 15px;
+            transition: color 0.3s ease;
         }
 
-        .hero-about h2::after {
+        .nav-links a::after {
             content: '';
             position: absolute;
-            bottom: 0;
+            width: 0;
+            height: 2px;
+            bottom: -5px;
             left: 0;
-            width: 60px;
-            height: 4px;
-            background: #ffffff;
-            border-radius: 2px;
+            background-color: var(--accent);
+            transition: width 0.3s ease;
         }
 
-        .hero-about p {
-            font-size: 18px;
-            line-height: 1.8;
-            font-weight: 500;
+        .nav-links a:hover {
+            color: var(--accent);
         }
 
-        /* Услуги */
-        .services {
-            padding: 100px 0;
-            background-color: #0a0a0a;
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        /* Hero Section */
+        .hero {
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            position: relative;
+            overflow: hidden;
+            padding-top: 60px;
+        }
+
+        .hero-content {
+            max-width: 600px;
+            position: relative;
+            z-index: 2;
+            opacity: 0;
+            transform: translateY(30px);
+            animation: fadeUp 0.8s forwards 0.3s;
+            text-align: left; /* Align text to the left */
+            margin-right: auto; /* Push content to the left */
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            font-weight: 700;
+            margin-bottom: 20px;
+            line-height: 1.2;
+            text-align: left; /* Ensure heading is left-aligned */
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            color: var(--text-secondary);
+            margin-bottom: 40px;
+            line-height: 1.6;
+            text-align: left; /* Ensure paragraph is left-aligned */
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 20px;
+        }
+
+        .btn {
+            padding: 12px 30px;
+            border-radius: 30px;
+            font-weight: 600;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-block;
             position: relative;
             overflow: hidden;
         }
 
-        .services::before {
+        .btn::before {
             content: '';
             position: absolute;
             top: 0;
-            right: 0;
+            left: -100%;
             width: 100%;
             height: 100%;
-            background: radial-gradient(circle at 30% 70%, rgba(255, 255, 255, 0.05), transparent 60%);
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+            transition: 0.5s;
+        }
+
+        .btn:hover::before {
+            left: 100%;
+        }
+
+        .btn-primary {
+            background-color: var(--primary-button);
+            color: var(--primary-button-text);
+            border: 2px solid var(--primary-button);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(255, 255, 255, 0.2);
+        }
+
+        .hero-graphics {
+            position: absolute;
+            right: 0;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 40%;
+            height: 80%;
             z-index: 1;
+            opacity: 0;
+            animation: fadeIn 1s forwards 1s;
+        }
+
+        .graphic-item {
+            position: absolute;
+            border-radius: 50%;
+            background-color: rgba(255, 255, 255, 0.1);
+            animation: float 6s infinite ease-in-out;
+        }
+
+        .graphic-item:nth-child(1) {
+            width: 100px;
+            height: 100px;
+            top: 20%;
+            right: 30%;
+            animation-delay: 0s;
+        }
+
+        .graphic-item:nth-child(2) {
+            width: 150px;
+            height: 150px;
+            top: 50%;
+            right: 10%;
+            animation-delay: 1s;
+        }
+
+        .graphic-item:nth-child(3) {
+            width: 80px;
+            height: 80px;
+            bottom: 20%;
+            right: 40%;
+            animation-delay: 2s;
+        }
+
+        .graphic-item:nth-child(4) {
+            width: 120px;
+            height: 120px;
+            bottom: 30%;
+            right: 20%;
+            animation-delay: 3s;
+        }
+
+        /* Services Section */
+        .services {
+            padding: 100px 0;
+            background-color: rgba(37, 37, 37, 0.7);
+            position: relative;
+            overflow: hidden;
         }
 
         .section-title {
-            font-size: 42px;
-            font-weight: 700;
-            margin-bottom: 60px;
+            font-size: 2.5rem;
             text-align: center;
+            margin-bottom: 60px;
             position: relative;
-            padding-bottom: 15px;
-            z-index: 2;
+            opacity: 0;
+            transform: translateY(30px);
         }
 
-        .section-title:after {
-            content: '';
-            position: absolute;
-            width: 80px;
-            height: 4px;
-            background: #ffffff;
-            bottom: 0;
-            left: 50%;
-            transform: translateX(-50%);
-            border-radius: 2px;
+        .section-title.animated {
+            animation: fadeUp 0.8s forwards;
         }
 
         .services-grid {
             display: grid;
             grid-template-columns: repeat(2, 1fr);
             gap: 30px;
-            position: relative;
-            z-index: 2;
+            max-width: 1000px;
+            margin: 0 auto;
         }
 
         .service-card {
-            background-color: rgba(26, 26, 26, 0.8);
+            background-color: var(--card-bg);
             border-radius: 20px;
-            padding: 40px;
-            transition: all 0.4s ease;
-            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
+            padding: 30px;
+            transition: all 0.3s ease;
             position: relative;
             overflow: hidden;
-            border: 1px solid rgba(255, 255, 255, 0.1);
+            height: 100%;
             opacity: 0;
             transform: translateY(30px);
-            height: 100%;
-            display: flex;
-            flex-direction: column;
+            backdrop-filter: blur(5px);
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.1);
         }
 
-        .service-card.animate {
-            opacity: 1;
-            transform: translateY(0);
-            transition: opacity 0.6s ease, transform 0.6s ease;
+        .service-card.animated {
+            animation: fadeUp 0.8s forwards;
+        }
+
+        .service-card:hover {
+            transform: translateY(-3px); /* Simple movement */
+            box-shadow: 0 8px 25px rgba(255, 255, 255, 0.15); /* Simple glow */
+            border-color: rgba(255, 255, 255, 0.3);
         }
 
         .service-card::before {
@@ -255,114 +296,59 @@
             position: absolute;
             top: 0;
             left: 0;
-            width: 100%;
-            height: 5px;
-            background: linear-gradient(to right, #ffffff, rgba(255, 255, 255, 0.5));
-            transform: scaleX(0);
-            transform-origin: left;
-            transition: transform 0.4s ease;
-            border-radius: 2px;
-        }
-
-        .service-card:hover {
-            transform: translateY(-15px);
-            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.4);
-            background-color: rgba(40, 40, 40, 0.9);
+            width: 4px;
+            height: 0;
+            background-color: var(--accent);
+            transition: height 0.3s ease;
         }
 
         .service-card:hover::before {
-            transform: scaleX(1);
-        }
-
-        .service-icon {
-            width: 80px;
-            height: 80px;
-            background-color: #ffffff;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin-bottom: 30px;
-            transition: all 0.3s ease;
-        }
-
-        .service-card:hover .service-icon {
-            transform: scale(1.1) rotate(5deg);
-        }
-
-        .service-icon svg {
-            width: 40px;
-            height: 40px;
-            fill: none;
-            stroke: #0a0a0a;
-            stroke-width: 2;
-            stroke-linecap: round;
-            stroke-linejoin: round;
+            height: 100%;
         }
 
         .service-card h3 {
-            font-size: 26px;
-            font-weight: 700;
-            margin-bottom: 20px;
-            transition: all 0.3s ease;
-        }
-
-        .service-card:hover h3 {
-            transform: translateX(10px);
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+            position: relative;
         }
 
         .service-card p {
-            font-size: 18px;
-            color: #cccccc;
-            flex-grow: 1;
-            font-weight: 500;
+            color: var(--text-secondary);
+            line-height: 1.6;
         }
 
-        /* Контакты */
+        /* Contact Section */
         .contact {
             padding: 100px 0;
-            background-color: #121212;
+            text-align: center;
             position: relative;
-            overflow: hidden;
         }
 
-        .contact::before {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: radial-gradient(circle at 70% 70%, rgba(255, 255, 255, 0.05), transparent 60%);
-        }
-
-        .contact-links {
+        .contact-buttons {
             display: flex;
             justify-content: center;
-            gap: 40px;
+            gap: 30px;
+            margin-top: 50px;
             flex-wrap: wrap;
-            margin-top: 60px;
-            position: relative;
-            z-index: 2;
         }
 
         .contact-btn {
-            display: flex;
+            padding: 15px 40px;
+            border-radius: 30px;
+            font-weight: 600;
+            font-size: 1.1rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-flex;
             align-items: center;
             justify-content: center;
-            padding: 20px 40px;
-            background-color: rgba(26, 26, 26, 0.8);
-            color: #ffffff;
-            text-decoration: none;
-            border-radius: 50px;
-            font-weight: 600;
-            font-size: 20px;
-            transition: all 0.4s ease;
-            border: 2px solid rgba(255, 255, 255, 0.2);
-            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+            gap: 10px;
+            opacity: 0;
+            transform: translateY(30px);
             position: relative;
             overflow: hidden;
-            min-width: 250px;
+            width: 250px; /* Fixed width for symmetry */
         }
 
         .contact-btn::before {
@@ -372,295 +358,786 @@
             left: -100%;
             width: 100%;
             height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
-            transition: left 0.7s ease;
-        }
-
-        .contact-btn:hover {
-            background-color: #ffffff;
-            color: #0a0a0a;
-            transform: translateY(-5px);
-            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+            transition: 0.5s;
         }
 
         .contact-btn:hover::before {
             left: 100%;
         }
 
-        /* Подвал */
+        .contact-btn.animated {
+            animation: fadeUp 0.8s forwards;
+        }
+
+        .contact-btn-primary {
+            background-color: var(--primary-button);
+            color: var(--primary-button-text);
+            border: 2px solid var(--primary-button);
+        }
+
+        .contact-btn-secondary {
+            background-color: var(--secondary-button);
+            color: var(--secondary-button-text);
+            border: 2px solid var(--secondary-button);
+        }
+
+        .contact-btn-tertiary {
+            background-color: var(--secondary-button);
+            color: var(--secondary-button-text);
+            border: 2px solid var(--secondary-button);
+        }
+
+        .contact-btn:hover {
+            transform: translateY(-5px) scale(1.03); /* Added scale for subtle growth */
+            box-shadow: 0 10px 25px rgba(255, 255, 255, 0.2); /* Enhanced glow */
+        }
+
+        /* Footer */
         footer {
-            background-color: #0a0a0a;
-            padding: 60px 0;
+            padding: 30px 0;
+            background-color: rgba(37, 37, 37, 0.7);
             text-align: center;
-            border-top: 1px solid rgba(255, 255, 255, 0.1);
         }
 
         .footer-logo {
             height: 100px;
-            margin-bottom: 30px;
+            margin-bottom: 15px;
+            transition: transform 0.3s ease;
         }
 
-        footer p {
-            color: #999999;
-            font-size: 18px;
-            font-weight: 500;
+        .footer-logo:hover {
+            transform: scale(1.05);
+            filter: brightness(1.2);
         }
 
-        /* Анимации */
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(20px); }
-            to { opacity: 1; transform: translateY(0); }
+        .copyright {
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+            opacity: 0.8;
+            transition: opacity 0.3s ease;
         }
 
-        .animate {
-            animation: fadeIn 0.8s forwards;
+        .copyright:hover {
+            opacity: 1;
         }
 
-        .delay-1 { animation-delay: 0.2s; }
-        .delay-2 { animation-delay: 0.4s; }
-        .delay-3 { animation-delay: 0.6s; }
+        /* Scroll Down Indicator */
+        .scroll-down {
+            position: absolute;
+            bottom: 30px;
+            left: 50%;
+            transform: translateX(-50%);
+            cursor: pointer;
+            z-index: 10;
+            animation: bounce 2s infinite;
+        }
 
-        /* Декоративные элементы */
-        .circle-decoration {
+        .scroll-down svg {
+            width: 30px;
+            height: 30px;
+            fill: var(--accent);
+        }
+
+        /* Background Elements */
+        .bg-elements {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: -1;
+        }
+
+        .bg-element {
             position: absolute;
             border-radius: 50%;
-            background: rgba(255, 255, 255, 0.03);
-            z-index: 0;
+            background: linear-gradient(45deg, rgba(255, 255, 255, 0.05), rgba(255, 255, 255, 0.1));
+            filter: blur(5px);
         }
 
-        .circle-1 {
+        .bg-element:nth-child(1) {
             width: 300px;
             height: 300px;
-            top: -150px;
-            left: -150px;
+            top: 10%;
+            left: 10%;
+            animation: floatSlow 15s infinite alternate ease-in-out;
         }
 
-        .circle-2 {
-            width: 500px;
-            height: 500px;
-            bottom: -250px;
-            right: -250px;
-            border: 1px solid rgba(255, 255, 255, 0.05);
+        .bg-element:nth-child(2) {
+            width: 400px;
+            height: 400px;
+            bottom: 10%;
+            right: 10%;
+            animation: floatSlow 20s infinite alternate-reverse ease-in-out;
         }
 
-        /* Адаптивность */
+        .bg-element:nth-child(3) {
+            width: 200px;
+            height: 200px;
+            top: 40%;
+            right: 30%;
+            animation: floatSlow 18s infinite alternate ease-in-out;
+        }
+
+        /* Animations */
+        @keyframes fadeUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+
+        @keyframes float {
+            0%, 100% {
+                transform: translateY(0);
+            }
+            50% {
+                transform: translateY(-20px);
+            }
+        }
+
+        @keyframes floatSlow {
+            0% {
+                transform: translate(0, 0);
+            }
+            100% {
+                transform: translate(30px, 30px);
+            }
+        }
+
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% {
+                transform: translateY(0) translateX(-50%);
+            }
+            40% {
+                transform: translateY(-20px) translateX(-50%);
+            }
+            60% {
+                transform: translateY(-10px) translateX(-50%);
+            }
+        }
+
+        @keyframes pulse {
+            0% {
+                transform: scale(1);
+                opacity: 1;
+            }
+            50% {
+                transform: scale(1.05);
+                opacity: 0.8;
+            }
+            100% {
+                transform: scale(1);
+                opacity: 1;
+            }
+        }
+
+        /* Enhanced Responsive Styles */
+        @media (max-width: 1200px) {
+            .container {
+                max-width: 960px;
+            }
+            
+            .hero h1 {
+                font-size: 3rem;
+            }
+            
+            .services-grid {
+                max-width: 900px;
+            }
+        }
+        
         @media (max-width: 992px) {
+            .container {
+                max-width: 720px;
+            }
+            
+            .hero h1 {
+                font-size: 2.8rem;
+            }
+            
+            .services-grid {
+                gap: 20px;
+            }
+            
+            .logo {
+                height: 90px;
+            }
+            
+            .footer-logo {
+                height: 90px;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .container {
+                max-width: 540px;
+            }
+            
+            .hero {
+                margin-top: 0; /* Removed margin-top */
+                padding-top: 0; /* Removed top padding */
+                flex-direction: column;
+                min-height: 100vh; /* Ensure it still takes at least full viewport height */
+                justify-content: center; /* Center content vertically */
+            }
+            
             .hero-content {
-                grid-template-columns: 1fr;
-                gap: 40px;
+                padding-top: 100px; /* Added padding to push content down */
+                margin-top: 0; /* Ensure no extra margin */
+            }
+            
+            .hero h1 {
+                font-size: 2.5rem;
+                margin-bottom: 15px; /* Reduced space between heading and paragraph */
+            }
+            
+            .hero p {
+                font-size: 1.1rem;
+                margin-bottom: 30px; /* Reduced space between paragraph and button */
             }
 
-            .hero-logo {
-                max-width: 300px;
+            .hero-graphics {
+                display: none;
+            }
+
+            .hero-content {
+                max-width: 100%;
+            }
+
+            .nav-links {
+                display: none;
+            }
+
+            .mobile-menu-btn {
+                display: block;
             }
 
             .services-grid {
                 grid-template-columns: 1fr;
+                gap: 25px;
             }
 
-            .logo img {
-                height: 60px;
+            .contact-buttons {
+                flex-direction: column;
+                align-items: center;
+                gap: 20px;
             }
-
+            
+            .logo {
+                height: 80px;
+            }
+            
             .footer-logo {
                 height: 80px;
             }
-        }
-
-        @media (max-width: 768px) {
-            nav ul {
-                display: none;
-            }
-
-            .hero-logo {
-                max-width: 250px;
-            }
-
-            .hero-text p {
-                font-size: 20px;
-            }
-
+            
             .section-title {
-                font-size: 32px;
+                font-size: 2.2rem;
+                margin-bottom: 40px;
             }
-
-            .contact-links {
+            
+            /* Mobile header navigation */
+            .mobile-nav {
+                display: flex;
+                justify-content: space-around;
+                width: 100%;
+                background-color: rgba(26, 26, 26, 0.9);
+                position: fixed;
+                bottom: 0;
+                left: 0;
+                padding: 10px 0;
+                z-index: 100;
+                box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.2);
+            }
+            
+            .mobile-nav a {
+                color: var(--text-primary);
+                text-decoration: none;
+                font-size: 0.9rem;
+                display: flex;
                 flex-direction: column;
                 align-items: center;
+                padding: 5px 0;
             }
-
+            
+            .mobile-nav a i {
+                font-size: 1.2rem;
+                margin-bottom: 5px;
+            }
+            
+            .mobile-nav a.active {
+                color: var(--accent);
+            }
+            
+            /* Fixed scroll down arrow for mobile */
+            .scroll-down {
+                bottom: 100px; /* Increased to be more visible above the mobile navigation */
+            }
+        }
+        
+        @media (max-width: 576px) {
+            .container {
+                padding: 0 15px;
+            }
+            
+            .hero-content {
+                padding-top: 80px; /* Reduced padding for smaller screens */
+            }
+            
+            .hero h1 {
+                font-size: 2.2rem;
+                margin-bottom: 12px; /* Further reduced spacing */
+            }
+            
+            .hero p {
+                font-size: 1rem;
+                margin-bottom: 25px; /* Further reduced spacing */
+            }
+            
+            .logo {
+                height: 70px;
+            }
+            
+            .footer-logo {
+                height: 70px;
+            }
+            
             .service-card {
-                padding: 30px;
+                padding: 25px;
             }
+            
+            .service-card h3 {
+                font-size: 1.3rem;
+            }
+            
+            .contact-btn {
+                width: 250px; /* Consistent width across all screen sizes */
+                padding: 12px 30px;
+                font-size: 1rem;
+            }
+            
+            .services, .contact {
+                padding: 70px 0;
+            }
+            
+            .section-title {
+                font-size: 2rem;
+                margin-bottom: 35px;
+            }
+        }
+        
+        @media (max-width: 400px) {
+            .hero-content {
+                padding-top: 70px; /* Further reduced padding for smallest screens */
+            }
+            
+            .hero h1 {
+                font-size: 1.8rem;
+                margin-bottom: 10px; /* Minimal spacing */
+            }
+            
+            .logo {
+                height: 60px;
+            }
+            
+            .footer-logo {
+                height: 60px;
+            }
+            
+            .btn {
+                padding: 10px 25px;
+                font-size: 0.9rem;
+            }
+            
+            .contact-btn {
+                width: 250px; /* Maintain consistent width */
+                padding: 12px 30px;
+                font-size: 0.9rem;
+            }
+            
+            .mobile-nav a {
+                font-size: 0.8rem;
+            }
+        }
+
+        /* Mobile Menu */
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            color: var(--text-primary);
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+
+        .mobile-menu {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(26, 26, 26, 0.95);
+            backdrop-filter: blur(10px);
+            z-index: 200;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            transform: translateX(100%);
+            transition: transform 0.3s ease;
+        }
+
+        .mobile-menu.active {
+            transform: translateX(0);
+        }
+
+        .mobile-menu a {
+            color: var(--text-primary);
+            text-decoration: none;
+            font-size: 1.5rem;
+            margin: 15px 0;
+            position: relative;
+        }
+
+        .mobile-menu a::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -5px;
+            left: 0;
+            background-color: var(--accent);
+            transition: width 0.3s ease;
+        }
+
+        .mobile-menu a:hover::after {
+            width: 100%;
+        }
+
+        .close-menu {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background: none;
+            border: none;
+            color: var(--text-primary);
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+        
+        /* Mobile Navigation Icons */
+        .icon-home, .icon-services, .icon-contact {
+            display: inline-block;
+            width: 24px;
+            height: 24px;
+            margin-bottom: 5px;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: contain;
+        }
+        
+        .icon-home {
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='white' viewBox='0 0 24 24'%3E%3Cpath d='M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z'/%3E%3C/svg%3E");
+        }
+        
+        .icon-services {
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='white' viewBox='0 0 24 24'%3E%3Cpath d='M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-5 14h-2v-4H8v-2h4V7h2v4h4v2h-4v4z'/%3E%3C/svg%3E");
+        }
+        
+        .icon-contact {
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='white' viewBox='0 0 24 24'%3E%3Cpath d='M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z'/%3E%3C/svg%3E");
         }
     </style>
 </head>
 <body>
-    <!-- Декоративные элементы -->
-    <div class="circle-decoration circle-1"></div>
-    <div class="circle-decoration circle-2"></div>
+    <!-- Background Elements -->
+    <div class="bg-elements">
+        <div class="bg-element"></div>
+        <div class="bg-element"></div>
+        <div class="bg-element"></div>
+    </div>
 
-    <!-- Шапка сайта -->
-    <header>
+    <!-- Header -->
+    <header id="header">
         <div class="container header-container">
-            <a href="#" class="logo">
-                <img src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/%D0%BB%D0%BE%D0%B3%D0%BE%D1%82%D0%B8%D0%BF%20%D0%BF%D0%BD%D0%B3%20-rJS51D1pBhO3wLIjJrAYu5ZvVP4UPS.png" alt="Inflecto">
+            <a href="#" class="logo-container">
+                <img src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/%D0%BB%D0%BE%D0%B3%D0%BE%D1%82%D0%B8%D0%BF%20%D0%BF%D0%BD%D0%B3%20-FCBzw1gaAUpF3cmiVbaGm4aHYGHgKv.png" alt="Inflecto Logo" class="logo">
             </a>
-            <nav>
-                <ul>
-                    <li><a href="#services">Услуги</a></li>
-                    <li><a href="#contact">Контакты</a></li>
-                </ul>
+            <nav class="nav-links">
+                <a href="#hero">Главная</a>
+                <a href="#services">Услуги</a>
+                <a href="#contact">Связь</a>
             </nav>
+            <button class="mobile-menu-btn">☰</button>
         </div>
     </header>
 
-    <!-- Главный экран с О нас -->
-    <section class="hero">
+    <!-- Mobile Menu -->
+    <div class="mobile-menu" id="mobile-menu">
+        <button class="close-menu">✕</button>
+        <a href="#hero">Главная</a>
+        <a href="#services">Услуги</a>
+        <a href="#contact">Связь</a>
+    </div>
+    
+    <!-- Mobile Navigation Bar -->
+    <nav class="mobile-nav" id="mobile-nav">
+        <a href="#hero" class="active">
+            <span class="icon-home"></span>
+            Главная
+        </a>
+        <a href="#services">
+            <span class="icon-services"></span>
+            Услуги
+        </a>
+        <a href="#contact">
+            <span class="icon-contact"></span>
+            Связь
+        </a>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero" id="hero">
         <div class="container">
             <div class="hero-content">
-                <div class="hero-text">
-                    <img src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/%D0%BB%D0%BE%D0%B3%D0%BE%D1%82%D0%B8%D0%BF%20%D0%BF%D0%BD%D0%B3%20-rJS51D1pBhO3wLIjJrAYu5ZvVP4UPS.png" alt="Inflecto" class="hero-logo animate">
-                    <p class="animate delay-1">Агентство для ваших новых идей</p>
-                </div>
-                <div class="hero-about animate delay-2">
-                    <h2>О нас</h2>
-                    <p>
-                        inflecto - агентство для ваших новых идей. Или старых, мы берем любые. Маркетологи готовы поднять вашу популярность. Разработчики готовы сделать вам оптимальные, качественные и стильные продукты по вашему запросу. Выбирайте нас, выбирайте удобство.
-                    </p>
+                <h1>DIGITAL АГЕНТСТВО<br>КОТОРОЕ СОЗДАЁТ РЕЗУЛЬТАТ.</h1>
+                <p>
+                    inflecto создает комфорт, удобство, и качество<br>
+                    в выполнении ваших запросов.
+                </p>
+                <div class="hero-buttons">
+                    <a href="#services" class="btn btn-primary">Начать</a>
                 </div>
             </div>
+            <div class="hero-graphics">
+                <div class="graphic-item"></div>
+                <div class="graphic-item"></div>
+                <div class="graphic-item"></div>
+                <div class="graphic-item"></div>
+            </div>
+        </div>
+        <div class="scroll-down" id="scroll-down">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                <path d="M7.41 8.59L12 13.17l4.59-4.58L18 10l-6 6-6-6 1.41-1.41z"/>
+            </svg>
         </div>
     </section>
 
-    <!-- Услуги -->
-    <section id="services" class="services">
+    <!-- Services Section -->
+    <section class="services" id="services">
         <div class="container">
             <h2 class="section-title">Наши услуги</h2>
             <div class="services-grid">
-                <!-- Плашка услуги 1 -->
                 <div class="service-card">
-                    <div class="service-icon">
-                        <svg viewBox="0 0 24 24">
-                            <path d="M20 4H4C2.89543 4 2 4.89543 2 6V18C2 19.1046 2.89543 20 4 20H20C21.1046 20 22 19.1046 22 18V6C22 4.89543 21.1046 4 20 4Z"></path>
-                            <path d="M2 8H22"></path>
-                            <path d="M6 12H10"></path>
-                            <path d="M6 16H8"></path>
-                            <path d="M10 16H14"></path>
-                        </svg>
-                    </div>
-                    <h3>Разработка сайтов</h3>
-                    <p>Создаем современные, адаптивные и высокопроизводительные веб-сайты, которые выделят ваш бизнес среди конкурентов. Наши сайты не только красивы, но и функциональны.</p>
+                    <h3>Разработка</h3>
+                    <p>Создание ботов, веб-сайтов и скриптов любой сложности. Современные технологии и индивидуальный подход к каждому проекту.</p>
                 </div>
-                
-                <!-- Плашка услуги 2 -->
                 <div class="service-card">
-                    <div class="service-icon">
-                        <svg viewBox="0 0 24 24">
-                            <path d="M12 2L2 7L12 12L22 7L12 2Z"></path>
-                            <path d="M2 17L12 22L22 17"></path>
-                            <path d="M2 12L12 17L22 12"></path>
-                        </svg>
-                    </div>
-                    <h3>Разработка ботов</h3>
-                    <p>Автоматизируйте взаимодействие с клиентами с помощью интеллектуальных ботов для мессенджеров и социальных сетей. Повысьте эффективность коммуникации с вашей аудиторией.</p>
-                </div>
-                
-                <!-- Плашка услуги 3 -->
-                <div class="service-card">
-                    <div class="service-icon">
-                        <svg viewBox="0 0 24 24">
-                            <path d="M12 20L9 17H7C6.46957 17 5.96086 16.7893 5.58579 16.4142C5.21071 16.0391 5 15.5304 5 15V7C5 6.46957 5.21071 5.96086 5.58579 5.58579C5.96086 5.21071 6.46957 5 7 5H17C17.5304 5 18.0391 5.21071 18.4142 5.58579C18.7893 5.96086 19 6.46957 19 7V15C19 15.5304 18.7893 16.0391 18.4142 16.4142C18.0391 16.7893 17.5304 17 17 17H15L12 20Z"></path>
-                            <path d="M8 9H16"></path>
-                            <path d="M8 13H14"></path>
-                        </svg>
-                    </div>
                     <h3>Маркетинговые услуги</h3>
-                    <p>Повышаем узнаваемость вашего бренда и привлекаем новых клиентов с помощью эффективных маркетинговых стратегий. Разрабатываем комплексные решения для продвижения.</p>
+                    <p>Эффективные маркетинговые стратегии для продвижения вашего бизнеса. Анализ рынка, таргетированная реклама и SEO-оптимизация.</p>
                 </div>
-                
-                <!-- Плашка услуги 4 -->
                 <div class="service-card">
-                    <div class="service-icon">
-                        <svg viewBox="0 0 24 24">
-                            <path d="M18 8C19.6569 8 21 6.65685 21 5C21 3.34315 19.6569 2 18 2C16.3431 2 15 3.34315 15 5C15 6.65685 16.3431 8 18 8Z"></path>
-                            <path d="M6 15C7.65685 15 9 13.6569 9 12C9 10.3431 7.65685 9 6 9C4.34315 9 3 10.3431 3 12C3 13.6569 4.34315 15 6 15Z"></path>
-                            <path d="M18 22C19.6569 22 21 20.6569 21 19C21 17.3431 19.6569 16 18 16C16.3431 16 15 17.3431 15 19C15 20.6569 16.3431 22 18 22Z"></path>
-                            <path d="M8.59 13.51L15.42 17.49"></path>
-                            <path d="M15.41 6.51L8.59 10.49"></path>
-                        </svg>
-                    </div>
-                    <h3>Автоматизация процессов</h3>
-                    <p>Оптимизируем внутренние и внешние процессы вашей компании для повышения эффективности и снижения затрат. Внедряем современные технологии для автоматизации рутинных задач.</p>
+                    <h3>Автоматизация</h3>
+                    <p>Автоматизация бизнес-процессов для повышения эффективности работы вашей компании. Внедрение CRM-систем и оптимизация рабочих процессов.</p>
+                </div>
+                <div class="service-card">
+                    <h3>Дизайн</h3>
+                    <p>Создание уникального и современного дизайна для вашего бренда. Разработка фирменного стиля, UI/UX дизайн и графические материалы.</p>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Контакты -->
-    <section id="contact" class="contact">
+    <!-- Contact Section -->
+    <section class="contact" id="contact">
         <div class="container">
-            <h2 class="section-title">Связаться с нами</h2>
-            <div class="contact-links">
-                <a href="https://t.me/inflectoforyou" class="contact-btn" target="_blank">
-                    Telegram канал
+            <h2 class="section-title">Свяжитесь с нами</h2>
+            <div class="contact-buttons">
+                <a href="https://t.me/inflectoforyou" target="_blank" class="contact-btn contact-btn-primary">
+                    Наш телеграм канал
                 </a>
-                <a href="https://t.me/inflectoagency_bot" class="contact-btn" target="_blank">
-                    Telegram бот
+                <a href="https://t.me/inflectoagency_bot" target="_blank" class="contact-btn contact-btn-secondary">
+                    Наш бот
+                </a>
+                <a href="https://t.me/inflectoreviews" target="_blank" class="contact-btn contact-btn-tertiary">
+                    Наши отзывы
                 </a>
             </div>
         </div>
     </section>
 
-    <!-- Подвал -->
+    <!-- Footer -->
     <footer>
         <div class="container">
-            <img src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/%D0%BB%D0%BE%D0%B3%D0%BE%D1%82%D0%B8%D0%BF%20%D0%BF%D0%BD%D0%B3%20-rJS51D1pBhO3wLIjJrAYu5ZvVP4UPS.png" alt="Inflecto" class="footer-logo">
-            <p>© 2025 Inflecto. Все права защищены.</p>
+            <img src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/%D0%BB%D0%BE%D0%B3%D0%BE%D1%82%D0%B8%D0%BF%20%D0%BF%D0%BD%D0%B3%20-FCBzw1gaAUpF3cmiVbaGm4aHYGHgKv.png" alt="Inflecto Logo" class="footer-logo">
+            <p class="copyright">© 2025 Inflecto. Все права защищены.</p>
         </div>
     </footer>
 
     <script>
-        // Исправление навигации
-        document.querySelectorAll('nav a, a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function(e) {
+        // Intersection Observer for animations
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    if (entry.target.classList.contains('section-title')) {
+                        entry.target.classList.add('animated');
+                    }
+                    if (entry.target.classList.contains('service-card')) {
+                        setTimeout(() => {
+                            entry.target.classList.add('animated');
+                        }, 150 * Array.from(entry.target.parentNode.children).indexOf(entry.target));
+                    }
+                    if (entry.target.classList.contains('contact-btn')) {
+                        setTimeout(() => {
+                            entry.target.classList.add('animated');
+                        }, 200 * Array.from(entry.target.parentNode.children).indexOf(entry.target));
+                    }
+                }
+            });
+        }, { threshold: 0.1 });
+
+        // Observe elements
+        document.querySelectorAll('.section-title, .service-card, .contact-btn').forEach(el => {
+            observer.observe(el);
+        });
+
+        // Header scroll effect
+        window.addEventListener('scroll', () => {
+            const header = document.getElementById('header');
+            if (window.scrollY > 50) {
+                header.classList.add('scrolled');
+            } else {
+                header.classList.remove('scrolled');
+            }
+        });
+
+        // Smooth scroll
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
                 e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+                // Close mobile menu if open
+                document.getElementById('mobile-menu').classList.remove('active');
                 
-                const targetId = this.getAttribute('href');
-                if (targetId === '#') return;
-                
-                const targetElement = document.querySelector(targetId);
-                if (targetElement) {
-                    const headerHeight = document.querySelector('header').offsetHeight;
-                    const targetPosition = targetElement.getBoundingClientRect().top + window.pageYOffset - headerHeight;
-                    
-                    window.scrollTo({
-                        top: targetPosition,
-                        behavior: 'smooth'
+                // Update active state in mobile navigation
+                if (window.innerWidth <= 768) {
+                    document.querySelectorAll('#mobile-nav a').forEach(navItem => {
+                        navItem.classList.remove('active');
                     });
+                    this.classList.add('active');
                 }
             });
         });
-        
-        // Анимация при скролле
-        document.addEventListener('DOMContentLoaded', function() {
-            const serviceCards = document.querySelectorAll('.service-card');
-            
-            function checkScroll() {
-                serviceCards.forEach((card, index) => {
-                    const cardPosition = card.getBoundingClientRect().top;
-                    const screenPosition = window.innerHeight / 1.2;
-                    
-                    if (cardPosition < screenPosition) {
-                        setTimeout(() => {
-                            card.classList.add('animate');
-                        }, index * 150); // Добавляем задержку для каждой карточки
-                    }
-                });
+
+        // Scroll down button
+        document.getElementById('scroll-down').addEventListener('click', () => {
+            document.getElementById('services').scrollIntoView({
+                behavior: 'smooth'
+            });
+        });
+
+        // Mobile menu
+        document.querySelector('.mobile-menu-btn').addEventListener('click', () => {
+            document.getElementById('mobile-menu').classList.add('active');
+        });
+
+        document.querySelector('.close-menu').addEventListener('click', () => {
+            document.getElementById('mobile-menu').classList.remove('active');
+        });
+
+        // Create floating particles
+        function createParticles() {
+            const particlesContainer = document.createElement('div');
+            particlesContainer.className = 'particles-container';
+            particlesContainer.style.position = 'fixed';
+            particlesContainer.style.top = '0';
+            particlesContainer.style.left = '0';
+            particlesContainer.style.width = '100%';
+            particlesContainer.style.height = '100%';
+            particlesContainer.style.pointerEvents = 'none';
+            particlesContainer.style.zIndex = '-1';
+            document.body.appendChild(particlesContainer);
+
+            for (let i = 0; i < 20; i++) {
+                const particle = document.createElement('div');
+                particle.className = 'particle';
+                particle.style.position = 'absolute';
+                particle.style.width = Math.random() * 5 + 2 + 'px';
+                particle.style.height = particle.style.width;
+                particle.style.background = 'rgba(255, 255, 255, 0.1)';
+                particle.style.borderRadius = '50%';
+                particle.style.top = Math.random() * 100 + '%';
+                particle.style.left = Math.random() * 100 + '%';
+                
+                // Animation
+                particle.style.animation = `float ${Math.random() * 10 + 10}s infinite ease-in-out`;
+                particle.style.opacity = Math.random() * 0.5 + 0.1;
+                
+                particlesContainer.appendChild(particle);
             }
+        }
+
+        createParticles();
+
+        // Parallax effect
+        document.addEventListener('mousemove', (e) => {
+            const x = e.clientX / window.innerWidth;
+            const y = e.clientY / window.innerHeight;
             
-            window.addEventListener('scroll', checkScroll);
-            checkScroll(); // Проверяем при загрузке страницы
+            document.querySelectorAll('.bg-element').forEach(element => {
+                const speed = 20;
+                const xPos = (0.5 - x) * speed;
+                const yPos = (0.5 - y) * speed;
+                
+                element.style.transform = `translate(${xPos}px, ${yPos}px)`;
+            });
+        });
+        
+        // Update active state in mobile navigation based on scroll position
+        window.addEventListener('scroll', () => {
+            if (window.innerWidth <= 768) {
+                const scrollPosition = window.scrollY;
+                
+                // Get all sections
+                const hero = document.getElementById('hero');
+                const services = document.getElementById('services');
+                const contact = document.getElementById('contact');
+                
+                // Get all navigation items
+                const navItems = document.querySelectorAll('#mobile-nav a');
+                
+                // Remove active class from all items
+                navItems.forEach(item => {
+                    item.classList.remove('active');
+                });
+                
+                // Add active class based on scroll position
+                if (scrollPosition < services.offsetTop - 100) {
+                    navItems[0].classList.add('active');
+                } else if (scrollPosition < contact.offsetTop - 100) {
+                    navItems[1].classList.add('active');
+                } else {
+                    navItems[2].classList.add('active');
+                }
+            }
         });
     </script>
 </body>
