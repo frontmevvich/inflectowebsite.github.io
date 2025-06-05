@@ -18,17 +18,15 @@
     :root {
         --dark-bg: #1a1a1a;
         --dark-secondary: #252525;
-        --accent: #4ECDC4;
-        --accent-light: #7DE8E0;
-        --accent-dark: #3BB5AD;
+        --accent: #ffffff;
         --text-primary: #ffffff;
         --text-secondary: rgba(255, 255, 255, 0.8);
-        --primary-button: #4ECDC4;
-        --primary-button-text: #1a1a1a;
+        --primary-button: #ffffff;
+        --primary-button-text: #121212;
         --secondary-button: #ffffff;
         --secondary-button-text: #121212;
         --card-bg: rgba(60, 60, 60, 0.6);
-        --glow-color: rgba(78, 205, 196, 0.6);
+        --glow-color: rgba(255, 255, 255, 0.7);
         --progress-color: #ffffff;
     }
 
@@ -71,7 +69,7 @@
         width: 50px;
         height: 50px;
         border-radius: 50%;
-        background-color: rgba(78, 205, 196, 0.15);
+        background-color: rgba(255, 255, 255, 0.1);
         backdrop-filter: blur(5px);
         display: flex;
         justify-content: center;
@@ -81,7 +79,7 @@
         opacity: 0;
         transform: translateY(20px);
         transition: all 0.3s ease;
-        border: 1px solid rgba(78, 205, 196, 0.2);
+        border: 1px solid rgba(255, 255, 255, 0.2);
     }
 
     .back-to-top.visible {
@@ -96,7 +94,7 @@
     }
 
     .back-to-top:hover {
-        background-color: rgba(78, 205, 196, 0.25);
+        background-color: rgba(255, 255, 255, 0.2);
         transform: translateY(-5px);
     }
 
@@ -181,8 +179,8 @@
         opacity: 0;
         transform: translateY(30px);
         animation: fadeUp 0.8s forwards 0.3s;
-        text-align: left;
-        margin-right: auto;
+        text-align: left; /* Align text to the left */
+        margin-right: auto; /* Push content to the left */
     }
 
     .hero h1 {
@@ -190,7 +188,7 @@
         font-weight: 700;
         margin-bottom: 20px;
         line-height: 1.2;
-        text-align: left;
+        text-align: left; /* Ensure heading is left-aligned */
     }
 
     .hero p {
@@ -198,7 +196,7 @@
         color: var(--text-secondary);
         margin-bottom: 40px;
         line-height: 1.6;
-        text-align: left;
+        text-align: left; /* Ensure paragraph is left-aligned */
     }
 
     .hero-buttons {
@@ -226,7 +224,7 @@
         left: -100%;
         width: 100%;
         height: 100%;
-        background: linear-gradient(90deg, transparent, rgba(78, 205, 196, 0.3), transparent);
+        background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
         transition: 0.5s;
     }
 
@@ -238,6 +236,7 @@
         background-color: var(--primary-button);
         color: var(--primary-button-text);
         border: 2px solid var(--primary-button);
+        /* Yandex Alisa-like glow effect */
         box-shadow: 0 0 10px 2px var(--glow-color);
         animation: pulse-glow 2s infinite;
     }
@@ -274,7 +273,7 @@
     .graphic-item {
         position: absolute;
         border-radius: 50%;
-        background-color: rgba(78, 205, 196, 0.12);
+        background-color: rgba(255, 255, 255, 0.1);
         animation: float 6s infinite ease-in-out;
     }
 
@@ -351,7 +350,7 @@
         transform: translateY(30px);
         backdrop-filter: blur(5px);
         box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
-        border: 1px solid rgba(78, 205, 196, 0.1);
+        border: 1px solid rgba(255, 255, 255, 0.1);
     }
 
     .service-card.animated {
@@ -359,9 +358,9 @@
     }
 
     .service-card:hover {
-        transform: translateY(-3px);
-        box-shadow: 0 8px 25px rgba(78, 205, 196, 0.18);
-        border-color: rgba(78, 205, 196, 0.3);
+        transform: translateY(-3px); /* Simple movement */
+        box-shadow: 0 8px 25px rgba(255, 255, 255, 0.15); /* Simple glow */
+        border-color: rgba(255, 255, 255, 0.3);
     }
 
     .service-card::before {
@@ -411,7 +410,7 @@
         border-radius: 20px;
         background-color: rgba(40, 40, 40, 0.5);
         backdrop-filter: blur(5px);
-        border: 1px solid rgba(78, 205, 196, 0.1);
+        border: 1px solid rgba(255, 255, 255, 0.1);
         transition: all 0.4s ease;
         opacity: 0;
         transform: translateY(30px);
@@ -426,7 +425,7 @@
     .feature-item:hover {
         transform: translateY(-10px) scale(1.02);
         box-shadow: 0 15px 40px rgba(0, 0, 0, 0.3);
-        border-color: rgba(78, 205, 196, 0.3);
+        border-color: rgba(255, 255, 255, 0.3);
         background-color: rgba(50, 50, 50, 0.7);
     }
 
@@ -437,7 +436,7 @@
         left: -100%;
         width: 100%;
         height: 100%;
-        background: linear-gradient(90deg, transparent, rgba(78, 205, 196, 0.1), transparent);
+        background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.1), transparent);
         transition: 0.6s;
     }
 
@@ -461,37 +460,23 @@
         transform: scaleX(1);
     }
 
-    .custom-icon {
-        width: 32px;
-        height: 32px;
-        stroke: var(--accent);
-        stroke-width: 2;
-        transition: all 0.3s ease;
-    }
-
-    .feature-item:hover .custom-icon {
-        stroke: #ffffff;
-        transform: scale(1.1);
-    }
-
     .feature-icon {
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        width: 70px;
-        height: 70px;
+        font-size: 2.5rem;
+        margin-bottom: 20px;
+        display: inline-block;
+        padding: 15px;
         border-radius: 50%;
-        background-color: rgba(78, 205, 196, 0.12);
-        margin: 0 auto 20px;
+        background-color: rgba(255, 255, 255, 0.1);
+        color: var(--accent);
         transition: all 0.4s ease;
         position: relative;
         z-index: 2;
     }
 
     .feature-item:hover .feature-icon {
-        background-color: var(--accent);
-        box-shadow: 0 0 20px rgba(78, 205, 196, 0.3);
         transform: scale(1.1) rotate(5deg);
+        background-color: rgba(255, 255, 255, 0.2);
+        box-shadow: 0 0 20px rgba(255, 255, 255, 0.3);
     }
 
     .feature-title {
@@ -549,7 +534,7 @@
         transform: translateY(30px);
         position: relative;
         overflow: hidden;
-        width: 250px;
+        width: 250px; /* Fixed width for symmetry */
     }
 
     .contact-btn::before {
@@ -572,9 +557,9 @@
     }
 
     .contact-btn-primary {
-        background-color: var(--secondary-button);
-        color: var(--secondary-button-text);
-        border: 2px solid var(--secondary-button);
+        background-color: var(--primary-button);
+        color: var(--primary-button-text);
+        border: 2px solid var(--primary-button);
     }
 
     .contact-btn-secondary {
@@ -590,8 +575,8 @@
     }
 
     .contact-btn:hover {
-        transform: translateY(-5px) scale(1.03);
-        box-shadow: 0 10px 25px rgba(255, 255, 255, 0.2);
+        transform: translateY(-5px) scale(1.03); /* Added scale for subtle growth */
+        box-shadow: 0 10px 25px rgba(255, 255, 255, 0.2); /* Enhanced glow */
     }
 
     /* Footer */
@@ -654,7 +639,7 @@
     .bg-element {
         position: absolute;
         border-radius: 50%;
-        background: linear-gradient(45deg, rgba(78, 205, 196, 0.04), rgba(125, 232, 224, 0.08));
+        background: linear-gradient(45deg, rgba(255, 255, 255, 0.05), rgba(255, 255, 255, 0.1));
         filter: blur(5px);
     }
 
@@ -815,26 +800,26 @@
         }
         
         .hero {
-            margin-top: 0;
-            padding-top: 0;
+            margin-top: 0; /* Removed margin-top */
+            padding-top: 0; /* Removed top padding */
             flex-direction: column;
-            min-height: 100vh;
-            justify-content: center;
+            min-height: 100vh; /* Ensure it still takes at least full viewport height */
+            justify-content: center; /* Center content vertically */
         }
         
         .hero-content {
-            padding-top: 100px;
-            margin-top: 0;
+            padding-top: 100px; /* Added padding to push content down */
+            margin-top: 0; /* Ensure no extra margin */
         }
         
         .hero h1 {
             font-size: 2.5rem;
-            margin-bottom: 15px;
+            margin-bottom: 15px; /* Reduced space between heading and paragraph */
         }
         
         .hero p {
             font-size: 1.1rem;
-            margin-bottom: 30px;
+            margin-bottom: 30px; /* Reduced space between paragraph and button */
         }
 
         .hero-graphics {
@@ -882,6 +867,7 @@
             margin-bottom: 40px;
         }
         
+        /* Mobile header navigation */
         .mobile-nav {
             display: flex;
             justify-content: space-around;
@@ -914,10 +900,12 @@
             color: var(--accent);
         }
         
+        /* Fixed scroll down arrow for mobile */
         .scroll-down {
-            bottom: 100px;
+            bottom: 100px; /* Increased to be more visible above the mobile navigation */
         }
         
+        /* Adjust back to top button for mobile */
         .back-to-top {
             bottom: 80px;
             right: 20px;
@@ -932,17 +920,17 @@
         }
         
         .hero-content {
-            padding-top: 80px;
+            padding-top: 80px; /* Reduced padding for smaller screens */
         }
         
         .hero h1 {
             font-size: 2.2rem;
-            margin-bottom: 12px;
+            margin-bottom: 12px; /* Further reduced spacing */
         }
         
         .hero p {
             font-size: 1rem;
-            margin-bottom: 25px;
+            margin-bottom: 25px; /* Further reduced spacing */
         }
         
         .logo {
@@ -962,7 +950,7 @@
         }
         
         .contact-btn {
-            width: 250px;
+            width: 250px; /* Consistent width across all screen sizes */
             padding: 12px 30px;
             font-size: 1rem;
         }
@@ -979,12 +967,12 @@
     
     @media (max-width: 400px) {
         .hero-content {
-            padding-top: 70px;
+            padding-top: 70px; /* Further reduced padding for smallest screens */
         }
         
         .hero h1 {
             font-size: 1.8rem;
-            margin-bottom: 10px;
+            margin-bottom: 10px; /* Minimal spacing */
         }
         
         .logo {
@@ -1001,7 +989,7 @@
         }
         
         .contact-btn {
-            width: 250px;
+            width: 250px; /* Maintain consistent width */
             padding: 12px 30px;
             font-size: 0.9rem;
         }
@@ -1088,7 +1076,7 @@
     }
     
     .icon-home {
-        background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='%234ECDC4' viewBox='0 0 24 24'%3E%3Cpath d='M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z'/%3E%3C/svg%3E");
+        background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='white' viewBox='0 0 24 24'%3E%3Cpath d='M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z'/%3E%3C/svg%3E");
     }
     
     .icon-services {
@@ -1124,7 +1112,7 @@
 <header id="header">
     <div class="container header-container">
         <a href="#" class="logo-container">
-            <img src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/20250604_0351_%D0%9B%D0%BE%D0%B3%D0%BE%D1%82%D0%B8%D0%BF%20%D0%B2%20%D1%81%D1%82%D0%B8%D0%BB%D0%B5%20%D0%A2%D0%B8%D1%84%D1%84%D0%B0%D0%BD%D0%B8_remix_01jww6p4wverzaepepeedy17qp-sxHmEkSwywlVnIxJSTewaFwLoA4fQp.png" alt="Inflecto Logo" class="logo">
+            <img src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/%D0%BB%D0%BE%D0%B3%D0%BE%D1%82%D0%B8%D0%BF%20%D0%BF%D0%BD%D0%B3%20-FCBzw1gaAUpF3cmiVbaGm4aHYGHgKv.png" alt="Inflecto Logo" class="logo">
         </a>
         <nav class="nav-links">
             <a href="#hero">Главная</a>
@@ -1219,64 +1207,32 @@
         <h2 class="section-title">Почему выбирают нас</h2>
         <div class="features-grid">
             <div class="feature-item">
-                <div class="feature-icon">
-                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="custom-icon">
-                        <path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"></path>
-                    </svg>
-                </div>
+                <div class="feature-icon">⚡</div>
                 <h3 class="feature-title">Быстрая разработка</h3>
                 <p class="feature-text">Мы ценим ваше время и всегда стремимся выполнить проекты в кратчайшие сроки без потери качества.</p>
             </div>
             <div class="feature-item">
-                <div class="feature-icon">
-                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="custom-icon">
-                        <rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect>
-                        <path d="M7 11V7a5 5 0 0 1 10 0v4"></path>
-                    </svg>
-                </div>
+                <div class="feature-icon">🔒</div>
                 <h3 class="feature-title">Безопасность</h3>
                 <p class="feature-text">Мы обеспечиваем высокий уровень безопасности для всех наших проектов и защиту ваших данных.</p>
             </div>
             <div class="feature-item">
-                <div class="feature-icon">
-                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="custom-icon">
-                        <path d="M9 18h6"></path>
-                        <path d="M10 22h4"></path>
-                        <path d="M12 2a7 7 0 0 0-7 7c0 2.38 1.19 4.47 3 5.74V17a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1v-2.26c1.81-1.27 3-3.36 3-5.74a7 7 0 0 0-7-7z"></path>
-                    </svg>
-                </div>
+                <div class="feature-icon">💡</div>
                 <h3 class="feature-title">Инновации</h3>
                 <p class="feature-text">Мы всегда в курсе последних технологических трендов и применяем инновационные решения.</p>
             </div>
             <div class="feature-item">
-                <div class="feature-icon">
-                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="custom-icon">
-                        <path d="M20.42 4.58a5.4 5.4 0 0 0-7.65 0l-.77.78-.77-.78a5.4 5.4 0 0 0-7.65 0C1.46 6.7 1.33 10.28 4 13l8 8 8-8c2.67-2.72 2.54-6.3.42-8.42z"></path>
-                    </svg>
-                </div>
+                <div class="feature-icon">🤝</div>
                 <h3 class="feature-title">Поддержка</h3>
                 <p class="feature-text">Мы обеспечиваем круглосуточную поддержку и всегда готовы помочь с любыми вопросами.</p>
             </div>
             <div class="feature-item">
-                <div class="feature-icon">
-                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="custom-icon">
-                        <path d="M18 20V10"></path>
-                        <path d="M12 20V4"></path>
-                        <path d="M6 20v-6"></path>
-                    </svg>
-                </div>
+                <div class="feature-icon">📊</div>
                 <h3 class="feature-title">Аналитика</h3>
                 <p class="feature-text">Мы предоставляем детальную аналитику и отчеты о результатах работы ваших проектов.</p>
             </div>
             <div class="feature-item">
-                <div class="feature-icon">
-                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="custom-icon">
-                        <circle cx="12" cy="12" r="10"></circle>
-                        <path d="M16 8h-6a2 2 0 1 0 0 4h4a2 2 0 1 1 0 4H8"></path>
-                        <path d="M12 6v2"></path>
-                        <path d="M12 16v2"></path>
-                    </svg>
-                </div>
+                <div class="feature-icon">💰</div>
                 <h3 class="feature-title">Лучшие цены на рынке</h3>
                 <p class="feature-text">Мы предлагаем конкурентоспособные цены и гибкие тарифные планы для любого бюджета.</p>
             </div>
@@ -1305,7 +1261,7 @@
 <!-- Footer -->
 <footer>
     <div class="container">
-        <img src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/20250604_0351_%D0%9B%D0%BE%D0%B3%D0%BE%D1%82%D0%B8%D0%BF%20%D0%B2%20%D1%81%D1%82%D0%B8%D0%BB%D0%B5%20%D0%A2%D0%B8%D1%84%D1%84%D0%B0%D0%BD%D0%B8_remix_01jww6p4wverzaepepeedy17qp-sxHmEkSwywlVnIxJSTewaFwLoA4fQp.png" alt="Inflecto Logo" class="footer-logo">
+        <img src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/%D0%BB%D0%BE%D0%B3%D0%BE%D1%82%D0%B8%D0%BF%20%D0%BF%D0%BD%D0%B3%20-FCBzw1gaAUpF3cmiVbaGm4aHYGHgKv.png" alt="Inflecto Logo" class="footer-logo">
         <p class="copyright">© 2025 Inflecto. Все права защищены.</p>
     </div>
 </footer>
@@ -1429,7 +1385,7 @@
             particle.style.position = 'absolute';
             particle.style.width = Math.random() * 5 + 2 + 'px';
             particle.style.height = particle.style.width;
-            particle.style.background = 'rgba(78, 205, 196, 0.2)';
+            particle.style.background = 'rgba(255, 255, 255, 0.1)';
             particle.style.borderRadius = '50%';
             particle.style.top = Math.random() * 100 + '%';
             particle.style.left = Math.random() * 100 + '%';
