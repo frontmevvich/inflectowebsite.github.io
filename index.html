@@ -3,2993 +3,1468 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Inflecto - Digital Агентство</title>
+<title>Inflecto - Цифровой рост вашего бизнеса</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 <style>
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: 'Montserrat', sans-serif;
-}
-
-:root {
-    --dark-bg: #0a0a0f;
-    --dark-secondary: #1a1a2e;
-    --accent: #ffffff;
-    --text-primary: #f8f9fa;
-    --text-secondary: rgba(248, 249, 250, 0.85);
-    --primary-button: #ffffff;
-    --primary-button-text: #121212;
-    --card-bg: rgba(60, 60, 80, 0.6);
-    --progress-color: #ffffff;
-    --icon-color: #b8b8b8;
-    --icon-bg: rgba(184, 184, 184, 0.15);
-    --junior-color: #4CAF50;
-    --middle-color: #2196F3;
-    --senior-color: #9C27B0;
-    --terminal-bg: #1e1e1e;
-    --terminal-border: #404040;
-    --terminal-text: #e0e0e0;
-    --terminal-prompt: #58a6ff;
-    --terminal-success: #3fb950;
-    --terminal-warning: #f85149;
-    --terminal-header: #2a2a2a;
-    --wave-color-1: #ffffff;
-    --wave-color-2: #8b5cf6;
-    --wave-color-3: #3b82f6;
-    --wave-color-4: #1e40af;
-}
-
-body {
-    background: radial-gradient(ellipse at top, #1e1b4b 0%, #0f0f23 50%, #000000 100%);
-    color: var(--text-primary);
-    overflow-x: hidden;
-    position: relative;
-    min-height: 100vh;
-}
-
-.container {
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 0 20px;
-}
-
-/* Progress Bar */
-.progress-container {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 3px;
-    background: transparent;
-    z-index: 1000;
-}
-
-.progress-bar {
-    height: 100%;
-    background: linear-gradient(90deg, #8b5cf6, #3b82f6, #ffffff);
-    width: 0%;
-    box-shadow: 0 0 15px var(--progress-color);
-    transition: width 0.1s ease;
-}
-
-/* Back to Top Button */
-.back-to-top {
-    position: fixed;
-    bottom: 30px;
-    right: 30px;
-    width: 60px;
-    height: 60px;
-    border-radius: 50%;
-    background: rgba(139, 92, 246, 0.2);
-    backdrop-filter: blur(20px);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    cursor: pointer;
-    z-index: 100;
-    opacity: 0;
-    transform: translateY(20px);
-    transition: all 0.3s ease;
-    border: 1px solid rgba(139, 92, 246, 0.3);
-}
-
-.back-to-top.visible {
-    opacity: 1;
-    transform: translateY(0);
-}
-
-.back-to-top svg {
-    width: 24px;
-    height: 24px;
-    fill: var(--accent);
-    transition: transform 0.3s ease;
-}
-
-.back-to-top:hover {
-    background: rgba(139, 92, 246, 0.3);
-    transform: translateY(-5px);
-    box-shadow: 0 10px 30px rgba(139, 92, 246, 0.4);
-}
-
-.back-to-top:hover svg {
-    transform: translateY(-2px);
-}
-
-/* Header - Увеличенный логотип */
-header {
-    padding: 12px 0;
-    position: fixed;
-    width: 100%;
-    top: 0;
-    z-index: 100;
-    background: rgba(10, 10, 15, 0.4);
-    backdrop-filter: blur(20px);
-    transition: all 0.3s ease;
-    border-bottom: 1px solid rgba(139, 92, 246, 0.2);
-}
-
-header.scrolled {
-    box-shadow: 0 8px 32px rgba(139, 92, 246, 0.2);
-    background: rgba(10, 10, 15, 0.6);
-    padding: 8px 0;
-}
-
-.header-container {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
-
-.logo {
-    height: 60px;
-    transition: all 0.3s ease;
-    filter: drop-shadow(0 0 10px rgba(139, 92, 246, 0.3));
-}
-
-.logo:hover {
-    transform: scale(1.05);
-    filter: drop-shadow(0 0 20px rgba(139, 92, 246, 0.5));
-}
-
-header.scrolled .logo {
-    height: 50px;
-}
-
-.nav-links {
-    display: flex;
-    gap: 40px;
-}
-
-.nav-links a {
-    color: var(--text-primary);
-    text-decoration: none;
-    font-weight: 500;
-    position: relative;
-    transition: all 0.3s ease;
-    padding: 10px 0;
-}
-
-.nav-links a::after {
-    content: '';
-    position: absolute;
-    width: 0;
-    height: 2px;
-    bottom: 0;
-    left: 50%;
-    background: linear-gradient(90deg, #8b5cf6, #3b82f6);
-    transition: all 0.3s ease;
-    transform: translateX(-50%);
-}
-
-.nav-links a:hover {
-    color: var(--accent);
-    transform: translateY(-2px);
-}
-
-.nav-links a:hover::after {
-    width: 100%;
-}
-
-/* Mobile Menu Button */
-.mobile-menu-btn {
-    display: none;
-    background: none;
-    border: none;
-    color: var(--text-primary);
-    font-size: 1.5rem;
-    cursor: pointer;
-    transition: all 0.3s ease;
-}
-
-.mobile-menu-btn:hover {
-    transform: scale(1.1);
-}
-
-/* Mobile Menu */
-.mobile-menu {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: rgba(10, 10, 15, 0.98);
-    backdrop-filter: blur(20px);
-    z-index: 200;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    transform: translateX(100%);
-    transition: transform 0.4s ease;
-}
-
-.mobile-menu.active {
-    transform: translateX(0);
-}
-
-.mobile-menu a {
-    color: var(--text-primary);
-    text-decoration: none;
-    font-size: 1.8rem;
-    margin: 20px 0;
-    transition: all 0.3s ease;
-    padding: 10px 20px;
-    border-radius: 12px;
-}
-
-.mobile-menu a:hover {
-    background: rgba(139, 92, 246, 0.2);
-    transform: translateX(10px);
-}
-
-.close-menu {
-    position: absolute;
-    top: 30px;
-    right: 30px;
-    background: none;
-    border: none;
-    color: var(--text-primary);
-    font-size: 2rem;
-    cursor: pointer;
-    transition: all 0.3s ease;
-    padding: 10px;
-    border-radius: 50%;
-}
-
-.close-menu:hover {
-    background: rgba(139, 92, 246, 0.2);
-    transform: rotate(90deg);
-}
-
-/* Hero Section */
-.hero {
-    min-height: 100vh;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    position: relative;
-    overflow: hidden;
-    padding: 160px 0 60px;
-}
-
-.hero::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: radial-gradient(circle at 30% 50%, rgba(139, 92, 246, 0.1) 0%, transparent 50%);
-    pointer-events: none;
-}
-
-/* Hero Text Section */
-.hero-text {
-    text-align: center;
-    margin-bottom: 80px;
-    opacity: 0;
-    transform: translateY(50px);
-    animation: heroFadeUp 1s ease forwards 0.5s;
-    position: relative;
-    z-index: 2;
-}
-
-@keyframes heroFadeUp {
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
-}
-
-.hero-text h1 {
-    font-size: 3.5rem;
-    font-weight: 700;
-    margin-bottom: 20px;
-    line-height: 1.2;
-    color: #ffffff;
-}
-
-.hero-text p {
-    font-size: 1.2rem;
-    color: var(--text-secondary);
-    margin-bottom: 40px;
-    line-height: 1.6;
-    max-width: 600px;
-    margin-left: auto;
-    margin-right: auto;
-    opacity: 0;
-    animation: fadeUp 0.8s ease forwards 1s;
-}
-
-/* Hero Graphics */
-.hero-graphics {
-    position: absolute;
-    right: 5%;
-    top: 25%;
-    width: 35%;
-    height: 50%;
-    z-index: 1;
-    opacity: 0;
-    animation: fadeIn 1.5s ease forwards 1.5s;
-}
-
-.graphic-item {
-    position: absolute;
-    border-radius: 50%;
-    background: linear-gradient(135deg, rgba(139, 92, 246, 0.2) 0%, rgba(59, 130, 246, 0.1) 100%);
-    backdrop-filter: blur(10px);
-    border: 1px solid rgba(139, 92, 246, 0.3);
-    animation: floatSimple 6s infinite ease-in-out;
-}
-
-@keyframes floatSimple {
-    0%, 100% { 
-        transform: translateY(0); 
-    }
-    50% { 
-        transform: translateY(-20px); 
-    }
-}
-
-.graphic-item:nth-child(1) {
-    width: 120px;
-    height: 120px;
-    top: 20%;
-    right: 30%;
-    animation-delay: 0s;
-}
-
-.graphic-item:nth-child(2) {
-    width: 180px;
-    height: 180px;
-    top: 50%;
-    right: 10%;
-    animation-delay: 2s;
-}
-
-.graphic-item:nth-child(3) {
-    width: 100px;
-    height: 100px;
-    bottom: 20%;
-    right: 40%;
-    animation-delay: 4s;
-}
-
-.graphic-item:nth-child(4) {
-    width: 150px;
-    height: 150px;
-    bottom: 30%;
-    right: 20%;
-    animation-delay: 6s;
-}
-
-/* Terminal Section */
-.terminal-section {
-    width: 100%;
-    max-width: 900px;
-    margin: 0 auto;
-    opacity: 0;
-    transform: translateY(50px);
-    animation: terminalFadeUp 1s ease forwards 1.8s;
-    position: relative;
-    z-index: 2;
-}
-
-@keyframes terminalFadeUp {
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
-}
-
-/* Terminal Component */
-.terminal {
-    background: var(--terminal-bg);
-    border-radius: 16px;
-    border: 1px solid rgba(139, 92, 246, 0.3);
-    box-shadow: 
-        0 25px 80px rgba(0, 0, 0, 0.5),
-        0 0 0 1px rgba(139, 92, 246, 0.1);
-    overflow: hidden;
-    backdrop-filter: blur(20px);
-    position: relative;
-}
-
-.terminal::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background: linear-gradient(135deg, rgba(139, 92, 246, 0.05) 0%, transparent 50%);
-    pointer-events: none;
-    border-radius: 16px;
-}
-
-.terminal-header {
-    background: var(--terminal-header);
-    padding: 16px 24px;
-    display: flex;
-    align-items: center;
-    gap: 12px;
-    border-bottom: 1px solid rgba(139, 92, 246, 0.2);
-    position: relative;
-}
-
-.terminal-header::after {
-    content: '';
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    height: 1px;
-    background: linear-gradient(90deg, transparent, rgba(139, 92, 246, 0.3), transparent);
-}
-
-.terminal-dots {
-    display: flex;
-    gap: 8px;
-}
-
-.terminal-dot {
-    width: 12px;
-    height: 12px;
-    border-radius: 50%;
-    position: relative;
-}
-
-.terminal-dot.red {
-    background: linear-gradient(135deg, #ff5f57 0%, #ff3b30 100%);
-    box-shadow: 0 0 10px rgba(255, 95, 87, 0.3);
-}
-
-.terminal-dot.yellow {
-    background: linear-gradient(135deg, #ffbd2e 0%, #ff9500 100%);
-    box-shadow: 0 0 10px rgba(255, 189, 46, 0.3);
-}
-
-.terminal-dot.green {
-    background: linear-gradient(135deg, #28ca42 0%, #30d158 100%);
-    box-shadow: 0 0 10px rgba(40, 202, 66, 0.3);
-}
-
-.terminal-title {
-    color: var(--terminal-text);
-    font-size: 14px;
-    font-weight: 500;
-    margin-left: 12px;
-    opacity: 0.9;
-}
-
-.terminal-body {
-    padding: 32px;
-    font-family: 'JetBrains Mono', monospace;
-    font-size: 14px;
-    line-height: 1.8;
-    color: var(--terminal-text);
-    min-height: 400px;
-}
-
-.terminal-line {
-    margin-bottom: 16px;
-    opacity: 0;
-    transform: translateX(-10px);
-    animation: terminalLineAppear 0.8s ease forwards;
-}
-
-.terminal-line:nth-child(1) { animation-delay: 2.2s; }
-.terminal-line:nth-child(2) { animation-delay: 2.5s; }
-.terminal-line:nth-child(3) { animation-delay: 2.8s; }
-.terminal-line:nth-child(4) { animation-delay: 3.1s; }
-.terminal-line:nth-child(5) { animation-delay: 3.4s; }
-.terminal-line:nth-child(6) { animation-delay: 3.7s; }
-.terminal-line:nth-child(7) { animation-delay: 4.0s; }
-
-@keyframes terminalLineAppear {
-    to {
-        opacity: 1;
-        transform: translateX(0);
-    }
-}
-
-.terminal-prompt {
-    color: var(--terminal-prompt);
-    font-weight: 600;
-}
-
-.terminal-command {
-    color: var(--terminal-success);
-    margin-left: 8px;
-    font-weight: 500;
-}
-
-.terminal-output {
-    color: var(--terminal-text);
-    margin-left: 16px;
-    font-weight: 400;
-}
-
-.terminal-output.info {
-    color: var(--terminal-prompt);
-}
-
-.terminal-output.success {
-    color: var(--terminal-success);
-}
-
-.terminal-cursor {
-    display: inline-block;
-    width: 8px;
-    height: 16px;
-    background: var(--terminal-text);
-    animation: blink 1s infinite;
-    margin-left: 4px;
-}
-
-@keyframes blink {
-    0%, 50% { opacity: 1; }
-    51%, 100% { opacity: 0; }
-}
-
-/* Terminal Button */
-.terminal-button-line {
-    margin-top: 32px;
-    padding-top: 24px;
-    border-top: 1px solid rgba(139, 92, 246, 0.2);
-    display: flex;
-    align-items: center;
-    gap: 16px;
-}
-
-.terminal-btn {
-    background: linear-gradient(135deg, #8b5cf6 0%, #3b82f6 100%);
-    color: var(--text-primary);
-    border: none;
-    padding: 12px 24px;
-    border-radius: 8px;
-    font-family: 'JetBrains Mono', monospace;
-    font-size: 13px;
-    font-weight: 600;
-    cursor: pointer;
-    transition: all 0.3s ease;
-    text-decoration: none;
-    display: inline-flex;
-    align-items: center;
-    gap: 8px;
-    box-shadow: 0 4px 12px rgba(139, 92, 246, 0.3);
-    position: relative;
-    overflow: hidden;
-}
-
-.terminal-btn::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: -100%;
-    width: 100%;
-    height: 100%;
-    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
-    transition: 0.6s ease;
-}
-
-.terminal-btn:hover::before {
-    left: 100%;
-}
-
-.terminal-btn:hover {
-    transform: translateY(-2px) scale(1.05);
-    box-shadow: 0 8px 20px rgba(139, 92, 246, 0.4);
-}
-
-.terminal-btn-text {
-    color: var(--terminal-text);
-    font-size: 13px;
-    opacity: 0.8;
-}
-
-/* Services Section */
-.services {
-    padding: 120px 0;
-    background: linear-gradient(135deg, rgba(26, 26, 46, 0.8) 0%, rgba(16, 16, 35, 0.6) 100%);
-    position: relative;
-}
-
-.section-title {
-    font-size: 2.8rem;
-    text-align: center;
-    margin-bottom: 80px;
-    position: relative;
-    opacity: 0;
-    transform: translateY(30px);
-    color: #ffffff;
-}
-
-.section-title::after {
-    content: '';
-    position: absolute;
-    bottom: -10px;
-    left: 50%;
-    width: 80px;
-    height: 3px;
-    background: linear-gradient(90deg, transparent, #8b5cf6, #3b82f6, transparent);
-    transform: translateX(-50%) scaleX(0);
-    transition: transform 0.6s ease;
-}
-
-.section-title.animated::after {
-    transform: translateX(-50%) scaleX(1);
-}
-
-.section-title.animated {
-    animation: fadeUp 1s ease forwards;
-}
-
-.services-grid {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 40px;
-    max-width: 1000px;
-    margin: 0 auto;
-}
-
-/* Enhanced Service Cards */
-.service-card {
-    background: linear-gradient(135deg, rgba(139, 92, 246, 0.1) 0%, rgba(59, 130, 246, 0.05) 100%);
-    border-radius: 24px;
-    padding: 40px;
-    transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-    position: relative;
-    overflow: hidden;
-    height: 100%;
-    opacity: 0;
-    transform: translateY(50px) scale(0.95);
-    backdrop-filter: blur(20px);
-    box-shadow: 0 10px 40px rgba(139, 92, 246, 0.1);
-    border: 1px solid rgba(139, 92, 246, 0.2);
-}
-
-.service-card::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: linear-gradient(135deg, rgba(139, 92, 246, 0.1) 0%, transparent 50%, rgba(59, 130, 246, 0.05) 100%);
-    opacity: 0;
-    transition: opacity 0.4s ease;
-}
-
-.service-card:hover::before {
-    opacity: 1;
-}
-
-.service-card::after {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 4px;
-    height: 0;
-    background: linear-gradient(180deg, #8b5cf6, #3b82f6);
-    transition: height 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-}
-
-.service-card.animated {
-    animation: cardSlideUp 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
-}
-
-@keyframes cardSlideUp {
-    to {
-        opacity: 1;
-        transform: translateY(0) scale(1);
-    }
-}
-
-.service-card:hover {
-    transform: translateY(-15px) scale(1.03);
-    box-shadow: 
-        0 25px 70px rgba(139, 92, 246, 0.2), 
-        0 0 50px rgba(59, 130, 246, 0.1),
-        inset 0 1px 0 rgba(255, 255, 255, 0.2);
-    border-color: rgba(139, 92, 246, 0.4);
-}
-
-.service-card:hover::after {
-    height: 100%;
-}
-
-.service-card h3 {
-    font-size: 1.6rem;
-    margin-bottom: 20px;
-    color: #ffffff;
-    transition: all 0.3s ease;
-}
-
-.service-card:hover h3 {
-    transform: translateX(8px);
-}
-
-.service-card p {
-    color: var(--text-secondary);
-    line-height: 1.7;
-    transition: all 0.3s ease;
-}
-
-.service-card:hover p {
-    color: rgba(255, 255, 255, 0.95);
-    transform: translateX(5px);
-}
-
-/* Why Choose Us Section */
-.why-us {
-    padding: 120px 0;
-    position: relative;
-    background: linear-gradient(135deg, rgba(10, 10, 15, 0.9) 0%, rgba(26, 26, 46, 0.8) 100%);
-}
-
-.features-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 40px;
-    max-width: 1200px;
-    margin: 0 auto;
-}
-
-/* Enhanced Feature Items */
-.feature-item {
-    text-align: center;
-    padding: 40px 30px;
-    border-radius: 24px;
-    background: linear-gradient(135deg, rgba(139, 92, 246, 0.1) 0%, rgba(59, 130, 246, 0.05) 100%);
-    backdrop-filter: blur(20px);
-    border: 1px solid rgba(139, 92, 246, 0.2);
-    transition: all 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-    opacity: 0;
-    transform: translateY(50px) scale(0.9) rotateX(10deg);
-    position: relative;
-    overflow: hidden;
-}
-
-.feature-item::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: linear-gradient(135deg, rgba(139, 92, 246, 0.1) 0%, transparent 50%, rgba(59, 130, 246, 0.05) 100%);
-    opacity: 0;
-    transition: opacity 0.4s ease;
-}
-
-.feature-item:hover::before {
-    opacity: 1;
-}
-
-.feature-item.animated {
-    animation: featureSlideUp 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
-}
-
-@keyframes featureSlideUp {
-    to {
-        opacity: 1;
-        transform: translateY(0) scale(1) rotateX(0deg);
-    }
-}
-
-.feature-item:hover {
-    transform: translateY(-20px) scale(1.05) rotateY(5deg);
-    box-shadow: 
-        0 30px 60px rgba(139, 92, 246, 0.2), 
-        0 0 60px rgba(59, 130, 246, 0.15),
-        inset 0 1px 0 rgba(255, 255, 255, 0.3);
-    border-color: rgba(139, 92, 246, 0.4);
-    background: linear-gradient(135deg, rgba(139, 92, 246, 0.15) 0%, rgba(59, 130, 246, 0.1) 100%);
-}
-
-/* Styled Emoji Icons */
-.feature-icon {
-    width: 90px;
-    height: 90px;
-    margin: 0 auto 25px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    border-radius: 50%;
-    background: linear-gradient(135deg, rgba(139, 92, 246, 0.2) 0%, rgba(59, 130, 246, 0.1) 100%);
-    transition: all 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-    backdrop-filter: blur(10px);
-    border: 1px solid rgba(139, 92, 246, 0.3);
-    position: relative;
-    overflow: hidden;
-    font-size: 45px;
-    filter: grayscale(1) brightness(0.8) contrast(1.2);
-}
-
-.feature-item:hover .feature-icon {
-    transform: scale(1.3) rotate(10deg);
-    background: linear-gradient(135deg, rgba(139, 92, 246, 0.3) 0%, rgba(59, 130, 246, 0.2) 100%);
-    box-shadow: 
-        0 0 40px rgba(139, 92, 246, 0.4),
-        inset 0 2px 0 rgba(139, 92, 246, 0.5);
-    filter: grayscale(0.5) brightness(1.1) contrast(1.3);
-}
-
-.feature-icon::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: conic-gradient(from 0deg, transparent, rgba(139, 92, 246, 0.4), transparent);
-    opacity: 0;
-    transition: opacity 0.4s ease;
-    animation: iconRotate 3s linear infinite;
-}
-
-.feature-item:hover .feature-icon::before {
-    opacity: 1;
-}
-
-@keyframes iconRotate {
-    from { transform: rotate(0deg); }
-    to { transform: rotate(360deg); }
-}
-
-.feature-title {
-    font-size: 1.4rem;
-    margin-bottom: 20px;
-    color: #ffffff;
-    transition: all 0.3s ease;
-}
-
-.feature-item:hover .feature-title {
-    transform: translateY(-8px);
-}
-
-.feature-text {
-    color: var(--text-secondary);
-    line-height: 1.7;
-    transition: all 0.3s ease;
-}
-
-.feature-item:hover .feature-text {
-    color: rgba(255, 255, 255, 0.95);
-    transform: translateY(-3px);
-}
-
-/* Packages Section */
-.packages {
-    padding: 120px 0;
-    background: linear-gradient(135deg, rgba(26, 26, 46, 0.8) 0%, rgba(16, 16, 35, 0.6) 100%);
-    position: relative;
-}
-
-.packages-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 40px;
-    max-width: 1200px;
-    margin: 0 auto;
-}
-
-/* Package Cards */
-.package-card {
-    background: linear-gradient(135deg, rgba(139, 92, 246, 0.1) 0%, rgba(59, 130, 246, 0.05) 100%);
-    border-radius: 32px;
-    padding: 50px 35px;
-    transition: all 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-    position: relative;
-    overflow: hidden;
-    height: 100%;
-    opacity: 0;
-    transform: translateY(60px) scale(0.9);
-    backdrop-filter: blur(30px);
-    box-shadow: 0 20px 60px rgba(139, 92, 246, 0.1);
-    border: 2px solid rgba(139, 92, 246, 0.2);
-    text-align: center;
-}
-
-.package-card::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: linear-gradient(135deg, rgba(139, 92, 246, 0.05) 0%, transparent 50%, rgba(59, 130, 246, 0.02) 100%);
-    opacity: 0;
-    transition: opacity 0.5s ease;
-}
-
-.package-card:hover::before {
-    opacity: 1;
-}
-
-.package-card.animated {
-    animation: packageSlideUp 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
-}
-
-@keyframes packageSlideUp {
-    to {
-        opacity: 1;
-        transform: translateY(0) scale(1);
-    }
-}
-
-.package-card:hover {
-    transform: translateY(-25px) scale(1.05);
-    box-shadow: 
-        0 40px 100px rgba(139, 92, 246, 0.2), 
-        0 0 80px rgba(59, 130, 246, 0.1),
-        inset 0 2px 0 rgba(255, 255, 255, 0.3);
-}
-
-/* Package Headers */
-.package-header {
-    margin-bottom: 30px;
-    position: relative;
-}
-
-.package-level {
-    font-size: 2.2rem;
-    font-weight: 700;
-    margin-bottom: 10px;
-    position: relative;
-    z-index: 2;
-}
-
-.package-card.junior .package-level {
-    background: linear-gradient(135deg, var(--junior-color) 0%, #66BB6A 100%);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
-}
-
-.package-card.middle .package-level {
-    background: linear-gradient(135deg, var(--middle-color) 0%, #42A5F5 100%);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
-}
-
-.package-card.senior .package-level {
-    background: linear-gradient(135deg, var(--senior-color) 0%, #BA68C8 100%);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
-}
-
-.package-subtitle {
-    font-size: 1.1rem;
-    color: var(--text-secondary);
-    margin-bottom: 25px;
-    line-height: 1.5;
-}
-
-/* Package Features */
-.package-features {
-    text-align: left;
-    margin-bottom: 30px;
-}
-
-.package-features ul {
-    list-style: none;
-    padding: 0;
-}
-
-.package-features li {
-    padding: 12px 0;
-    position: relative;
-    padding-left: 30px;
-    color: var(--text-secondary);
-    line-height: 1.6;
-    transition: all 0.3s ease;
-}
-
-.package-features li::before {
-    content: '✓';
-    position: absolute;
-    left: 0;
-    top: 12px;
-    width: 20px;
-    height: 20px;
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-weight: bold;
-    font-size: 12px;
-    transition: all 0.3s ease;
-}
-
-.package-card.junior .package-features li::before {
-    background: linear-gradient(135deg, var(--junior-color) 0%, #66BB6A 100%);
-    color: white;
-}
-
-.package-card.middle .package-features li::before {
-    background: linear-gradient(135deg, var(--middle-color) 0%, #42A5F5 100%);
-    color: white;
-}
-
-.package-card.senior .package-features li::before {
-    background: linear-gradient(135deg, var(--senior-color) 0%, #BA68C8 100%);
-    color: white;
-}
-
-.package-card:hover .package-features li {
-    color: rgba(255, 255, 255, 0.95);
-    transform: translateX(5px);
-}
-
-.package-card:hover .package-features li::before {
-    transform: scale(1.2);
-}
-
-/* Package Target */
-.package-target {
-    background: rgba(139, 92, 246, 0.1);
-    border-radius: 16px;
-    padding: 20px;
-    margin-top: 25px;
-    border-left: 4px solid;
-    transition: all 0.3s ease;
-}
-
-.package-card.junior .package-target {
-    border-left-color: var(--junior-color);
-}
-
-.package-card.middle .package-target {
-    border-left-color: var(--middle-color);
-}
-
-.package-card.senior .package-target {
-    border-left-color: var(--senior-color);
-}
-
-.package-target-title {
-    font-weight: 600;
-    color: var(--text-primary);
-    margin-bottom: 8px;
-    font-size: 1rem;
-}
-
-.package-target-text {
-    color: var(--text-secondary);
-    font-size: 0.95rem;
-    line-height: 1.5;
-}
-
-.package-card:hover .package-target {
-    background: rgba(139, 92, 246, 0.15);
-    transform: translateY(-3px);
-}
-
-/* Package Accent Lines */
-.package-card::after {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 6px;
-    transition: all 0.4s ease;
-}
-
-.package-card.junior::after {
-    background: linear-gradient(90deg, var(--junior-color), #66BB6A);
-}
-
-.package-card.middle::after {
-    background: linear-gradient(90deg, var(--middle-color), #42A5F5);
-}
-
-.package-card.senior::after {
-    background: linear-gradient(90deg, var(--senior-color), #BA68C8);
-}
-
-.package-card:hover::after {
-    height: 8px;
-    box-shadow: 0 0 20px rgba(139, 92, 246, 0.3);
-}
-
-/* AI Assistant Section */
-.ai-assistant {
-    padding: 120px 0;
-    background: linear-gradient(135deg, rgba(10, 10, 15, 0.9) 0%, rgba(26, 26, 46, 0.8) 100%);
-    position: relative;
-}
-
-.ai-container {
-    max-width: 1000px;
-    margin: 0 auto;
-    padding: 0 20px;
-}
-
-.ai-intro {
-    text-align: center;
-    margin-bottom: 60px;
-    opacity: 0;
-    transform: translateY(30px);
-}
-
-.ai-intro.animated {
-    animation: fadeUp 1s ease forwards;
-}
-
-.ai-intro h2 {
-    font-size: 2.8rem;
-    margin-bottom: 20px;
-    color: #ffffff;
-}
-
-.ai-intro p {
-    font-size: 1.2rem;
-    color: var(--text-secondary);
-    line-height: 1.6;
-    max-width: 600px;
-    margin: 0 auto;
-}
-
-/* Chat Container */
-.chat-container {
-    background: linear-gradient(135deg, rgba(139, 92, 246, 0.1) 0%, rgba(59, 130, 246, 0.05) 100%);
-    border-radius: 24px;
-    border: 1px solid rgba(139, 92, 246, 0.3);
-    backdrop-filter: blur(30px);
-    box-shadow: 0 25px 80px rgba(139, 92, 246, 0.15);
-    overflow: hidden;
-    opacity: 0;
-    transform: translateY(50px);
-    position: relative;
-}
-
-.chat-container.animated {
-    animation: chatSlideUp 1s ease forwards 0.3s;
-}
-
-@keyframes chatSlideUp {
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
-}
-
-.chat-header {
-    background: linear-gradient(135deg, rgba(139, 92, 246, 0.2) 0%, rgba(59, 130, 246, 0.1) 100%);
-    padding: 20px 30px;
-    border-bottom: 1px solid rgba(139, 92, 246, 0.2);
-    display: flex;
-    align-items: center;
-    gap: 15px;
-}
-
-.ai-avatar {
-    width: 50px;
-    height: 50px;
-    border-radius: 50%;
-    background: linear-gradient(135deg, #8b5cf6 0%, #3b82f6 100%);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 28px;
-    font-weight: 700;
-    color: white;
-    box-shadow: 0 0 20px rgba(139, 92, 246, 0.4);
-    animation: aiPulse 2s ease-in-out infinite;
-    font-family: 'Montserrat', sans-serif;
-}
-
-@keyframes aiPulse {
-    0%, 100% { transform: scale(1); box-shadow: 0 0 20px rgba(139, 92, 246, 0.4); }
-    50% { transform: scale(1.05); box-shadow: 0 0 30px rgba(139, 92, 246, 0.6); }
-}
-
-.ai-info h3 {
-    font-size: 1.4rem;
-    color: var(--text-primary);
-    margin-bottom: 5px;
-}
-
-.ai-status {
-    font-size: 0.9rem;
-    color: var(--text-secondary);
-    display: flex;
-    align-items: center;
-    gap: 8px;
-}
-
-.status-dot {
-    width: 8px;
-    height: 8px;
-    border-radius: 50%;
-    background: #4CAF50;
-    animation: statusBlink 2s ease-in-out infinite;
-}
-
-@keyframes statusBlink {
-    0%, 100% { opacity: 1; }
-    50% { opacity: 0.5; }
-}
-
-/* Chat Messages */
-.chat-messages {
-    height: 400px;
-    overflow-y: auto;
-    padding: 20px 30px;
-    display: flex;
-    flex-direction: column;
-    gap: 20px;
-}
-
-.chat-messages::-webkit-scrollbar {
-    width: 6px;
-}
-
-.chat-messages::-webkit-scrollbar-track {
-    background: rgba(139, 92, 246, 0.1);
-    border-radius: 3px;
-}
-
-.chat-messages::-webkit-scrollbar-thumb {
-    background: linear-gradient(135deg, #8b5cf6, #3b82f6);
-    border-radius: 3px;
-}
-
-.message {
-    display: flex;
-    gap: 15px;
-    opacity: 0;
-    transform: translateY(20px);
-    animation: messageSlideIn 0.5s ease forwards;
-}
-
-@keyframes messageSlideIn {
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
-}
-
-.message.user {
-    flex-direction: row-reverse;
-}
-
-.message-avatar {
-    width: 40px;
-    height: 40px;
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 18px;
-    flex-shrink: 0;
-    font-weight: 700;
-    font-family: 'Montserrat', sans-serif;
-}
-
-.message.ai .message-avatar {
-    background: linear-gradient(135deg, #8b5cf6 0%, #3b82f6 100%);
-    box-shadow: 0 0 15px rgba(139, 92, 246, 0.3);
-    color: white;
-}
-
-.message.user .message-avatar {
-    background: linear-gradient(135deg, #4CAF50 0%, #66BB6A 100%);
-    box-shadow: 0 0 15px rgba(76, 175, 80, 0.3);
-    color: white;
-}
-
-.message-content {
-    background: rgba(139, 92, 246, 0.1);
-    padding: 15px 20px;
-    border-radius: 18px;
-    max-width: 70%;
-    line-height: 1.6;
-    position: relative;
-}
-
-.message.user .message-content {
-    background: linear-gradient(135deg, rgba(76, 175, 80, 0.2) 0%, rgba(102, 187, 106, 0.1) 100%);
-    border: 1px solid rgba(76, 175, 80, 0.3);
-}
-
-.message.ai .message-content {
-    border: 1px solid rgba(139, 92, 246, 0.3);
-}
-
-/* Typing Indicator */
-.typing-indicator {
-    display: none;
-    align-items: center;
-    gap: 15px;
-    opacity: 0.7;
-}
-
-.typing-dots {
-    display: flex;
-    gap: 4px;
-}
-
-.typing-dot {
-    width: 8px;
-    height: 8px;
-    border-radius: 50%;
-    background: #8b5cf6;
-    animation: typingBounce 1.4s ease-in-out infinite;
-}
-
-.typing-dot:nth-child(2) { animation-delay: 0.2s; }
-.typing-dot:nth-child(3) { animation-delay: 0.4s; }
-
-@keyframes typingBounce {
-    0%, 60%, 100% { transform: translateY(0); }
-    30% { transform: translateY(-10px); }
-}
-
-/* Chat Input */
-.chat-input-container {
-    padding: 20px 30px;
-    border-top: 1px solid rgba(139, 92, 246, 0.2);
-    background: linear-gradient(135deg, rgba(139, 92, 246, 0.05) 0%, rgba(59, 130, 246, 0.02) 100%);
-}
-
-.chat-input-wrapper {
-    display: flex;
-    gap: 15px;
-    align-items: flex-end;
-}
-
-.chat-input {
-    flex: 1;
-    background: rgba(139, 92, 246, 0.1);
-    border: 1px solid rgba(139, 92, 246, 0.3);
-    border-radius: 20px;
-    padding: 15px 20px;
-    color: var(--text-primary);
-    font-size: 1rem;
-    resize: none;
-    min-height: 50px;
-    max-height: 120px;
-    transition: all 0.3s ease;
-    font-family: 'Montserrat', sans-serif;
-}
-
-.chat-input:focus {
-    outline: none;
-    border-color: rgba(139, 92, 246, 0.6);
-    box-shadow: 0 0 20px rgba(139, 92, 246, 0.2);
-    background: rgba(139, 92, 246, 0.15);
-}
-
-.chat-input::placeholder {
-    color: var(--text-secondary);
-}
-
-.send-button {
-    width: 50px;
-    height: 50px;
-    border-radius: 50%;
-    background: linear-gradient(135deg, #8b5cf6 0%, #3b82f6 100%);
-    border: none;
-    color: white;
-    cursor: pointer;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    transition: all 0.3s ease;
-    box-shadow: 0 4px 15px rgba(139, 92, 246, 0.3);
-    flex-shrink: 0;
-}
-
-.send-button:hover {
-    transform: translateY(-2px) scale(1.05);
-    box-shadow: 0 8px 25px rgba(139, 92, 246, 0.4);
-}
-
-.send-button:disabled {
-    opacity: 0.5;
-    cursor: not-allowed;
-    transform: none;
-}
-
-.send-button svg {
-    width: 20px;
-    height: 20px;
-    fill: currentColor;
-}
-
-/* Loading State */
-.loading {
-    opacity: 0.7;
-    pointer-events: none;
-}
-
-/* Welcome Message */
-.welcome-message {
-    text-align: center;
-    padding: 40px 20px;
-    color: var(--text-secondary);
-}
-
-.welcome-message h4 {
-    font-size: 1.3rem;
-    margin-bottom: 15px;
-    color: #ffffff;
-}
-
-.welcome-message p {
-    line-height: 1.6;
-    margin-bottom: 20px;
-}
-
-.quick-questions {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 10px;
-    justify-content: center;
-    margin-top: 20px;
-}
-
-.quick-question {
-    background: rgba(139, 92, 246, 0.1);
-    border: 1px solid rgba(139, 92, 246, 0.3);
-    border-radius: 20px;
-    padding: 8px 16px;
-    font-size: 0.9rem;
-    color: var(--text-primary);
-    cursor: pointer;
-    transition: all 0.3s ease;
-}
-
-.quick-question:hover {
-    background: rgba(139, 92, 246, 0.2);
-    transform: translateY(-2px);
-}
-
-/* Contact Section */
-.contact {
-    padding: 120px 0;
-    text-align: center;
-    background: linear-gradient(135deg, rgba(10, 10, 15, 0.9) 0%, rgba(26, 26, 46, 0.8) 100%);
-}
-
-.contact-buttons {
-    display: flex;
-    justify-content: center;
-    gap: 40px;
-    margin-top: 60px;
-    flex-wrap: wrap;
-}
-
-.contact-btn {
-    padding: 18px 45px;
-    border-radius: 50px;
-    font-weight: 600;
-    font-size: 1.1rem;
-    cursor: pointer;
-    transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-    text-decoration: none;
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    gap: 12px;
-    opacity: 0;
-    transform: translateY(50px) scale(0.9);
-    position: relative;
-    width: 280px;
-    backdrop-filter: blur(20px);
-    border: 2px solid rgba(139, 92, 246, 0.3);
-    background: linear-gradient(135deg, rgba(139, 92, 246, 0.7) 0%, rgba(59, 130, 246, 0.6) 100%);
-    color: var(--text-primary);
-    box-shadow: 0 10px 30px rgba(139, 92, 246, 0.2);
-    overflow: hidden;
-}
-
-.contact-btn::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: -100%;
-    width: 100%;
-    height: 100%;
-    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.4), transparent);
-    transition: 0.6s ease;
-}
-
-.contact-btn:hover::before {
-    left: 100%;
-}
-
-.contact-btn.animated {
-    animation: contactSlideUp 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
-}
-
-@keyframes contactSlideUp {
-    to {
-        opacity: 1;
-        transform: translateY(0) scale(1);
-    }
-}
-
-.contact-btn:hover {
-    transform: translateY(-12px) scale(1.08);
-    box-shadow: 
-        0 25px 60px rgba(139, 92, 246, 0.3), 
-        0 0 50px rgba(59, 130, 246, 0.15),
-        inset 0 1px 0 rgba(255, 255, 255, 0.6);
-    border-color: rgba(139, 92, 246, 0.5);
-}
-
-/* Footer */
-footer {
-    padding: 50px 0;
-    background: linear-gradient(135deg, rgba(26, 26, 46, 0.9) 0%, rgba(10, 10, 15, 0.8) 100%);
-    text-align: center;
-    border-top: 1px solid rgba(139, 92, 246, 0.2);
-}
-
-.footer-logo {
-    height: 60px;
-    margin-bottom: 20px;
-    transition: all 0.3s ease;
-    filter: drop-shadow(0 0 15px rgba(139, 92, 246, 0.3));
-}
-
-.footer-logo:hover {
-    transform: scale(1.1);
-    filter: drop-shadow(0 0 25px rgba(139, 92, 246, 0.5));
-}
-
-.copyright {
-    color: var(--text-secondary);
-    font-size: 0.95rem;
-    opacity: 0.8;
-    transition: all 0.3s ease;
-}
-
-.copyright:hover {
-    opacity: 1;
-    color: rgba(255, 255, 255, 0.9);
-}
-
-/* Background Elements */
-.bg-elements {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    pointer-events: none;
-    z-index: -3;
-}
-
-.bg-element {
-    position: absolute;
-    border-radius: 50%;
-    background: linear-gradient(45deg, rgba(139, 92, 246, 0.1), rgba(59, 130, 246, 0.05));
-    filter: blur(8px);
-}
-
-.bg-element:nth-child(1) {
-    width: 300px;
-    height: 300px;
-    top: 10%;
-    left: 10%;
-    animation: floatSlow 20s infinite alternate ease-in-out;
-}
-
-.bg-element:nth-child(2) {
-    width: 400px;
-    height: 400px;
-    bottom: 10%;
-    right: 10%;
-    animation: floatSlow 25s infinite alternate-reverse ease-in-out;
-}
-
-.bg-element:nth-child(3) {
-    width: 200px;
-    height: 200px;
-    top: 40%;
-    right: 30%;
-    animation: floatSlow 22s infinite alternate ease-in-out;
-}
-
-/* Animations */
-@keyframes fadeUp {
-    from {
-        opacity: 0;
-        transform: translateY(50px);
-    }
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
-}
-
-@keyframes fadeIn {
-    from {
-        opacity: 0;
-    }
-    to {
-        opacity: 1;
-    }
-}
-
-@keyframes floatSlow {
-    0% {
-        transform: translate(0, 0);
-    }
-    100% {
-        transform: translate(30px, 30px);
-    }
-}
-
-/* Mobile Navigation */
-.mobile-nav {
-    display: flex;
-    justify-content: space-around;
-    width: 100%;
-    background: rgba(10, 10, 15, 0.85);
-    backdrop-filter: blur(20px);
-    position: fixed;
-    bottom: 0;
-    left: 0;
-    padding: 12px 0;
-    z-index: 100;
-    box-shadow: 0 -5px 20px rgba(139, 92, 246, 0.2);
-    border-top: 1px solid rgba(139, 92, 246, 0.2);
-    visibility: hidden;
-    opacity: 0;
-    transition: opacity 0.3s ease, visibility 0.3s ease;
-}
-
-/* Development Notice */
-.development-notice {
-    background: linear-gradient(135deg, rgba(255, 152, 0, 0.1) 0%, rgba(255, 193, 7, 0.05) 100%);
-    border: 1px solid rgba(255, 152, 0, 0.3);
-    border-radius: 16px;
-    padding: 20px;
-    margin: 25px 0;
-    display: flex;
-    align-items: center;
-    gap: 15px;
-    backdrop-filter: blur(10px);
-    box-shadow: 0 8px 32px rgba(255, 152, 0, 0.1);
-    position: relative;
-    overflow: hidden;
-}
-
-.development-notice::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: -100%;
-    width: 100%;
-    height: 100%;
-    background: linear-gradient(90deg, transparent, rgba(255, 152, 0, 0.1), transparent);
-    animation: devShimmer 3s ease-in-out infinite;
-}
-
-@keyframes devShimmer {
-    0% { left: -100%; }
-    50% { left: 100%; }
-    100% { left: 100%; }
-}
-
-.dev-icon {
-    font-size: 24px;
-    animation: devBounce 2s ease-in-out infinite;
-    flex-shrink: 0;
-}
-
-@keyframes devBounce {
-    0%, 100% { transform: translateY(0); }
-    50% { transform: translateY(-5px); }
-}
-
-.dev-content {
-    text-align: left;
-    flex: 1;
-}
-
-.dev-content strong {
-    color: #FF9800;
-    font-size: 1.1rem;
-    display: block;
-    margin-bottom: 5px;
-    font-weight: 600;
-}
-
-.dev-content p {
-    color: var(--text-secondary);
-    font-size: 0.9rem;
-    margin: 0;
-    line-height: 1.4;
-}
-
-/* Responsive Styles */
-@media (max-width: 1200px) {
-    .container {
-        max-width: 960px;
-    }
-    
-    .hero-text h1 {
-        font-size: 3rem;
-    }
-    
-    .logo {
-        height: 55px;
-    }
-    
-    header.scrolled .logo {
-        height: 45px;
-    }
-    
-    .packages-grid {
-        grid-template-columns: repeat(2, 1fr);
-        gap: 30px;
-    }
-    
-    .package-card:nth-child(3) {
-        grid-column: 1 / -1;
-        max-width: 500px;
-        margin: 0 auto;
-    }
-    
-    .ai-container {
-        max-width: 900px;
-    }
-}
-
-@media (max-width: 992px) {
-    .container {
-        max-width: 720px;
-    }
-    
-    .hero-text h1 {
-        font-size: 2.8rem;
-    }
-    
-    .features-grid {
-        grid-template-columns: repeat(2, 1fr);
-        gap: 30px;
-    }
-    
-    .logo {
-        height: 50px;
-    }
-    
-    .footer-logo {
-        height: 50px;
-    }
-    
-    header.scrolled .logo {
-        height: 40px;
-    }
-    
-    .packages-grid {
-        grid-template-columns: 1fr;
-        gap: 30px;
-    }
-    
-    .hero-graphics {
-        display: none;
-    }
-    
-    .ai-intro h2 {
-        font-size: 2.4rem;
-    }
-    
-    .chat-messages {
-        height: 350px;
-    }
-}
-
-@media (max-width: 768px) {
-    .container {
-        max-width: 540px;
-        padding: 0 20px;
-    }
-    
-    header {
-        padding: 10px 0;
-    }
-    
-    header.scrolled {
-        padding: 8px 0;
-    }
-    
-    .logo {
-        height: 45px;
-    }
-    
-    header.scrolled .logo {
-        height: 35px;
-    }
-    
-    .hero {
-        padding: 140px 0 40px;
-    }
-    
-    .hero-text {
-        margin-bottom: 60px;
-    }
-    
-    .hero-text h1 {
-        font-size: 2.2rem;
-        margin-bottom: 15px;
-    }
-    
-    .hero-text p {
-        font-size: 1.1rem;
-        margin-bottom: 30px;
-    }
-    
-    .terminal-section {
-        max-width: 100%;
-        margin: 0 10px;
-    }
-    
-    .terminal-body {
-        padding: 24px;
-        font-size: 13px;
-        min-height: 350px;
-    }
-
-    .nav-links {
-        display: none;
-    }
-
-    .mobile-menu-btn {
-        display: block;
-    }
-
-    .services-grid {
-        grid-template-columns: 1fr;
-        gap: 30px;
-    }
-    
-    .features-grid {
-        grid-template-columns: 1fr;
-        gap: 30px;
-    }
-
-    .contact-buttons {
-        flex-direction: column;
-        align-items: center;
-        gap: 25px;
-    }
-    
-    .footer-logo {
-        height: 45px;
-    }
-    
-    .section-title {
-        font-size: 2.2rem;
-        margin-bottom: 50px;
-    }
-    
-    .package-card {
-        padding: 40px 25px;
-    }
-    
-    /* Mobile Navigation Bar */
-    .mobile-nav {
-        visibility: visible;
-        opacity: 1;
-    }
-    
-    .mobile-nav a {
-        color: var(--text-primary);
-        text-decoration: none;
-        font-size: 0.8rem;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        padding: 6px 0;
-        transition: all 0.3s ease;
-        border-radius: 12px;
-        min-width: 50px;
-    }
-    
-    .mobile-nav a.active {
-        color: #8b5cf6;
-        background: rgba(139, 92, 246, 0.2);
-        transform: translateY(-3px);
-    }
-    
-    .back-to-top {
-        bottom: 80px;
-        right: 20px;
-        width: 50px;
-        height: 50px;
-    }
-    
-    .feature-icon {
-        font-size: 35px;
-        width: 80px;
-        height: 80px;
-    }
-    
-    .service-card {
-        padding: 30px;
-    }
-    
-    /* AI Assistant Mobile Styles */
-    .ai-intro h2 {
-        font-size: 2rem;
-    }
-
-    .ai-intro p {
-        font-size: 1.1rem;
-    }
-
-    .chat-container {
-        margin: 0 10px;
-        /* Увеличиваем высоту чата на мобильных */
-        min-height: 70vh;
-    }
-
-    .chat-header {
-        padding: 20px;
-    }
-
-    .ai-avatar {
-        width: 45px;
-        height: 45px;
-        font-size: 26px;
-    }
-
-    .ai-info h3 {
-        font-size: 1.3rem;
-    }
-
-    .chat-messages {
-        /* Значительно увеличиваем высоту области сообщений */
-        height: 50vh;
-        min-height: 400px;
-        padding: 20px;
-        gap: 25px;
-    }
-
-    .message-content {
-        max-width: 90%;
-        padding: 16px 20px;
-        font-size: 1rem;
-        line-height: 1.7;
-    }
-
-    .message-avatar {
-        width: 45px;
-        height: 45px;
-        font-size: 20px;
-    }
-
-    .chat-input-container {
-        padding: 20px;
-    }
-
-    .chat-input {
-        padding: 16px 20px;
-        font-size: 1rem;
-        min-height: 55px;
-        border-radius: 25px;
-    }
-
-    .send-button {
-        width: 55px;
-        height: 55px;
-    }
-
-    .send-button svg {
-        width: 22px;
-        height: 22px;
-    }
-
-    .quick-questions {
-        flex-direction: column;
-        align-items: center;
-        gap: 15px;
-    }
-
-    .quick-question {
-        width: 100%;
-        max-width: 300px;
-        text-align: center;
-        padding: 12px 20px;
-        font-size: 1rem;
-    }
-
-    .development-notice {
-        padding: 18px;
-        gap: 15px;
-        margin: 30px 0;
-    }
-
-    .dev-icon {
-        font-size: 26px;
-    }
-
-    .dev-content strong {
-        font-size: 1.1rem;
-    }
-
-    .dev-content p {
-        font-size: 0.95rem;
-    }
-}
-
-@media (max-width: 576px) {
-    .container {
-        padding: 0 15px;
-    }
-    
-    .hero {
-        padding: 120px 0 30px;
-    }
-    
-    .hero-text h1 {
-        font-size: 1.9rem;
-        margin-bottom: 12px;
-    }
-    
-    .hero-text p {
-        font-size: 1rem;
-        margin-bottom: 25px;
-    }
-    
-    .logo {
-        height: 40px;
-    }
-    
-    .footer-logo {
-        height: 40px;
-    }
-    
-    header.scrolled .logo {
-        height: 30px;
-    }
-    
-    .terminal-section {
-        margin: 0 5px;
-    }
-    
-    .terminal-body {
-        padding: 20px;
-        font-size: 12px;
-        min-height: 300px;
-    }
-    
-    .service-card {
-        padding: 25px;
-    }
-    
-    .service-card h3 {
-        font-size: 1.4rem;
-    }
-    
-    .contact-btn {
-        width: 100%;
-        max-width: 280px;
-        padding: 15px 35px;
-        font-size: 1rem;
-    }
-    
-    .services, .contact, .why-us, .packages, .ai-assistant {
-        padding: 80px 0;
-    }
-    
-    .section-title {
-        font-size: 1.8rem;
-        margin-bottom: 40px;
-    }
-    
-    .feature-icon {
-        font-size: 30px;
-        width: 70px;
-        height: 70px;
-    }
-    
-    .feature-item {
-        padding: 25px 15px;
-    }
-    
-    .package-card {
-        padding: 30px 20px;
-    }
-    
-    .package-level {
-        font-size: 1.6rem;
-    }
-    
-    .mobile-nav a {
-        font-size: 0.75rem;
-        padding: 5px 0;
-        min-width: 45px;
-    }
-    
-    /* AI Assistant Small Mobile */
-    .ai-intro h2 {
-        font-size: 1.5rem;
-    }
-
-    .ai-intro p {
-        font-size: 1rem;
-    }
-
-    .chat-container {
-        margin: 0 5px;
-        /* Даже на маленьких экранах делаем чат большим */
-        min-height: 65vh;
-    }
-
-    .chat-header {
-        padding: 18px;
-    }
-
-    .ai-avatar {
-        width: 42px;
-        height: 42px;
-        font-size: 24px;
-    }
-
-    .ai-info h3 {
-        font-size: 1.2rem;
-    }
-
-    .chat-messages {
-        /* Увеличиваем и для маленьких экранов */
-        height: 45vh;
-        min-height: 350px;
-        padding: 18px;
-        gap: 20px;
-    }
-
-    .message-content {
-        padding: 14px 18px;
-        font-size: 0.95rem;
-        line-height: 1.6;
-    }
-
-    .message-avatar {
-        width: 42px;
-        height: 42px;
-        font-size: 18px;
-    }
-
-    .chat-input-container {
-        padding: 18px;
-    }
-
-    .chat-input {
-        padding: 14px 18px;
-        font-size: 0.95rem;
-        min-height: 50px;
-    }
-
-    .send-button {
-        width: 50px;
-        height: 50px;
-    }
-
-    .send-button svg {
-        width: 20px;
-        height: 20px;
-    }
-}
-
-@media (max-width: 400px) {
-    .hero-text h1 {
-        font-size: 1.6rem;
-    }
-    
-    .logo {
-        height: 35px;
-    }
-    
-    .footer-logo {
-        height: 35px;
-    }
-    
-    header.scrolled .logo {
-        height: 25px;
-    }
-    
-    .feature-icon {
-        font-size: 25px;
-        width: 60px;
-        height: 60px;
-    }
-    
-    .section-title {
-        font-size: 1.6rem;
-    }
-    
-    .package-level {
-        font-size: 1.6rem;
-    }
-    
-    .ai-intro h2 {
-        font-size: 1.5rem;
-    }
-}
-
-/* Mobile Navigation Icons */
-.icon-home, .icon-services, .icon-packages, .icon-contact, .icon-ai {
-    display: inline-block;
-    width: 18px;
-    height: 18px;
-    margin-bottom: 4px;
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: contain;
-    transition: all 0.3s ease;
-}
-
-.icon-home {
-    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='white' viewBox='0 0 24 24'%3E%3Cpath d='M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z'/%3E%3C/svg%3E");
-}
-
-.icon-services {
-    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='white' viewBox='0 0 24 24'%3E%3Cpath d='M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-5 14h-2v-4H8v-2h4V7h2v4h4v2h-4v4z'/%3E%3C/svg%3E");
-}
-
-.icon-packages {
-    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='white' viewBox='0 0 24 24'%3E%3Cpath d='M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z'/%3E%3C/svg%3E");
-}
-
-.icon-ai {
-    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='white' viewBox='0 0 24 24'%3E%3Cpath d='M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z'/%3E%3C/svg%3E");
-}
-
-.icon-contact {
-    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='white' viewBox='0 0 24 24'%3E%3Cpath d='M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z'/%3E%3C/svg%3E");
-}
-
-.mobile-nav a:hover .icon-home,
-.mobile-nav a:hover .icon-services,
-.mobile-nav a:hover .icon-packages,
-.mobile-nav a:hover .icon-ai,
-.mobile-nav a:hover .icon-contact {
-    transform: scale(1.2);
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+
+:root{
+  --bg:    #0a0a0b;
+  --bg1:   #111113;
+  --bg2:   #161618;
+  --t0:    #ffffff;
+  --t1:    #e8e8ea;
+  --t2:    #8c8c96;
+  --t3:    #4a4a52;
+  --b0:    rgba(255,255,255,.06);
+  --b1:    rgba(255,255,255,.10);
+  --b2:    rgba(255,255,255,.16);
+  --blue:  #2dd4bf;
+  --cyan:  #14b8a6;
+}
+
+body{
+  font-family:'Inter',system-ui,-apple-system,sans-serif;
+  background:var(--bg);
+  color:var(--t1);
+  overflow-x:hidden;
+  -webkit-font-smoothing:antialiased;
+  -moz-osx-font-smoothing:grayscale;
+}
+
+body::before{
+  content:'';position:fixed;inset:0;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='256' height='256'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='256' height='256' filter='url(%23n)' opacity='.028'/%3E%3C/svg%3E");
+  pointer-events:none;z-index:9999;opacity:.6;mix-blend-mode:overlay;
+}
+
+/* NAV */
+nav{
+  position:fixed;top:0;left:0;right:0;z-index:200;
+  height:64px;
+  display:flex;align-items:center;justify-content:space-between;
+  padding:0 40px;
+  background:rgba(10,10,11,.85);
+  backdrop-filter:blur(20px) saturate(150%);
+  -webkit-backdrop-filter:blur(20px) saturate(150%);
+  border-bottom:1px solid var(--b0);
+  transition:background .3s;
+}
+.nav-logo img{height:32px;width:auto;display:block;filter:brightness(1);}
+.nav-logo-fb{font-size:15px;font-weight:700;letter-spacing:-.03em;color:var(--t0);text-decoration:none;}
+.nav-links{display:flex;gap:0;list-style:none;}
+.nav-links a{
+  display:block;padding:6px 14px;border-radius:6px;
+  text-decoration:none;color:var(--t3);
+  font-size:13.5px;font-weight:400;letter-spacing:-.005em;
+  transition:color .15s,background .15s;
+}
+.nav-links a:hover{color:var(--t1);background:rgba(255,255,255,.05);}
+
+/* HERO */
+.hero{
+  min-height:100vh;
+  display:flex;align-items:center;justify-content:center;
+  padding:108px 40px 80px;
+  position:relative;overflow:hidden;
+  text-align:center;
+}
+.hero-vignette{
+  position:absolute;inset:0;pointer-events:none;
+  background:radial-gradient(ellipse 70% 65% at 50% 0%,rgba(255,255,255,.025) 0%,transparent 65%);
+}
+.hero-dots{
+  position:absolute;inset:0;pointer-events:none;
+  background-image:radial-gradient(circle,rgba(255,255,255,.08) 1px,transparent 1px);
+  background-size:40px 40px;
+  mask-image:radial-gradient(ellipse 90% 80% at 50% 30%,black,transparent 70%);
+}
+.hero-fade{
+  position:absolute;bottom:0;left:0;right:0;height:160px;
+  background:linear-gradient(to top,var(--bg),transparent);
+  pointer-events:none;
+}
+.hero-inner{position:relative;max-width:700px;}
+
+.hero-logo{margin-bottom:52px;display:flex;justify-content:center;}
+.hero-logo img{height:38px;width:auto;}
+.hero-logo-fb{font-size:28px;font-weight:700;letter-spacing:-.04em;color:var(--t0);}
+
+h1{
+  font-size:clamp(36px,4.8vw,64px);
+  font-weight:700;letter-spacing:-.04em;line-height:1.06;
+  margin-bottom:22px;color:var(--t0);
+}
+.shimmer-text{
+  background:linear-gradient(105deg,#fff 0%,#c0c4d0 40%,#fff 60%,#c0c4d0 100%);
+  background-size:250% auto;
+  -webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;
+  animation:shimmer 4s linear infinite;
+}
+@keyframes shimmer{to{background-position:250% center}}
+
+.hero-sub{
+  font-size:clamp(15px,1.6vw,17px);
+  color:var(--t2);line-height:1.72;
+  max-width:460px;margin:0 auto 44px;
+  font-weight:400;
+}
+.hero-sub b{color:var(--t1);font-weight:500;}
+
+.hero-cta{display:flex;gap:10px;justify-content:center;flex-wrap:wrap;}
+
+.btn-w{
+  display:inline-flex;align-items:center;
+  height:40px;padding:0 22px;border-radius:8px;
+  font-size:13.5px;font-weight:600;letter-spacing:-.01em;
+  text-decoration:none;color:#0a0a0b;
+  background:#ffffff;
+  transition:opacity .2s,transform .2s;
+}
+.btn-w:hover{opacity:.88;transform:translateY(-1px);}
+
+.btn-g{
+  display:inline-flex;align-items:center;
+  height:40px;padding:0 20px;border-radius:8px;
+  font-size:13.5px;font-weight:500;
+  text-decoration:none;color:var(--t2);
+  border:1px solid var(--b1);
+  transition:color .18s,border-color .18s,background .18s;
+}
+.btn-g:hover{color:var(--t1);border-color:var(--b2);background:rgba(255,255,255,.04);}
+
+/* STATS */
+.stats-outer{padding:0 40px 96px;max-width:1120px;margin:0 auto;}
+.stats-grid{
+  display:grid;grid-template-columns:repeat(4,1fr);
+  border:1px solid var(--b0);border-radius:14px;overflow:hidden;
+}
+.sc{
+  padding:36px 28px;border-right:1px solid var(--b0);
+  transition:background .2s;
+}
+.sc:last-child{border-right:none;}
+.sc:hover{background:rgba(255,255,255,.02);}
+.sc-val{
+  font-size:40px;font-weight:700;letter-spacing:-.04em;line-height:1;
+  color:var(--t0);margin-bottom:8px;
+}
+.sc-desc{font-size:12.5px;color:var(--t3);line-height:1.5;}
+
+/* SHARED */
+.wrap{max-width:1120px;margin:0 auto;padding:0 40px;}
+.stag{
+  display:inline-block;
+  font-size:11px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;
+  color:var(--t3);margin-bottom:14px;
+}
+h2{font-size:clamp(28px,3.2vw,44px);font-weight:700;letter-spacing:-.035em;line-height:1.1;margin-bottom:15px;color:var(--t0);}
+.ssub{font-size:15.5px;color:var(--t2);line-height:1.65;max-width:420px;}
+
+.divider{height:1px;background:var(--b0);max-width:1120px;margin:0 auto;}
+
+/* HOW */
+.how-sec{padding:104px 0;}
+.how-grid{display:grid;grid-template-columns:1fr 1fr;gap:72px;align-items:start;}
+
+.chart-card{
+  margin-top:32px;padding:24px 24px 18px;
+  border:1px solid var(--b0);border-radius:14px;
+  background:var(--bg1);position:relative;overflow:hidden;
+}
+.chart-card::before{
+  content:'';position:absolute;top:0;left:0;right:0;height:1px;
+  background:linear-gradient(90deg,transparent,rgba(255,255,255,.12),transparent);
+}
+.cc-head{display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:22px;}
+.cc-title{font-size:13px;font-weight:600;color:var(--t1);margin-bottom:3px;}
+.cc-sub{font-size:11px;color:var(--t3);}
+.cc-badge{
+  padding:4px 10px;border-radius:6px;
+  background:rgba(45,212,191,.1);border:1px solid rgba(45,212,191,.15);
+  font-size:11px;font-weight:700;color:#2dd4bf;white-space:nowrap;
+}
+.chart-svg{width:100%;display:block;overflow:visible;}
+.months{display:flex;justify-content:space-between;margin-top:10px;padding:0 2px;}
+.months span{font-size:10px;color:var(--t3);letter-spacing:.02em;}
+.mini-ms{display:grid;grid-template-columns:repeat(3,1fr);gap:7px;margin-top:14px;}
+.mm{padding:12px 12px;background:var(--bg2);border:1px solid var(--b0);border-radius:9px;transition:border-color .2s;}
+.mm:hover{border-color:var(--b1);}
+.mmv{font-size:16px;font-weight:700;letter-spacing:-.03em;margin-bottom:3px;}
+.mmv.g{color:#2dd4bf;}
+.mmv.b{color:var(--blue);}
+.mml{font-size:10px;color:var(--t3);line-height:1.35;}
+
+/* Chart animated line */
+.chart-line-animated{
+  stroke-dasharray:600;
+  stroke-dashoffset:600;
+  animation:drawLine 2.2s ease forwards;
+}
+.chart-area-animated{
+  opacity:0;
+  animation:fadeArea 1.2s .6s ease forwards;
+}
+@keyframes drawLine{to{stroke-dashoffset:0}}
+@keyframes fadeArea{to{opacity:1}}
+
+/* Pulse dot */
+.pulse-dot{animation:pulseDot 2.5s infinite ease-in-out;}
+@keyframes pulseDot{
+  0%,100%{r:5;opacity:.8}
+  50%{r:8;opacity:.3}
+}
+
+/* steps */
+.steps{display:flex;flex-direction:column;}
+.step{display:flex;gap:14px;padding:20px 0;border-bottom:1px solid var(--b0);transition:background .2s;}
+.step:first-child{padding-top:0;}
+.step:last-child{border-bottom:none;}
+.sn{
+  width:34px;height:34px;border-radius:7px;flex-shrink:0;
+  display:flex;align-items:center;justify-content:center;
+  font-size:11.5px;font-weight:700;color:var(--t3);
+  background:var(--bg1);border:1px solid var(--b0);
+  transition:.2s;
+}
+.step:hover .sn{color:var(--t1);border-color:var(--b2);}
+.sb h3{font-size:14px;font-weight:600;letter-spacing:-.02em;margin-bottom:4px;color:var(--t1);}
+.sb p{font-size:13px;color:var(--t2);line-height:1.6;}
+
+/* SERVICES */
+.svc-sec{padding:104px 0;}
+.svc-head{margin-bottom:52px;}
+.svc-head h2{font-size:clamp(36px,5vw,60px);letter-spacing:-.042em;margin-bottom:0;line-height:.98;}
+
+.svc-grid{
+  display:grid;grid-template-columns:repeat(3,1fr);
+  border:1px solid var(--b0);border-radius:14px;overflow:hidden;
+}
+.scard{
+  padding:32px 28px 36px;
+  border-right:1px solid var(--b0);
+  border-bottom:1px solid var(--b0);
+  position:relative;overflow:hidden;
+  transition:background .22s;cursor:default;
+  background:var(--bg);
+}
+.scard:nth-child(3n){border-right:none;}
+.scard:nth-child(n+4){border-bottom:none;}
+.scard:hover{background:var(--bg1);}
+
+.scard::before{
+  content:'';position:absolute;top:0;left:0;right:0;height:1px;
+  background:linear-gradient(90deg,transparent,rgba(255,255,255,.14),transparent);
+  opacity:0;transition:opacity .25s;
+}
+.scard:hover::before{opacity:1;}
+
+.scard-num{
+  font-size:10.5px;font-weight:600;letter-spacing:.1em;
+  color:var(--t3);margin-bottom:20px;display:block;
+}
+.scard-icon{
+  width:36px;height:36px;margin-bottom:16px;display:block;opacity:.6;
+  transition:opacity .22s;
+}
+.scard:hover .scard-icon{opacity:1;}
+.scard h3{font-size:15px;font-weight:600;letter-spacing:-.022em;margin-bottom:8px;color:var(--t0);}
+.scard p{font-size:13px;color:var(--t2);line-height:1.65;}
+
+/* RESULTS */
+.res-sec{
+  padding:104px 0;
+  border-top:1px solid var(--b0);
+  border-bottom:1px solid var(--b0);
+  background:var(--bg1);
+}
+.res-grid{display:grid;grid-template-columns:1fr 1fr;gap:52px;align-items:center;}
+
+.big-ms{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:32px;}
+.bm{
+  padding:20px 17px;border-radius:11px;
+  border:1px solid var(--b0);background:var(--bg);
+  transition:.25s;
+}
+.bm:hover{border-color:var(--b1);transform:translateY(-2px);}
+.bm-val{
+  font-size:30px;font-weight:700;letter-spacing:-.04em;line-height:1;
+  color:var(--t0);margin-bottom:6px;
+}
+.bm-label{font-size:12px;color:var(--t3);line-height:1.4;}
+
+.bc{
+  border:1px solid var(--b0);border-radius:14px;
+  padding:24px 24px 20px;background:var(--bg);
+  position:relative;overflow:hidden;
+}
+.bc::before{
+  content:'';position:absolute;top:0;left:0;right:0;height:1px;
+  background:linear-gradient(90deg,transparent,rgba(255,255,255,.1),transparent);
+}
+.bc-title{font-size:13.5px;font-weight:600;color:var(--t1);letter-spacing:-.015em;margin-bottom:3px;}
+.bc-sub{font-size:11.5px;color:var(--t3);margin-bottom:22px;}
+
+/* Chart legend */
+.chart-legend{display:flex;gap:16px;margin-top:16px;}
+.chart-legend-item{display:flex;align-items:center;gap:6px;font-size:11px;color:var(--t3);}
+.chart-legend-dot{width:8px;height:8px;border-radius:3px;}
+
+/* Bar chart animation */
+.ba{transform-box:fill-box;transform-origin:bottom;animation:bG .9s var(--d,0s) cubic-bezier(.22,.61,.36,1) both;}
+@keyframes bG{from{transform:scaleY(0)}to{transform:scaleY(1)}}
+
+/* ====== PORTFOLIO / CASES ====== */
+.cases-sec{
+  padding:104px 0;
+  position:relative;
+  overflow:hidden;
+}
+.cases-sec::before{
+  content:'';position:absolute;top:0;left:50%;transform:translateX(-50%);
+  width:800px;height:500px;border-radius:50%;
+  background:radial-gradient(ellipse,rgba(45,212,191,.03) 0%,transparent 65%);
+  pointer-events:none;
+}
+.cases-head{text-align:center;margin-bottom:56px;position:relative;}
+.cases-head .ssub{margin:0 auto;}
+
+.cases-grid{
+  display:grid;
+  grid-template-columns:repeat(2,1fr);
+  gap:16px;
+  position:relative;
+}
+
+.case-card{
+  border:1px solid var(--b0);
+  border-radius:16px;
+  background:var(--bg1);
+  position:relative;
+  overflow:hidden;
+  transition:transform .35s ease,border-color .35s ease,box-shadow .35s ease;
+  cursor:default;
+  display:flex;flex-direction:column;
+}
+.case-card:hover{
+  transform:translateY(-5px);
+  border-color:var(--b2);
+  box-shadow:0 24px 60px rgba(0,0,0,.5),0 0 0 1px rgba(255,255,255,.06);
+}
+
+.case-card::before{
+  content:'';position:absolute;top:0;left:0;right:0;height:1px;
+  background:linear-gradient(90deg,transparent,rgba(255,255,255,.15),transparent);
+  opacity:0;transition:opacity .3s;
+}
+.case-card:hover::before{opacity:1;}
+
+.case-visual{
+  height:200px;position:relative;overflow:hidden;
+  background:var(--bg2);
+  border-bottom:1px solid var(--b0);
+}
+.case-visual-inner{
+  position:absolute;inset:0;
+  display:flex;align-items:center;justify-content:center;
+  transition:transform .5s ease;
+}
+.case-card:hover .case-visual-inner{transform:scale(1.03);}
+
+/* Case visual patterns */
+.cv-ecommerce{
+  background:linear-gradient(145deg,#111113 0%,#0f1412 100%);
+}
+.cv-ecommerce .cv-grid{
+  display:grid;grid-template-columns:repeat(3,1fr);gap:8px;
+  padding:24px;width:100%;
+}
+.cv-ecommerce .cv-item{
+  aspect-ratio:3/4;border-radius:8px;
+  border:1px solid var(--b0);
+  background:linear-gradient(135deg,rgba(45,212,191,.08),rgba(45,212,191,.02));
+  position:relative;overflow:hidden;
+}
+.cv-ecommerce .cv-item::after{
+  content:'';position:absolute;bottom:0;left:0;right:0;height:35%;
+  background:linear-gradient(to top,rgba(10,10,11,.6),transparent);
+}
+.cv-ecommerce .cv-item-line{
+  position:absolute;bottom:8px;left:8px;right:8px;
+  height:4px;border-radius:2px;background:rgba(255,255,255,.08);z-index:1;
+}
+.cv-ecommerce .cv-item-line2{
+  position:absolute;bottom:16px;left:8px;width:60%;
+  height:3px;border-radius:2px;background:rgba(255,255,255,.05);z-index:1;
+}
+
+.cv-media{
+  background:linear-gradient(145deg,#111113 0%,#100f14 100%);
+}
+.cv-media-inner{
+  padding:20px;width:100%;
+}
+.cv-media-row{
+  display:flex;gap:6px;margin-bottom:6px;
+}
+.cv-media-block{
+  flex:1;height:28px;border-radius:5px;
+  border:1px solid var(--b0);
+  background:rgba(255,255,255,.03);
+  position:relative;overflow:hidden;
+}
+.cv-media-block.wide{flex:2;}
+.cv-media-block::after{
+  content:'';position:absolute;top:6px;left:8px;right:30%;
+  height:3px;border-radius:2px;background:rgba(255,255,255,.06);
+}
+.cv-media-pulse{
+  position:absolute;top:6px;right:6px;width:6px;height:6px;border-radius:50%;
+  background:#2dd4bf;opacity:.4;
+  animation:mediaPulse 3s infinite;
+}
+@keyframes mediaPulse{0%,100%{opacity:.3;transform:scale(1)}50%{opacity:.7;transform:scale(1.3)}}
+
+.cv-bot{
+  background:linear-gradient(145deg,#111113 0%,#11100f 100%);
+}
+.cv-bot-inner{
+  padding:20px;width:100%;display:flex;flex-direction:column;gap:8px;
+  align-items:flex-start;
+}
+.cv-bot-msg{
+  padding:8px 14px;border-radius:12px 12px 12px 4px;
+  background:rgba(255,255,255,.05);border:1px solid var(--b0);
+  font-size:10px;color:var(--t3);max-width:75%;line-height:1.4;
+}
+.cv-bot-msg.reply{
+  align-self:flex-end;
+  border-radius:12px 12px 4px 12px;
+  background:rgba(45,212,191,.08);border-color:rgba(45,212,191,.15);
+  color:var(--t2);
+}
+.cv-bot-typing{
+  display:flex;gap:4px;padding:8px 14px;
+  border-radius:12px 12px 12px 4px;
+  background:rgba(45,212,191,.06);border:1px solid rgba(45,212,191,.1);
+  align-self:flex-end;
+}
+.cv-bot-typing span{
+  width:5px;height:5px;border-radius:50%;background:#2dd4bf;opacity:.4;
+  animation:typDot 1.4s infinite;
+}
+.cv-bot-typing span:nth-child(2){animation-delay:.2s}
+.cv-bot-typing span:nth-child(3){animation-delay:.4s}
+@keyframes typDot{0%,60%,100%{opacity:.3;transform:translateY(0)}30%{opacity:1;transform:translateY(-4px)}}
+
+/* Case 4: Hiring/HR visual */
+.cv-hiring{
+  background:linear-gradient(145deg,#111113 0%,#0f1114 100%);
+}
+.cv-hiring-inner{
+  padding:20px;width:100%;display:flex;flex-direction:column;gap:6px;
+}
+.cv-hire-row{
+  display:flex;gap:8px;align-items:center;
+}
+.cv-hire-avatar{
+  width:32px;height:32px;border-radius:50%;flex-shrink:0;
+  border:1px solid var(--b0);
+  background:linear-gradient(135deg,rgba(45,212,191,.12),rgba(45,212,191,.03));
+  position:relative;
+}
+.cv-hire-avatar::after{
+  content:'';position:absolute;bottom:-1px;right:-1px;
+  width:10px;height:10px;border-radius:50%;
+  background:#2dd4bf;border:2px solid #111113;
+}
+.cv-hire-avatar.offline::after{background:#4a4a52;}
+.cv-hire-info{
+  flex:1;display:flex;flex-direction:column;gap:3px;
+}
+.cv-hire-line{
+  height:4px;border-radius:2px;background:rgba(255,255,255,.07);
+}
+.cv-hire-line.short{width:55%;}
+.cv-hire-line.mid{width:75%;}
+.cv-hire-status{
+  padding:2px 8px;border-radius:4px;font-size:8px;font-weight:600;
+  letter-spacing:.04em;text-transform:uppercase;flex-shrink:0;
+}
+.cv-hire-status.active{
+  background:rgba(45,212,191,.12);color:#2dd4bf;border:1px solid rgba(45,212,191,.15);
+}
+.cv-hire-status.pending{
+  background:rgba(255,255,255,.04);color:var(--t3);border:1px solid var(--b0);
+}
+
+.case-body{
+  padding:24px 22px 28px;
+  flex:1;display:flex;flex-direction:column;
+}
+.case-tag{
+  display:inline-flex;align-items:center;gap:5px;
+  font-size:10px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;
+  color:var(--t3);margin-bottom:12px;
+}
+.case-tag-dot{
+  width:5px;height:5px;border-radius:50%;
+  background:#2dd4bf;
+}
+.case-card h3{
+  font-size:17px;font-weight:700;letter-spacing:-.025em;line-height:1.25;
+  color:var(--t0);margin-bottom:10px;
+}
+.case-card p{
+  font-size:13px;color:var(--t2);line-height:1.6;
+  flex:1;
+}
+.case-techs{
+  display:flex;flex-wrap:wrap;gap:5px;margin-top:16px;
+}
+.case-tech{
+  padding:3px 9px;border-radius:5px;
+  font-size:10px;font-weight:500;color:var(--t3);
+  background:rgba(255,255,255,.04);border:1px solid var(--b0);
+  transition:border-color .2s,color .2s;
+}
+.case-card:hover .case-tech{border-color:var(--b1);color:var(--t2);}
+
+.cases-more{
+  display:flex;justify-content:center;margin-top:44px;
+}
+.cases-more-btn{
+  display:inline-flex;align-items:center;gap:8px;
+  height:44px;padding:0 28px;border-radius:10px;
+  font-size:13.5px;font-weight:600;letter-spacing:-.01em;
+  text-decoration:none;color:var(--t2);
+  border:1px solid var(--b1);
+  background:rgba(255,255,255,.02);
+  transition:color .2s,border-color .2s,background .2s,transform .2s;
+}
+.cases-more-btn:hover{
+  color:var(--t0);border-color:var(--b2);
+  background:rgba(255,255,255,.05);
+  transform:translateY(-1px);
+}
+.cases-more-btn svg{
+  transition:transform .2s;
+}
+.cases-more-btn:hover svg{transform:translateX(3px);}
+
+/* PACKAGES */
+.pkg-sec{padding:104px 0;}
+.pkg-intro{text-align:center;margin-bottom:50px;}
+.pkg-intro .ssub{margin:0 auto;}
+
+.pkg-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;}
+.pk{
+  padding:26px 22px;border-radius:13px;
+  border:1px solid var(--b0);
+  background:var(--bg1);
+  position:relative;overflow:hidden;transition:.25s;
+}
+.pk:hover{transform:translateY(-3px);box-shadow:0 18px 44px rgba(0,0,0,.55);border-color:var(--b1);}
+.pk.star{border-color:var(--b1);background:var(--bg2);}
+.pk-topline{
+  position:absolute;top:0;left:0;right:0;height:1px;
+  background:linear-gradient(90deg,transparent 8%,rgba(255,255,255,.2) 45%,rgba(255,255,255,.2) 55%,transparent 92%);
+}
+.pk-badge{
+  position:absolute;top:13px;right:13px;
+  padding:2px 8px;border-radius:100px;
+  font-size:10px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;
+  background:var(--b1);color:var(--t1);
+  border:1px solid var(--b2);
+}
+.pk-name{font-size:19px;font-weight:700;letter-spacing:-.03em;margin-bottom:4px;color:var(--t0);}
+.pk-desc{font-size:12px;color:var(--t3);margin-bottom:20px;line-height:1.5;}
+.pk-list{list-style:none;margin-bottom:24px;}
+.pk-list li{
+  font-size:13px;color:var(--t2);
+  padding:8px 0;border-bottom:1px solid var(--b0);
+  display:flex;align-items:flex-start;gap:8px;line-height:1.4;
+}
+.pk-list li:last-child{border-bottom:none;}
+.ck{color:var(--t2);font-size:11px;flex-shrink:0;margin-top:2px;}
+.pk-btn{
+  display:block;width:100%;text-align:center;
+  padding:10px;border-radius:7px;
+  font-size:13px;font-weight:600;
+  text-decoration:none;transition:.2s;
+}
+.pk-btn-o{border:1px solid var(--b1);color:var(--t2);}
+.pk-btn-o:hover{border-color:var(--b2);color:var(--t1);background:rgba(255,255,255,.04);}
+.pk-btn-w{background:#fff;color:#0a0a0b;}
+.pk-btn-w:hover{opacity:.88;}
+
+/* CTA */
+.cta-sec{
+  padding:120px 40px 140px;
+  position:relative;overflow:hidden;text-align:center;
+  border-top:1px solid var(--b0);
+}
+.cta-glow{
+  position:absolute;top:-40%;left:50%;transform:translateX(-50%);
+  width:700px;height:500px;border-radius:50%;
+  background:radial-gradient(ellipse,rgba(255,255,255,.04) 0%,transparent 65%);
+  pointer-events:none;
+}
+.cta-inner{position:relative;max-width:540px;margin:0 auto;}
+.cta-logo{margin:0 auto 40px;display:flex;justify-content:center;}
+.cta-logo img{height:26px;width:auto;opacity:.7;}
+.cta-logo-fb{font-size:20px;font-weight:700;letter-spacing:-.04em;color:var(--t0);}
+.cta-inner h2{font-size:clamp(32px,4.5vw,52px);letter-spacing:-.04em;margin-bottom:14px;color:var(--t0);}
+.cta-inner p{font-size:16px;color:var(--t2);margin-bottom:44px;line-height:1.65;}
+.cta-btns{display:flex;gap:9px;justify-content:center;flex-wrap:wrap;}
+
+/* FOOTER */
+footer{
+  border-top:1px solid var(--b0);padding:26px 40px;
+  display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:13px;
+}
+.fl img{height:34px;width:auto;display:block;opacity:.7;}
+.fl-fb{font-size:13.5px;font-weight:700;letter-spacing:-.02em;color:var(--t2);}
+footer p{font-size:12px;color:var(--t3);}
+.fnav{display:flex;gap:20px;list-style:none;}
+.fnav a{font-size:12px;color:var(--t3);text-decoration:none;transition:color .15s;}
+.fnav a:hover{color:var(--t1);}
+.fnav-btns{display:flex;gap:10px;flex-wrap:wrap;}
+
+/* REVEAL */
+@keyframes fadeUp{from{opacity:0;transform:translateY(18px)}to{opacity:1;transform:translateY(0)}}
+.r{opacity:0;transform:translateY(20px);transition:opacity .55s ease,transform .55s ease;}
+.r.on{opacity:1;transform:translateY(0);}
+.r.d1{transition-delay:.08s}.r.d2{transition-delay:.16s}.r.d3{transition-delay:.24s}
+.hero-logo,.hero h1,.hero-sub,.hero-cta{animation:fadeUp .65s ease both;}
+.hero h1{animation-delay:.08s}.hero-sub{animation-delay:.16s}.hero-cta{animation-delay:.24s}
+
+/* BURGER BUTTON */
+.burger{
+  display:none;
+  flex-direction:column;justify-content:center;align-items:center;
+  width:40px;height:40px;border-radius:8px;
+  background:transparent;border:none;cursor:pointer;
+  gap:5px;padding:0;flex-shrink:0;
+  transition:background .2s;
+}
+.burger:hover{background:rgba(255,255,255,.06);}
+.burger span{
+  display:block;width:20px;height:1.5px;
+  background:var(--t1);border-radius:2px;
+  transition:transform .3s ease,opacity .3s ease,width .3s ease;
+  transform-origin:center;
+}
+.burger.open span:nth-child(1){transform:translateY(6.5px) rotate(45deg);}
+.burger.open span:nth-child(2){opacity:0;width:0;}
+.burger.open span:nth-child(3){transform:translateY(-6.5px) rotate(-45deg);}
+
+/* MOBILE MENU OVERLAY */
+.mob-menu{
+  display:none;
+  position:fixed;top:64px;left:0;right:0;
+  background:rgba(10,10,11,.97);
+  backdrop-filter:blur(24px) saturate(160%);
+  -webkit-backdrop-filter:blur(24px) saturate(160%);
+  border-bottom:1px solid var(--b0);
+  z-index:190;
+  padding:8px 0 16px;
+  transform:translateY(-12px);
+  opacity:0;
+  pointer-events:none;
+  transition:transform .25s ease,opacity .25s ease;
+}
+.mob-menu.open{
+  opacity:1;
+  transform:translateY(0);
+  pointer-events:all;
+}
+.mob-menu ul{
+  list-style:none;
+  display:flex;flex-direction:column;
+}
+.mob-menu ul li a{
+  display:flex;align-items:center;
+  padding:14px 24px;
+  font-size:15px;font-weight:500;letter-spacing:-.015em;
+  color:var(--t2);text-decoration:none;
+  border-bottom:1px solid var(--b0);
+  transition:color .15s,background .15s,padding-left .15s;
+}
+.mob-menu ul li:last-child a{border-bottom:none;}
+.mob-menu ul li a:hover{
+  color:var(--t0);
+  background:rgba(255,255,255,.04);
+  padding-left:32px;
+}
+.mob-menu-cta{
+  padding:12px 24px 0;
+}
+.mob-menu-cta a{
+  display:flex;align-items:center;justify-content:center;
+  height:42px;border-radius:8px;
+  font-size:13.5px;font-weight:600;
+  text-decoration:none;color:#0a0a0b;
+  background:#ffffff;
+  transition:opacity .2s;
+}
+.mob-menu-cta a:hover{opacity:.88;}
+
+/* ====== MOBILE ====== */
+@media(max-width:900px){
+  nav{padding:0 20px;}
+  .nav-links{display:none;}
+  .burger{display:flex;}
+  .mob-menu{display:block;}
+
+  .hero{padding:92px 20px 68px;}
+  .wrap,.stats-outer{padding-left:20px;padding-right:20px;}
+  .cta-sec{padding:96px 20px 110px;}
+  footer{padding:22px 20px;flex-direction:column;align-items:flex-start;gap:16px;}
+
+  .stats-grid{grid-template-columns:1fr 1fr;border-radius:12px;}
+  .sc{border-right:1px solid var(--b0);border-bottom:1px solid var(--b0);padding:24px 18px;}
+  .sc:nth-child(2n){border-right:none;}
+  .sc:nth-child(n+3){border-bottom:1px solid var(--b0);}
+  .sc:last-child{border-bottom:none;}
+  .sc:nth-last-child(2):nth-child(odd){border-bottom:1px solid var(--b0);}
+  .sc-val{font-size:34px;}
+
+  .how-sec,.svc-sec,.res-sec,.pkg-sec,.cases-sec{padding:76px 0;}
+  .how-grid{grid-template-columns:1fr;gap:40px;}
+  .res-grid{grid-template-columns:1fr;gap:40px;}
+  .big-ms{grid-template-columns:1fr 1fr;}
+
+  .svc-grid{grid-template-columns:1fr 1fr;border-radius:12px;}
+  .scard:nth-child(3n){border-right:1px solid var(--b0);}
+  .scard:nth-child(2n){border-right:none;}
+  .scard:nth-child(n+4){border-bottom:1px solid var(--b0);}
+  .scard:last-child{border-bottom:none;}
+  .svc-head h2{font-size:36px;}
+
+  .cases-grid{grid-template-columns:1fr;gap:14px;max-width:500px;margin:0 auto;}
+  .case-visual{height:170px;}
+
+  .pkg-grid{grid-template-columns:1fr;}
+  .cta-btns{flex-direction:column;align-items:center;}
+  .cta-btns a{width:100%;max-width:300px;justify-content:center;height:44px;}
+  .hero-cta{flex-direction:column;align-items:center;}
+  .btn-w,.btn-g{width:100%;max-width:280px;justify-content:center;height:44px;}
+}
+
+@media(max-width:540px){
+  .stats-grid{grid-template-columns:1fr;}
+  .sc{border-right:none !important;border-bottom:1px solid var(--b0) !important;padding:22px 18px;}
+  .sc:last-child{border-bottom:none !important;}
+  .sc-val{font-size:32px;}
+
+  .svc-grid{grid-template-columns:1fr;}
+  .scard{border-right:none !important;border-bottom:1px solid var(--b0) !important;}
+  .scard:last-child{border-bottom:none !important;}
+  .big-ms{grid-template-columns:1fr;}
+  .mini-ms{grid-template-columns:1fr 1fr;}
+  .mini-ms .mm:last-child{grid-column:1/-1;max-width:calc(50% - 3px);margin:0 auto;width:100%;}
+  h1{font-size:32px;}
+  h2{font-size:26px;}
+  .svc-head h2{font-size:30px;}
+  .case-visual{height:140px;}
+  .chart-card{padding:18px 16px 14px;}
+  .bc{padding:18px 16px 16px;}
 }
 </style>
 </head>
 <body>
-<!-- Progress Bar -->
-<div class="progress-container">
-    <div class="progress-bar" id="progress-bar"></div>
-</div>
 
-<!-- Back to Top Button -->
-<div class="back-to-top" id="back-to-top">
-    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-        <path d="M7.41 15.41L12 10.83l4.59 4.58L18 14l-6-6-6 6z"/>
-    </svg>
-</div>
-
-<!-- Background Elements -->
-<div class="bg-elements">
-    <div class="bg-element"></div>
-    <div class="bg-element"></div>
-    <div class="bg-element"></div>
-</div>
-
-<!-- Header -->
-<header id="header">
-    <div class="container header-container">
-        <a href="#" class="logo-container">
-            <img src="assets/logo.png" alt="Inflecto Logo" class="logo">
-        </a>
-        <nav class="nav-links">
-            <a href="#hero">Главная</a>
-            <a href="#services">Услуги</a>
-            <a href="#why-us">Почему мы</a>
-            <a href="#packages">Пакеты</a>
-            <a href="#ai-assistant">Syncle AI</a>
-            <a href="#contact">Связь</a>
-        </nav>
-        <button class="mobile-menu-btn">☰</button>
-    </div>
-</header>
-
-<!-- Mobile Menu -->
-<div class="mobile-menu" id="mobile-menu">
-    <button class="close-menu">✕</button>
-    <a href="#hero">Главная</a>
-    <a href="#services">Услуги</a>
-    <a href="#why-us">Почему мы</a>
-    <a href="#packages">Пакеты</a>
-    <a href="#ai-assistant">Syncle AI</a>
-    <a href="#contact">Связь</a>
-</div>
-
-<!-- Mobile Navigation Bar -->
-<nav class="mobile-nav" id="mobile-nav">
-    <a href="#hero" class="active">
-        <span class="icon-home"></span>
-        Главная
-    </a>
-    <a href="#services">
-        <span class="icon-services"></span>
-        Услуги
-    </a>
-    <a href="#packages">
-        <span class="icon-packages"></span>
-        Пакеты
-    </a>
-    <a href="#ai-assistant">
-        <span class="icon-ai"></span>
-        Syncle AI
-    </a>
-    <a href="#contact">
-        <span class="icon-contact"></span>
-        Связь
-    </a>
+<!-- NAV -->
+<nav id="nav">
+  <a href="#" class="nav-logo">
+    <img src="https://s10.iimage.su/s/27/th_gu481Y8x3VpqUJ172ECEyCye3ZoLL2tsrajrVM1MT.png" alt="Inflecto">
+  </a>
+  <ul class="nav-links">
+    <li><a href="#how">Процесс</a></li>
+    <li><a href="#services">Услуги</a></li>
+    <li><a href="#results">Результаты</a></li>
+    <li><a href="#cases">Портфолио</a></li>
+    <li><a href="#packages">Пакеты</a></li>
+  </ul>
+  <button class="burger" id="burger" aria-label="Меню" aria-expanded="false">
+    <span></span>
+    <span></span>
+    <span></span>
+  </button>
 </nav>
 
-<!-- Hero Section -->
-<section class="hero" id="hero">
-    <div class="container">
-        <!-- Hero Text -->
-        <div class="hero-text">
-            <h1>Inflecto - Digital агентство<br>которое поможет вам в цифровых решениях.</h1>
-            <p>
-                Мы создаем результат, делаем работу быстро,<br>
-                качественно и удобно.
-            </p>
-        </div>
-        
-        <!-- Terminal Section -->
-        <div class="terminal-section">
-            <div class="terminal">
-                <div class="terminal-header">
-                    <div class="terminal-dots">
-                        <div class="terminal-dot red"></div>
-                        <div class="terminal-dot yellow"></div>
-                        <div class="terminal-dot green"></div>
-                    </div>
-                    <div class="terminal-title">inflecto@digital:~</div>
-                </div>
-                <div class="terminal-body">
-                    <div class="terminal-line">
-                        <span class="terminal-prompt">$</span>
-                        <span class="terminal-command">./start_agency.sh</span>
-                    </div>
-                    <div class="terminal-line">
-                        <span class="terminal-output success">✓ Инициализация Inflecto Digital Agency...</span>
-                    </div>
-                    <div class="terminal-line">
-                        <span class="terminal-output info">→ Загрузка цифровых решений: 100%</span>
-                    </div>
-                    <div class="terminal-line">
-                        <span class="terminal-output success">✓ Качество: МАКСИМАЛЬНОЕ</span>
-                    </div>
-                    <div class="terminal-line">
-                        <span class="terminal-output success">✓ Скорость разработки: БЫСТРАЯ</span>
-                    </div>
-                    <div class="terminal-line">
-                        <span class="terminal-prompt">$</span>
-                        <span class="terminal-command">echo "Готовы к работе!"</span>
-                        <span class="terminal-cursor"></span>
-                    </div>
-                    
-                    <div class="terminal-button-line">
-                        <span class="terminal-prompt">$</span>
-                        <a href="#services" class="terminal-btn">Начать проект</a>
-                        <span class="terminal-btn-text">// Запустить разработку</span>
-                    </div>
-                </div>
-            </div>
-        </div>
-        
-        <!-- Hero Graphics -->
-        <div class="hero-graphics">
-            <div class="graphic-item"></div>
-            <div class="graphic-item"></div>
-            <div class="graphic-item"></div>
-            <div class="graphic-item"></div>
-        </div>
+<!-- MOBILE MENU -->
+<div class="mob-menu" id="mobMenu" aria-hidden="true">
+  <ul>
+    <li><a href="#how">Процесс</a></li>
+    <li><a href="#services">Услуги</a></li>
+    <li><a href="#results">Результаты</a></li>
+    <li><a href="#cases">Портфолио</a></li>
+    <li><a href="#packages">Пакеты</a></li>
+  </ul>
+  <div class="mob-menu-cta">
+    <a href="https://t.me/inflectomanager">Начать проект</a>
+  </div>
+</div>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-vignette"></div>
+  <div class="hero-dots"></div>
+  <div class="hero-inner">
+    <h1>Ваш бизнес стоит на месте?<br><span class="shimmer-text">Мы это исправим.</span></h1>
+    <p class="hero-sub">
+      Создаем <b>цифровые продукты и ИИ-решения</b>,<br>чтобы увеличить доходность вашего бизнеса.
+    </p>
+    <div class="hero-cta">
+      <a href="https://t.me/inflectomanager" class="btn-w">Начать проект</a>
     </div>
+  </div>
+  <div class="hero-fade"></div>
 </section>
 
-<!-- Services Section -->
-<section class="services" id="services">
-    <div class="container">
-        <h2 class="section-title">Наши услуги</h2>
-        <div class="services-grid">
-            <div class="service-card">
-                <h3>Разработка</h3>
-                <p>Создание ботов, веб-сайтов и скриптов любой сложности. Современные технологии и индивидуальный подход к каждому проекту.</p>
-            </div>
-            <div class="service-card">
-                <h3>Маркетинговые услуги</h3>
-                <p>Эффективные маркетинговые стратегии для продвижения вашего бизнеса. Анализ рынка, таргетированная реклама и SEO-оптимизация.</p>
-            </div>
-            <div class="service-card">
-                <h3>Автоматизация</h3>
-                <p>Автоматизация бизнес-процессов для повышения эффективности работы вашей компании. Внедрение CRM-систем и оптимизация рабочих процессов.</p>
-            </div>
-            <div class="service-card">
-                <h3>Дизайн</h3>
-                <p>Создание уникального и современного дизайна для вашего бренда. Разработка фирменного стиля, UI/UX дизайн и графические материалы.</p>
-            </div>
-        </div>
+<!-- STATS -->
+<div class="divider"></div>
+<div class="stats-outer r">
+  <div class="stats-grid">
+    <div class="sc">
+      <div class="sc-val" data-target="20" data-suffix="+">0</div>
+      <div class="sc-desc">Завершённых проектов с измеримым результатом</div>
     </div>
+    <div class="sc">
+      <div class="sc-val" data-target="2" data-suffix="x рост">0</div>
+      <div class="sc-desc">Средний рост эффективности с ИИ-автоматизацией</div>
+    </div>
+    <div class="sc">
+      <div class="sc-val" data-target="12" data-suffix=" дней">0</div>
+      <div class="sc-desc">Средний срок запуска проекта под ключ</div>
+    </div>
+    <div class="sc">
+      <div class="sc-val" data-target="24" data-suffix="/7">0</div>
+      <div class="sc-desc">Наши ИИ-решения и боты работают непрерывно</div>
+    </div>
+  </div>
+</div>
+<div class="divider"></div>
+
+<!-- HOW -->
+<section class="how-sec" id="how">
+  <div class="wrap">
+    <div class="how-grid">
+      <div class="r">
+        <div class="stag">Процесс</div>
+        <h2>От анализа<br>к росту прибыли</h2>
+        <p class="ssub">Не шаблоны. Каждый проект начинается с понимания вашего бизнеса - где теряются деньги и где скрыт реальный рост.</p>
+        <div class="chart-card" id="chartCard1">
+          <div class="cc-head">
+            <div>
+              <div class="cc-title">Динамика эффективности</div>
+              <div class="cc-sub">Типичная кривая роста после внедрения</div>
+            </div>
+            <div class="cc-badge">Рост</div>
+          </div>
+          <svg class="chart-svg" viewBox="0 0 320 140" preserveAspectRatio="xMidYMid meet">
+            <defs>
+              <linearGradient id="lg" x1="0" y1="0" x2="1" y2="0">
+                <stop offset="0%" stop-color="#14b8a6"/>
+                <stop offset="100%" stop-color="#2dd4bf"/>
+              </linearGradient>
+              <linearGradient id="ag" x1="0" y1="0" x2="0" y2="1">
+                <stop offset="0%" stop-color="#2dd4bf" stop-opacity=".2"/>
+                <stop offset="100%" stop-color="#14b8a6" stop-opacity="0"/>
+              </linearGradient>
+              <linearGradient id="gridLine" x1="0" y1="0" x2="1" y2="0">
+                <stop offset="0%" stop-color="rgba(255,255,255,0)"/>
+                <stop offset="12%" stop-color="rgba(255,255,255,.04)"/>
+                <stop offset="88%" stop-color="rgba(255,255,255,.04)"/>
+                <stop offset="100%" stop-color="rgba(255,255,255,0)"/>
+              </linearGradient>
+            </defs>
+            <!-- Horizontal grid -->
+            <line x1="10" y1="20"  x2="310" y2="20"  stroke="url(#gridLine)" stroke-width="1"/>
+            <line x1="10" y1="45"  x2="310" y2="45"  stroke="url(#gridLine)" stroke-width="1"/>
+            <line x1="10" y1="70"  x2="310" y2="70"  stroke="url(#gridLine)" stroke-width="1"/>
+            <line x1="10" y1="95"  x2="310" y2="95"  stroke="url(#gridLine)" stroke-width="1"/>
+            <line x1="10" y1="120" x2="310" y2="120" stroke="url(#gridLine)" stroke-width="1"/>
+            <!-- Vertical grid subtle -->
+            <line x1="70"  y1="15" x2="70"  y2="125" stroke="rgba(255,255,255,.02)" stroke-width="1"/>
+            <line x1="130" y1="15" x2="130" y2="125" stroke="rgba(255,255,255,.02)" stroke-width="1"/>
+            <line x1="190" y1="15" x2="190" y2="125" stroke="rgba(255,255,255,.02)" stroke-width="1"/>
+            <line x1="250" y1="15" x2="250" y2="125" stroke="rgba(255,255,255,.02)" stroke-width="1"/>
+            <!-- Area fill -->
+            <path class="chart-area-animated" fill="url(#ag)"
+              d="M10,115 C40,112 60,105 90,92 C120,79 140,70 170,54 C200,38 230,26 260,16 C280,10 300,6 310,4 L310,125 L10,125Z"/>
+            <!-- Main line -->
+            <path class="chart-line-animated" fill="none" stroke="url(#lg)" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"
+              d="M10,115 C40,112 60,105 90,92 C120,79 140,70 170,54 C200,38 230,26 260,16 C280,10 300,6 310,4"/>
+            <!-- Data points -->
+            <circle cx="10"  cy="115" r="3.5" fill="#0a0a0b" stroke="#14b8a6" stroke-width="1.8"/>
+            <circle cx="70"  cy="97"  r="3.5" fill="#0a0a0b" stroke="#17bda9" stroke-width="1.8"/>
+            <circle cx="130" cy="72"  r="3.5" fill="#0a0a0b" stroke="#1cc5b2" stroke-width="1.8"/>
+            <circle cx="190" cy="48"  r="3.5" fill="#0a0a0b" stroke="#24ccba" stroke-width="1.8"/>
+            <circle cx="250" cy="20"  r="3.5" fill="#0a0a0b" stroke="#2dd4bf" stroke-width="1.8"/>
+            <!-- Active end point with pulse -->
+            <circle cx="310" cy="4" r="9" fill="rgba(45,212,191,.1)" class="pulse-dot"/>
+            <circle cx="310" cy="4" r="4" fill="#0a0a0b" stroke="#2dd4bf" stroke-width="2.2"/>
+            <circle cx="310" cy="4" r="1.8" fill="#2dd4bf"/>
+          </svg>
+          <div class="months">
+            <span>Старт</span><span>Месяц 1</span><span>Месяц 2</span><span>Месяц 3</span><span>Месяц 4</span><span>Месяц 5</span>
+          </div>
+          <div class="mini-ms">
+            <div class="mm"><div class="mmv g">Рост</div><div class="mml">Конверсия заявок</div></div>
+            <div class="mm"><div class="mmv b">Меньше</div><div class="mml">Ручного труда</div></div>
+            <div class="mm"><div class="mmv g">Быстрее</div><div class="mml">ИИ-обработка</div></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="steps r d2">
+        <div class="step">
+          <div class="sn">01</div>
+          <div class="sb">
+            <h3>Разбираемся в вашем бизнесе</h3>
+            <p>Изучаем процессы, находим узкие места и точки роста - где цифровые инструменты и ИИ дадут максимальный эффект.</p>
+          </div>
+        </div>
+        <div class="step">
+          <div class="sn">02</div>
+          <div class="sb">
+            <h3>Предлагаем конкретное решение</h3>
+            <p>Не "сделаем сайт", а "вот что изменится и почему это поможет зарабатывать больше" - с аргументами.</p>
+          </div>
+        </div>
+        <div class="step">
+          <div class="sn">03</div>
+          <div class="sb">
+            <h3>Разрабатываем и запускаем</h3>
+            <p>Быстро, без затяжных согласований. Вы видите прогресс с первых дней. Средний срок - 12 дней.</p>
+          </div>
+        </div>
+        <div class="step">
+          <div class="sn">04</div>
+          <div class="sb">
+            <h3>Замеряем результат</h3>
+            <p>После запуска отслеживаем показатели и вносим улучшения - пока цель не достигнута.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
 </section>
 
-<!-- Why Choose Us Section -->
-<section class="why-us" id="why-us">
-    <div class="container">
-        <h2 class="section-title">Почему выбирают нас</h2>
-        <div class="features-grid">
-            <div class="feature-item">
-                <div class="feature-icon">⚡</div>
-                <h3 class="feature-title">Быстрая разработка</h3>
-                <p class="feature-text">Мы ценим ваше время и всегда стремимся выполнить проекты в кратчайшие сроки без потери качества.</p>
-            </div>
-            <div class="feature-item">
-                <div class="feature-icon">🔒</div>
-                <h3 class="feature-title">Безопасность</h3>
-                <p class="feature-text">Мы обеспечиваем высокий уровень безопасности для всех наших проектов и защиту ваших данных.</p>
-            </div>
-            <div class="feature-item">
-                <div class="feature-icon">💡</div>
-                <h3 class="feature-title">Инновации</h3>
-                <p class="feature-text">Мы всегда в курсе последних технологических трендов и применяем инновационные решения.</p>
-            </div>
-            <div class="feature-item">
-                <div class="feature-icon">🤝</div>
-                <h3 class="feature-title">Поддержка</h3>
-                <p class="feature-text">Мы обеспечиваем круглосуточную поддержку и всегда готовы помочь с любыми вопросами.</p>
-            </div>
-            <div class="feature-item">
-                <div class="feature-icon">📊</div>
-                <h3 class="feature-title">Аналитика</h3>
-                <p class="feature-text">Мы предоставляем детальную аналитику и отчеты о результатах работы ваших проектов.</p>
-            </div>
-            <div class="feature-item">
-                <div class="feature-icon">💰</div>
-                <h3 class="feature-title">Лучшие цены на рынке</h3>
-                <p class="feature-text">Мы предлагаем конкурентоспособные цены и гибкие тарифные планы для любого бюджета.</p>
-            </div>
-        </div>
+<div class="divider"></div>
+
+<!-- SERVICES -->
+<section class="svc-sec" id="services">
+  <div class="wrap">
+    <div class="svc-head r">
+      <div class="stag">Услуги</div>
+      <h2>Инструменты<br>для вашего роста</h2>
     </div>
+    <div class="svc-grid r">
+
+      <div class="scard">
+        <span class="scard-num">01</span>
+        <svg class="scard-icon" viewBox="0 0 36 36" fill="none">
+          <rect x="3" y="7" width="30" height="21" rx="2.5" stroke="#8c8c96" stroke-width="1.3"/>
+          <line x1="3" y1="13.5" x2="33" y2="13.5" stroke="#8c8c96" stroke-width="1.1"/>
+          <circle cx="8"  cy="10.5" r="1.4" fill="#8c8c96"/>
+          <circle cx="12.5" cy="10.5" r="1.4" fill="#8c8c96"/>
+          <line x1="8"  y1="19" x2="28" y2="19" stroke="#8c8c96" stroke-width=".9" opacity=".5"/>
+          <line x1="8"  y1="23" x2="22" y2="23" stroke="#8c8c96" stroke-width=".9" opacity=".5"/>
+          <line x1="14" y1="28" x2="22" y2="28" stroke="#8c8c96" stroke-width="1.1"/>
+          <line x1="18" y1="28" x2="18" y2="33" stroke="#8c8c96" stroke-width="1.1"/>
+          <line x1="11" y1="33" x2="25" y2="33" stroke="#8c8c96" stroke-width="1.3" stroke-linecap="round"/>
+        </svg>
+        <h3>Сайты и лендинги</h3>
+        <p>Инструменты привлечения клиентов - быстрые, мобильные, с четким призывом к действию. Не просто красиво.</p>
+      </div>
+
+      <div class="scard">
+        <span class="scard-num">02</span>
+        <svg class="scard-icon" viewBox="0 0 36 36" fill="none">
+          <rect x="5" y="5" width="26" height="26" rx="6" stroke="#8c8c96" stroke-width="1.3"/>
+          <path d="M12 15l-4 3 4 3" stroke="#8c8c96" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/>
+          <path d="M24 15l4 3-4 3" stroke="#8c8c96" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/>
+          <path d="M21 12l-6 12" stroke="#8c8c96" stroke-width="1.3" stroke-linecap="round"/>
+        </svg>
+        <h3>Скрипты и боты</h3>
+        <p>Telegram-боты, WebApp, Mini-app. Запись, оплата, FAQ, уведомления - работают 24/7 без участия человека.</p>
+      </div>
+
+      <div class="scard">
+        <span class="scard-num">03</span>
+        <svg class="scard-icon" viewBox="0 0 36 36" fill="none">
+          <circle cx="18" cy="18" r="5.5" stroke="#8c8c96" stroke-width="1.3"/>
+          <circle cx="18" cy="18" r="2" fill="#8c8c96"/>
+          <circle cx="18" cy="6"  r="2.2" stroke="#8c8c96" stroke-width="1.1"/>
+          <circle cx="18" cy="30" r="2.2" stroke="#8c8c96" stroke-width="1.1"/>
+          <circle cx="6"  cy="18" r="2.2" stroke="#8c8c96" stroke-width="1.1"/>
+          <circle cx="30" cy="18" r="2.2" stroke="#8c8c96" stroke-width="1.1"/>
+          <line x1="18" y1="8.2"  x2="18" y2="12.5" stroke="#8c8c96" stroke-width="1" opacity=".6"/>
+          <line x1="18" y1="23.5" x2="18" y2="27.8" stroke="#8c8c96" stroke-width="1" opacity=".6"/>
+          <line x1="8.2" y1="18" x2="12.5" y2="18" stroke="#8c8c96" stroke-width="1" opacity=".6"/>
+          <line x1="23.5" y1="18" x2="27.8" y2="18" stroke="#8c8c96" stroke-width="1" opacity=".6"/>
+          <circle cx="9"  cy="9"  r="1.6" stroke="#8c8c96" stroke-width="1" opacity=".4"/>
+          <circle cx="27" cy="9"  r="1.6" stroke="#8c8c96" stroke-width="1" opacity=".4"/>
+          <circle cx="9"  cy="27" r="1.6" stroke="#8c8c96" stroke-width="1" opacity=".4"/>
+          <circle cx="27" cy="27" r="1.6" stroke="#8c8c96" stroke-width="1" opacity=".4"/>
+        </svg>
+        <h3>ИИ-решения</h3>
+        <p>Искусственный интеллект в процессах бизнеса - автоответы, анализ данных, генерация контента, умные рекомендации.</p>
+      </div>
+
+      <div class="scard">
+        <span class="scard-num">04</span>
+        <svg class="scard-icon" viewBox="0 0 36 36" fill="none">
+          <rect x="5"  y="16" width="7" height="14" rx="1.5" stroke="#8c8c96" stroke-width="1.2"/>
+          <rect x="14" y="10" width="7" height="20" rx="1.5" stroke="#8c8c96" stroke-width="1.2"/>
+          <rect x="24" y="19" width="7" height="11" rx="1.5" stroke="#8c8c96" stroke-width="1.2"/>
+          <path d="M8.5 13L18 7l9 8" stroke="#8c8c96" stroke-width="1.1" stroke-linecap="round" stroke-linejoin="round" opacity=".5" stroke-dasharray="2 1.5"/>
+        </svg>
+        <h3>Автоматизация бизнеса</h3>
+        <p>CRM, интеграции, ИИ-скрипты. Убираем ручной труд - и вы занимаетесь тем, что реально важно для роста.</p>
+      </div>
+
+      <div class="scard">
+        <span class="scard-num">05</span>
+        <svg class="scard-icon" viewBox="0 0 36 36" fill="none">
+          <path d="M6 28L12 19l6 4 7-11 7-5" stroke="#8c8c96" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/>
+          <circle cx="32" cy="7" r="2.8" stroke="#8c8c96" stroke-width="1.2"/>
+          <line x1="6" y1="32" x2="32" y2="32" stroke="#8c8c96" stroke-width=".9" opacity=".25"/>
+        </svg>
+        <h3>Маркетинг и SEO</h3>
+        <p>Реклама и продвижение - так, чтобы каждый вложенный рубль возвращался с прибылью.</p>
+      </div>
+
+      <div class="scard">
+        <span class="scard-num">06</span>
+        <svg class="scard-icon" viewBox="0 0 36 36" fill="none">
+          <circle cx="18" cy="18" r="11" stroke="#8c8c96" stroke-width="1.3"/>
+          <circle cx="18" cy="18" r="5"  stroke="#8c8c96" stroke-width="1.1"/>
+          <line x1="18" y1="7"  x2="18" y2="13" stroke="#8c8c96" stroke-width="1.1" stroke-linecap="round"/>
+          <line x1="18" y1="23" x2="18" y2="29" stroke="#8c8c96" stroke-width="1.1" stroke-linecap="round"/>
+          <line x1="7"  y1="18" x2="13" y2="18" stroke="#8c8c96" stroke-width="1.1" stroke-linecap="round"/>
+          <line x1="23" y1="18" x2="29" y2="18" stroke="#8c8c96" stroke-width="1.1" stroke-linecap="round"/>
+        </svg>
+        <h3>Дизайн и брендинг</h3>
+        <p>Фирменный стиль, UI/UX - всё что строит доверие с первого взгляда и делает вас узнаваемыми.</p>
+      </div>
+
+    </div>
+  </div>
 </section>
 
-<!-- Packages Section -->
-<section class="packages" id="packages">
-    <div class="container">
-        <h2 class="section-title">Пакеты услуг</h2>
-        <div class="packages-grid">
-            <!-- Junior Package -->
-            <div class="package-card junior">
-                <div class="package-header">
-                    <h3 class="package-level">Junior</h3>
-                    <p class="package-subtitle">Базовый пакет для старта и простых решений</p>
-                </div>
-                <div class="package-features">
-                    <ul>
-                        <li>Разработка сайта (лендинг, визитка, простой корпоративный сайт)</li>
-                        <li>Разработка Telegram бота (базовый функционал)</li>
-                        <li>Хостинг на сервере (настройка, размещение, поддержка)</li>
-                    </ul>
-                </div>
-                <div class="package-target">
-                    <div class="package-target-title">Для кого:</div>
-                    <div class="package-target-text">Стартапы, малый бизнес, личные проекты</div>
-                </div>
-            </div>
-
-            <!-- Middle Package -->
-            <div class="package-card middle">
-                <div class="package-header">
-                    <h3 class="package-level">Middle</h3>
-                    <p class="package-subtitle">Расширенный пакет с дизайном и полной digital-поддержкой</p>
-                </div>
-                <div class="package-features">
-                    <ul>
-                        <li>Разработка сайта (корпоративный сайт, интернет-магазин под ключ)</li>
-                        <li>Разработка бота (сложная логика, интеграции)</li>
-                        <li>Дизайн-услуги (логотип, баннеры, фирменный стиль)</li>
-                        <li>Хостинг на сервере + базовое SEO</li>
-                    </ul>
-                </div>
-                <div class="package-target">
-                    <div class="package-target-title">Для кого:</div>
-                    <div class="package-target-text">Развивающийся бизнес, средние проекты</div>
-                </div>
-            </div>
-
-            <!-- Senior Package -->
-            <div class="package-card senior">
-                <div class="package-header">
-                    <h3 class="package-level">Senior</h3>
-                    <p class="package-subtitle">Премиум-решения для сложных и масштабируемых проектов</p>
-                </div>
-                <div class="package-features">
-                    <ul>
-                        <li>Разработка сайта любой сложности (от высоконагруженных порталов до WebApp)</li>
-                        <li>Разработка ботов и mini-app (Telegram, мессенджеры)</li>
-                        <li>Полный дизайн-сервис (лого, бренд-бук, анимация, UX/UI)</li>
-                        <li>Хостинг + DevOps-поддержка</li>
-                        <li>Дополнительные интеграции (CRM, платежи, API)</li>
-                    </ul>
-                </div>
-                <div class="package-target">
-                    <div class="package-target-title">Для кого:</div>
-                    <div class="package-target-text">Крупные проекты, корпоративные клиенты</div>
-                </div>
-            </div>
+<!-- RESULTS -->
+<section class="res-sec" id="results">
+  <div class="wrap res-inner">
+    <div class="res-grid">
+      <div class="r">
+        <div class="stag">Результаты</div>
+        <h2>Цифры, которые<br>имеют значение</h2>
+        <p class="ssub">Автоматизация, ИИ и правильный цифровой канал - не расходы, а инвестиция с измеримой отдачей.</p>
+        <div class="big-ms">
+          <div class="bm"><div class="bm-val">-60%</div><div class="bm-label">времени на рутину с ИИ-автоматизацией</div></div>
+          <div class="bm"><div class="bm-val">+35%</div><div class="bm-label">заявок после запуска правильного лендинга</div></div>
+          <div class="bm"><div class="bm-val">x3</div><div class="bm-label">скорость обработки клиентов с ботом</div></div>
+          <div class="bm"><div class="bm-val">12 дн</div><div class="bm-label">средний срок запуска проекта под ключ</div></div>
         </div>
+      </div>
+
+      <div class="bc r d2" id="resultsChart">
+        <div class="bc-title">Эффективность бизнеса</div>
+        <div class="bc-sub">Динамика после внедрения наших решений</div>
+        <svg viewBox="0 0 320 210" width="100%" style="display:block;overflow:visible;" preserveAspectRatio="xMidYMid meet">
+          <defs>
+            <linearGradient id="bA" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="0%" stop-color="#2dd4bf"/>
+              <stop offset="100%" stop-color="#14b8a6"/>
+            </linearGradient>
+            <linearGradient id="bM" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="0%" stop-color="rgba(45,212,191,.5)"/>
+              <stop offset="100%" stop-color="rgba(20,184,166,.18)"/>
+            </linearGradient>
+            <linearGradient id="bD" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="0%" stop-color="rgba(255,255,255,.1)"/>
+              <stop offset="100%" stop-color="rgba(255,255,255,.03)"/>
+            </linearGradient>
+            <filter id="gw" x="-30%" y="-30%" width="160%" height="160%">
+              <feGaussianBlur stdDeviation="4" result="b"/>
+              <feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge>
+            </filter>
+            <linearGradient id="gridH2" x1="0" y1="0" x2="1" y2="0">
+              <stop offset="0%" stop-color="rgba(255,255,255,0)"/>
+              <stop offset="8%" stop-color="rgba(255,255,255,.04)"/>
+              <stop offset="92%" stop-color="rgba(255,255,255,.04)"/>
+              <stop offset="100%" stop-color="rgba(255,255,255,0)"/>
+            </linearGradient>
+          </defs>
+          <!-- Grid -->
+          <line x1="5" y1="30"  x2="315" y2="30"  stroke="url(#gridH2)" stroke-width="1"/>
+          <line x1="5" y1="65"  x2="315" y2="65"  stroke="url(#gridH2)" stroke-width="1"/>
+          <line x1="5" y1="100" x2="315" y2="100" stroke="url(#gridH2)" stroke-width="1"/>
+          <line x1="5" y1="135" x2="315" y2="135" stroke="url(#gridH2)" stroke-width="1"/>
+          <line x1="5" y1="170" x2="315" y2="170" stroke="url(#gridH2)" stroke-width="1"/>
+          <!-- Bars -->
+          <rect x="16"  y="160" width="34" height="18"  rx="5" fill="url(#bD)" class="ba"/>
+          <rect x="68"  y="145" width="34" height="33"  rx="5" fill="url(#bD)" class="ba" style="--d:.08s"/>
+          <rect x="120" y="118" width="34" height="60"  rx="5" fill="url(#bM)" class="ba" style="--d:.16s"/>
+          <rect x="172" y="82"  width="34" height="96"  rx="5" fill="url(#bM)" class="ba" style="--d:.24s"/>
+          <rect x="224" y="40"  width="34" height="138" rx="5" fill="url(#bA)" filter="url(#gw)" class="ba" style="--d:.32s"/>
+          <rect x="276" y="8"   width="34" height="170" rx="5" fill="url(#bA)" filter="url(#gw)" class="ba" style="--d:.40s"/>
+          <!-- Trend line -->
+          <path fill="none" stroke="rgba(255,255,255,.1)" stroke-width="1.2" stroke-dasharray="5 3" stroke-linecap="round"
+            d="M33,158 C85,148 137,120 189,86 C230,62 262,38 293,12"/>
+          <!-- Labels -->
+          <text x="33"  y="196" text-anchor="middle" font-size="9.5" fill="#4a4a52" font-family="Inter,sans-serif">До</text>
+          <text x="85"  y="196" text-anchor="middle" font-size="9.5" fill="#4a4a52" font-family="Inter,sans-serif">Мес 1</text>
+          <text x="137" y="196" text-anchor="middle" font-size="9.5" fill="#4a4a52" font-family="Inter,sans-serif">Мес 2</text>
+          <text x="189" y="196" text-anchor="middle" font-size="9.5" fill="#4a4a52" font-family="Inter,sans-serif">Мес 3</text>
+          <text x="241" y="196" text-anchor="middle" font-size="9.5" fill="#4a4a52" font-family="Inter,sans-serif">Мес 4</text>
+          <text x="293" y="196" text-anchor="middle" font-size="9.5" fill="#4a4a52" font-family="Inter,sans-serif">Мес 5</text>
+        </svg>
+        <div class="chart-legend">
+          <div class="chart-legend-item">
+            <div class="chart-legend-dot" style="background:rgba(255,255,255,.09)"></div>До внедрения
+          </div>
+          <div class="chart-legend-item">
+            <div class="chart-legend-dot" style="background:#2dd4bf"></div>После внедрения
+          </div>
+        </div>
+      </div>
     </div>
+  </div>
 </section>
 
-<!-- AI Assistant Section -->
-<section class="ai-assistant" id="ai-assistant">
-    <div class="ai-container">
-        <div class="ai-intro">
-            <h2>Syncle - помощник</h2>
-            <p>Который поможет вам определить какую идею для проекта можно придумать. Расскажет все тонкости и поможет.</p>
-        </div>
-        
-        <div class="chat-container">
-            <div class="chat-header">
-                <div class="ai-avatar">N</div>
-                <div class="ai-info">
-                    <h3>Syncle AI Assistant</h3>
-                    <div class="ai-status">
-                        <div class="status-dot"></div>
-                        <span>Онлайн и готов помочь</span>
-                    </div>
-                </div>
-            </div>
-            
-            <div class="chat-messages" id="chat-messages">
-                <div class="welcome-message">
-                    <h4>Добро пожаловать! 👋</h4>
-                    <p>Я Syncle, ваш AI-помощник от Inflecto. Я помогу вам:</p>
-                    <ul style="text-align: left; max-width: 400px; margin: 0 auto;">
-                        <li>• Выбрать идею для проекта</li>
-                        <li>• Определить технологии</li>
-                        <li>• Рассчитать бюджет</li>
-                        <li>• Спланировать этапы разработки</li>
-                    </ul>
-                    
-                    <div class="development-notice">
-                        <div class="dev-icon">🚧</div>
-                        <div class="dev-content">
-                            <strong>В процессе разработки</strong>
-                            <p>Чат-функция находится в стадии активной разработки</p>
-                        </div>
-                    </div>
-
-                    <div class="quick-questions">
-                        <div class="quick-question" onclick="sendQuickQuestion('Какой сайт мне нужен для бизнеса?')">Какой сайт нужен?</div>
-                        <div class="quick-question" onclick="sendQuickQuestion('Сколько стоит создать интернет-магазин?')">Стоимость магазина?</div>
-                        <div class="quick-question" onclick="sendQuickQuestion('Как продвигать бизнес в интернете?')">Продвижение бизнеса?</div>
-                    </div>
-                </div>
-                
-                <div class="typing-indicator" id="typing-indicator">
-                    <div class="message-avatar">
-                        <div style="background: linear-gradient(135deg, #8b5cf6 0%, #3b82f6 100%); width: 40px; height: 40px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 18px; font-weight: 700; color: white;">N</div>
-                    </div>
-                    <div class="typing-dots">
-                        <div class="typing-dot"></div>
-                        <div class="typing-dot"></div>
-                        <div class="typing-dot"></div>
-                    </div>
-                </div>
-            </div>
-            
-            <div class="chat-input-container">
-                <div class="chat-input-wrapper">
-                    <textarea 
-                        class="chat-input" 
-                        id="chat-input" 
-                        placeholder="Задайте вопрос о вашем проекте..."
-                        rows="1"
-                    ></textarea>
-                    <button class="send-button" id="send-button" onclick="sendMessage()">
-                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-                            <path d="M2.01 21L23 12 2.01 3 2 10l15 2-15 2z"/>
-                        </svg>
-                    </button>
-                </div>
-            </div>
-        </div>
+<!-- ====== PORTFOLIO / CASES ====== -->
+<section class="cases-sec" id="cases">
+  <div class="wrap">
+    <div class="cases-head r">
+      <div class="stag">Портфолио</div>
+      <h2>Проекты, которыми<br>мы гордимся</h2>
+      <p class="ssub">Реальные кейсы для реальных компаний. Каждый проект - решение конкретной бизнес-задачи.</p>
     </div>
+
+    <div class="cases-grid">
+
+      <!-- Case 1: Viral Worldwide -->
+      <div class="case-card r">
+        <div class="case-visual cv-ecommerce">
+          <div class="case-visual-inner">
+            <div class="cv-grid">
+              <div class="cv-item">
+                <div class="cv-item-line2"></div>
+                <div class="cv-item-line"></div>
+              </div>
+              <div class="cv-item">
+                <div class="cv-item-line2"></div>
+                <div class="cv-item-line"></div>
+              </div>
+              <div class="cv-item">
+                <div class="cv-item-line2"></div>
+                <div class="cv-item-line"></div>
+              </div>
+              <div class="cv-item">
+                <div class="cv-item-line2"></div>
+                <div class="cv-item-line"></div>
+              </div>
+              <div class="cv-item">
+                <div class="cv-item-line2"></div>
+                <div class="cv-item-line"></div>
+              </div>
+              <div class="cv-item">
+                <div class="cv-item-line2"></div>
+                <div class="cv-item-line"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="case-body">
+          <div class="case-tag"><span class="case-tag-dot"></span>E-Commerce</div>
+          <h3>Viral Worldwide</h3>
+          <p>Полноценная e-commerce платформа для стритвир-бренда. Каталог, корзина, оплата, интеграции - всё под ключ для мира уличной моды.</p>
+          <div class="case-techs">
+            <span class="case-tech">Web App</span>
+            <span class="case-tech">Платежи</span>
+            <span class="case-tech">Каталог</span>
+            <span class="case-tech">UI/UX</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Case 2: TheAmericaTime -->
+      <div class="case-card r d1">
+        <div class="case-visual cv-media">
+          <div class="case-visual-inner">
+            <div class="cv-media-inner">
+              <div class="cv-media-row">
+                <div class="cv-media-block wide" style="height:52px;">
+                  <div class="cv-media-pulse"></div>
+                </div>
+                <div class="cv-media-block" style="height:52px;"></div>
+              </div>
+              <div class="cv-media-row">
+                <div class="cv-media-block"></div>
+                <div class="cv-media-block"></div>
+                <div class="cv-media-block"></div>
+              </div>
+              <div class="cv-media-row">
+                <div class="cv-media-block wide"></div>
+                <div class="cv-media-block">
+                  <div class="cv-media-pulse"></div>
+                </div>
+              </div>
+              <div class="cv-media-row">
+                <div class="cv-media-block"></div>
+                <div class="cv-media-block wide"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="case-body">
+          <div class="case-tag"><span class="case-tag-dot"></span>Медиаплатформа</div>
+          <h3>TheAmericaTime</h3>
+          <p>Масштабируемая платформа для сети из 142 новостных сайтов. Полная автоматизация контент-флоу с парсингом RSS-источников без участия редакторов.</p>
+          <div class="case-techs">
+            <span class="case-tech">Автоматизация</span>
+            <span class="case-tech">RSS-парсинг</span>
+            <span class="case-tech">142 сайта</span>
+            <span class="case-tech">CMS</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Case 3: Mascotte -->
+      <div class="case-card r d2">
+        <div class="case-visual cv-bot">
+          <div class="case-visual-inner">
+            <div class="cv-bot-inner">
+              <div class="cv-bot-msg">Добро пожаловать в игру к 25-летию!</div>
+              <div class="cv-bot-msg reply">Начинаем!</div>
+              <div class="cv-bot-msg">Вопрос 1 из 10...</div>
+              <div class="cv-bot-typing">
+                <span></span><span></span><span></span>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="case-body">
+          <div class="case-tag"><span class="case-tag-dot"></span>Telegram Bot</div>
+          <h3>Mascotte - 25 лет</h3>
+          <p>Бот-интеллектуальная игра для крупного бренда одежды и аксессуаров в честь юбилея. Все интеграции, механики и дизайн-решения - с нуля.</p>
+          <div class="case-techs">
+            <span class="case-tech">Telegram Bot</span>
+            <span class="case-tech">Геймификация</span>
+            <span class="case-tech">Интеграции</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Case 4: DetailingCity -->
+      <div class="case-card r d3">
+        <div class="case-visual cv-hiring">
+          <div class="case-visual-inner">
+            <div class="cv-hiring-inner">
+              <div class="cv-hire-row">
+                <div class="cv-hire-avatar"></div>
+                <div class="cv-hire-info">
+                  <div class="cv-hire-line mid"></div>
+                  <div class="cv-hire-line short"></div>
+                </div>
+                <div class="cv-hire-status active">Принят</div>
+              </div>
+              <div class="cv-hire-row">
+                <div class="cv-hire-avatar"></div>
+                <div class="cv-hire-info">
+                  <div class="cv-hire-line" style="width:65%"></div>
+                  <div class="cv-hire-line short"></div>
+                </div>
+                <div class="cv-hire-status active">Принят</div>
+              </div>
+              <div class="cv-hire-row">
+                <div class="cv-hire-avatar offline"></div>
+                <div class="cv-hire-info">
+                  <div class="cv-hire-line mid"></div>
+                  <div class="cv-hire-line" style="width:45%"></div>
+                </div>
+                <div class="cv-hire-status pending">На рассм.</div>
+              </div>
+              <div class="cv-hire-row">
+                <div class="cv-hire-avatar"></div>
+                <div class="cv-hire-info">
+                  <div class="cv-hire-line" style="width:70%"></div>
+                  <div class="cv-hire-line short"></div>
+                </div>
+                <div class="cv-hire-status active">Принят</div>
+              </div>
+              <div class="cv-hire-row">
+                <div class="cv-hire-avatar offline"></div>
+                <div class="cv-hire-info">
+                  <div class="cv-hire-line mid"></div>
+                  <div class="cv-hire-line" style="width:50%"></div>
+                </div>
+                <div class="cv-hire-status pending">На рассм.</div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="case-body">
+          <div class="case-tag"><span class="case-tag-dot"></span>Web App + Bot</div>
+          <h3>DetailingCity</h3>
+          <p>Веб-приложение и Telegram-бот для сервиса найма сотрудников. Автоматизация подбора персонала, ускорение найма и удобное взаимодействие с кандидатами.</p>
+          <div class="case-techs">
+            <span class="case-tech">Web App</span>
+            <span class="case-tech">Telegram Bot</span>
+            <span class="case-tech">HR-автоматизация</span>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="cases-more r">
+      <a href="https://t.me/inflectoreviews" class="cases-more-btn" target="_blank" rel="noopener">
+        Смотреть все проекты
+        <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+          <path d="M6 3l5 5-5 5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </a>
+    </div>
+  </div>
 </section>
 
-<!-- Contact Section -->
-<section class="contact" id="contact">
-    <div class="container">
-        <h2 class="section-title">Свяжитесь с нами</h2>
-        <div class="contact-buttons">
-            <a href="https://t.me/inflectoforyou" target="_blank" class="contact-btn">
-                Наш телеграм канал
-            </a>
-            <a href="https://t.me/inflectomanager" target="_blank" class="contact-btn">
-                Сделать заказ
-            </a>
-            <a href="https://t.me/inflectoreviews" target="_blank" class="contact-btn">
-                Наши отзывы
-            </a>
-        </div>
+<div class="divider"></div>
+
+<!-- PACKAGES -->
+<section class="pkg-sec" id="packages">
+  <div class="wrap">
+    <div class="pkg-intro r">
+      <div class="stag">Пакеты</div>
+      <h2>Выберите свой формат</h2>
+      <p class="ssub">Гибкие решения для любого масштаба. Не знаете что подходит - просто напишите.</p>
     </div>
+    <div class="pkg-grid">
+      <div class="pk r">
+        <div class="pk-name">Junior</div>
+        <div class="pk-desc">Для старта и небольших задач</div>
+        <ul class="pk-list">
+          <li><span class="ck">&#10003;</span>Лендинг или сайт-визитка</li>
+          <li><span class="ck">&#10003;</span>Базовый Telegram-бот</li>
+          <li><span class="ck">&#10003;</span>Хостинг и настройка</li>
+          <li><span class="ck">&#10003;</span>Поддержка 1 месяц</li>
+        </ul>
+        <a href="https://t.me/inflectomanager" class="pk-btn pk-btn-o">Обсудить</a>
+      </div>
+      <div class="pk star r d1">
+        <div class="pk-topline"></div>
+        <div class="pk-badge">Популярный</div>
+        <div class="pk-name">Middle</div>
+        <div class="pk-desc">Для растущего бизнеса</div>
+        <ul class="pk-list">
+          <li><span class="ck">&#10003;</span>Корпоративный сайт или магазин</li>
+          <li><span class="ck">&#10003;</span>Бот со сложной логикой и ИИ</li>
+          <li><span class="ck">&#10003;</span>Логотип, фирстиль, баннеры</li>
+          <li><span class="ck">&#10003;</span>SEO + хостинг</li>
+          <li><span class="ck">&#10003;</span>Поддержка 3 месяца</li>
+        </ul>
+        <a href="https://t.me/inflectomanager" class="pk-btn pk-btn-w">Обсудить</a>
+      </div>
+      <div class="pk r d2">
+        <div class="pk-name">Senior</div>
+        <div class="pk-desc">Для серьёзных проектов</div>
+        <ul class="pk-list">
+          <li><span class="ck">&#10003;</span>Сайт любой сложности и нагрузки</li>
+          <li><span class="ck">&#10003;</span>Боты и скрипты под ключ</li>
+          <li><span class="ck">&#10003;</span>ИИ-интеграция в бизнес-процессы</li>
+          <li><span class="ck">&#10003;</span>DevOps, CRM, API-интеграции</li>
+          <li><span class="ck">&#10003;</span>Долгосрочное сопровождение</li>
+        </ul>
+        <a href="https://t.me/inflectomanager" class="pk-btn pk-btn-o">Обсудить</a>
+      </div>
+    </div>
+  </div>
 </section>
 
-<!-- Footer -->
+<!-- CTA -->
+<section class="cta-sec">
+  <div class="cta-glow"></div>
+  <div class="cta-inner r">
+    <h2>Готовы поднять<br>свой бизнес?</h2>
+    <p>Расскажите о задаче - предложим конкретное решение. Бесплатно и без обязательств.</p>
+    <div class="cta-btns">
+      <a href="https://t.me/inflectomanager"  class="btn-w" style="height:42px;font-size:14px;padding:0 26px;">Обсудить</a>
+      <a href="https://t.me/inflectoforyou"   class="btn-g" style="height:42px;font-size:14px;padding:0 22px;">Наш Telegram канал</a>
+      <a href="https://t.me/inflectoreviews"  class="btn-g" style="height:42px;font-size:14px;padding:0 22px;">Наши отзывы</a>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
 <footer>
-    <div class="container">
-        <img src="assets/logo.png" alt="Inflecto Logo" class="footer-logo">
-        <p class="copyright">© 2025 Inflecto. Все права защищены.</p>
-    </div>
+  <a href="#" class="fl">
+    <img src="https://s10.iimage.su/s/27/th_gu481Y8x3VpqUJ172ECEyCye3ZoLL2tsrajrVM1MT.png" alt="Inflecto">
+  </a>
+  <p>&copy; 2025 Inflecto Tech.</p>
 </footer>
 
 <script>
-// Chat functionality (without API integration)
-let chatMessages = [];
-let isTyping = false;
+const obs = new IntersectionObserver(es => es.forEach(e => {
+  if (e.isIntersecting) { e.target.classList.add('on'); obs.unobserve(e.target); }
+}), { threshold: .1 });
+document.querySelectorAll('.r').forEach(el => obs.observe(el));
 
-// Initialize chat
-function initializeChat() {
-    const messagesContainer = document.getElementById('chat-messages');
-    const input = document.getElementById('chat-input');
-    const sendButton = document.getElementById('send-button');
-    
-    // Auto-resize textarea
-    input.addEventListener('input', function() {
-        this.style.height = 'auto';
-        this.style.height = Math.min(this.scrollHeight, 120) + 'px';
-    });
-    
-    // Send message on Enter (but not Shift+Enter)
-    input.addEventListener('keydown', function(e) {
-        if (e.key === 'Enter' && !e.shiftKey) {
-            e.preventDefault();
-            sendMessage();
-        }
-    });
+function cnt(el) {
+  const t = parseInt(el.dataset.target), s = el.dataset.suffix || '';
+  let c = 0; const inc = t / (1400 / 16);
+  const ti = setInterval(() => {
+    c += inc; if (c >= t) { c = t; clearInterval(ti); }
+    el.textContent = Math.floor(c) + s;
+  }, 16);
 }
+const co = new IntersectionObserver(es => es.forEach(e => {
+  if (e.isIntersecting) { e.target.querySelectorAll('[data-target]').forEach(cnt); co.unobserve(e.target); }
+}), { threshold: .4 });
+document.querySelectorAll('.stats-outer').forEach(el => co.observe(el));
 
-// Send message function (placeholder)
-async function sendMessage() {
-    const input = document.getElementById('chat-input');
-    const message = input.value.trim();
-    
-    if (!message || isTyping) return;
-    
-    // Clear input
-    input.value = '';
-    input.style.height = 'auto';
-    
-    // Add user message to chat
-    addMessage(message, 'user');
-    
-    // Show typing indicator
-    showTypingIndicator();
-    
-    // Simulate AI response (placeholder)
-    setTimeout(() => {
-        hideTypingIndicator();
-        
-        // Simple responses based on message content
-        let response = '';
-        const lowerMessage = message.toLowerCase();
-        
-        if (lowerMessage.includes('сайт') || lowerMessage.includes('нужен')) {
-            response = 'Для вашего бизнеса подойдет корпоративный сайт или лендинг. Все зависит от ваших целей: привлечение клиентов, продажи или представительство. Рекомендую начать с консультации в нашем Telegram!';
-        } else if (lowerMessage.includes('стоимость') || lowerMessage.includes('магазин') || lowerMessage.includes('цена')) {
-            response = 'Стоимость интернет-магазина зависит от функционала: от 50,000₽ за базовый до 200,000₽+ за продвинутый. Включает дизайн, разработку, интеграции с платежами. Точную цену рассчитаем после обсуждения ваших задач!';
-        } else if (lowerMessage.includes('продвиж') || lowerMessage.includes('реклам') || lowerMessage.includes('интернет')) {
-            response = 'Для продвижения в интернете используем: SEO-оптимизацию, контекстную рекламу, SMM, email-маркетинг. Начинаем с анализа вашей ниши и конкурентов. Свяжитесь с нами для разработки стратегии!';
-        } else {
-            response = 'Спасибо за вопрос! 😊 Для детальной консультации и обсуждения вашего проекта рекомендую связаться с нашей командой через Telegram. Там мы сможем подробно разобрать все нюансы!';
-        }
-        
-        addMessage(response, 'ai');
-    }, 2000);
-}
-
-// Add message to chat
-function addMessage(content, sender) {
-    const messagesContainer = document.getElementById('chat-messages');
-    const welcomeMessage = messagesContainer.querySelector('.welcome-message');
-    
-    // Remove welcome message if it exists
-    if (welcomeMessage) {
-        welcomeMessage.remove();
-    }
-    
-    const messageDiv = document.createElement('div');
-    messageDiv.className = `message ${sender}`;
-    
-    const avatar = document.createElement('div');
-    avatar.className = 'message-avatar';
-    avatar.innerHTML = sender === 'user' ? 'U' : 'N';
-    
-    const messageContent = document.createElement('div');
-    messageContent.className = 'message-content';
-    messageContent.textContent = content;
-    
-    messageDiv.appendChild(avatar);
-    messageDiv.appendChild(messageContent);
-    
-    messagesContainer.appendChild(messageDiv);
-    
-    // Scroll to bottom
-    messagesContainer.scrollTop = messagesContainer.scrollHeight;
-    
-    // Animate message appearance
-    setTimeout(() => {
-        messageDiv.style.opacity = '1';
-        messageDiv.style.transform = 'translateY(0)';
-    }, 50);
-}
-
-// Show typing indicator
-function showTypingIndicator() {
-    isTyping = true;
-    const typingIndicator = document.getElementById('typing-indicator');
-    const sendButton = document.getElementById('send-button');
-    
-    typingIndicator.style.display = 'flex';
-    sendButton.disabled = true;
-    
-    // Scroll to bottom
-    const messagesContainer = document.getElementById('chat-messages');
-    messagesContainer.scrollTop = messagesContainer.scrollHeight;
-}
-
-// Hide typing indicator
-function hideTypingIndicator() {
-    isTyping = false;
-    const typingIndicator = document.getElementById('typing-indicator');
-    const sendButton = document.getElementById('send-button');
-    
-    typingIndicator.style.display = 'none';
-    sendButton.disabled = false;
-}
-
-// Send quick question
-function sendQuickQuestion(question) {
-    const input = document.getElementById('chat-input');
-    input.value = question;
-    sendMessage();
-}
-
-// Original website functionality
-const observerOptions = {
-    threshold: 0.1,
-    rootMargin: '0px 0px -50px 0px'
-};
-
-const observer = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-        if (entry.isIntersecting) {
-            if (entry.target.classList.contains('section-title')) {
-                entry.target.classList.add('animated');
-            }
-            if (entry.target.classList.contains('service-card')) {
-                setTimeout(() => {
-                    entry.target.classList.add('animated');
-                }, 150 * Array.from(entry.target.parentNode.children).indexOf(entry.target));
-            }
-            if (entry.target.classList.contains('contact-btn')) {
-                setTimeout(() => {
-                    entry.target.classList.add('animated');
-                }, 200 * Array.from(entry.target.parentNode.children).indexOf(entry.target));
-            }
-            if (entry.target.classList.contains('feature-item')) {
-                setTimeout(() => {
-                    entry.target.classList.add('animated');
-                }, 150 * Array.from(entry.target.parentNode.children).indexOf(entry.target));
-            }
-            if (entry.target.classList.contains('package-card')) {
-                setTimeout(() => {
-                    entry.target.classList.add('animated');
-                }, 200 * Array.from(entry.target.parentNode.children).indexOf(entry.target));
-            }
-            if (entry.target.classList.contains('ai-intro')) {
-                entry.target.classList.add('animated');
-            }
-            if (entry.target.classList.contains('chat-container')) {
-                entry.target.classList.add('animated');
-            }
-        }
-    });
-}, observerOptions);
-
-document.querySelectorAll('.section-title, .service-card, .contact-btn, .feature-item, .package-card, .ai-intro, .chat-container').forEach(el => {
-    observer.observe(el);
-});
-
-let ticking = false;
-
-function updateScrollEffects() {
-    const header = document.getElementById('header');
-    const currentScrollY = window.scrollY;
-    
-    if (currentScrollY > 50) {
-        header.classList.add('scrolled');
-    } else {
-        header.classList.remove('scrolled');
-    }
-    
-    const winScroll = document.body.scrollTop || document.documentElement.scrollTop;
-    const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
-    const scrolled = (winScroll / height) * 100;
-    document.getElementById("progress-bar").style.width = scrolled + "%";
-    
-    const backToTop = document.getElementById('back-to-top');
-    if (winScroll > 300) {
-        backToTop.classList.add('visible');
-    } else {
-        backToTop.classList.remove('visible');
-    }
-    
-    updateMobileNavigation();
-    ticking = false;
-}
-
+const nav = document.getElementById('nav');
 window.addEventListener('scroll', () => {
-    if (!ticking) {
-        requestAnimationFrame(updateScrollEffects);
-        ticking = true;
-    }
-});
+  nav.style.background = window.scrollY > 40
+    ? 'rgba(10,10,11,.97)'
+    : 'rgba(10,10,11,.85)';
+}, { passive: true });
 
-document.getElementById('back-to-top').addEventListener('click', () => {
-    window.scrollTo({
-        top: 0,
-        behavior: 'smooth'
-    });
-});
+/* BURGER MENU */
+const burger  = document.getElementById('burger');
+const mobMenu = document.getElementById('mobMenu');
 
-document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-    anchor.addEventListener('click', function (e) {
-        e.preventDefault();
-        const target = document.querySelector(this.getAttribute('href'));
-        
-        if (target) {
-            target.scrollIntoView({
-                behavior: 'smooth',
-                block: 'start'
-            });
-        }
-        
-        document.getElementById('mobile-menu').classList.remove('active');
-        document.body.style.overflow = '';
-    });
-});
-
-document.querySelector('.mobile-menu-btn').addEventListener('click', () => {
-    document.getElementById('mobile-menu').classList.add('active');
-    document.body.style.overflow = 'hidden';
-});
-
-document.querySelector('.close-menu').addEventListener('click', () => {
-    document.getElementById('mobile-menu').classList.remove('active');
-    document.body.style.overflow = '';
-});
-
-document.getElementById('mobile-menu').addEventListener('click', (e) => {
-    if (e.target === e.currentTarget) {
-        document.getElementById('mobile-menu').classList.remove('active');
-        document.body.style.overflow = '';
-    }
-});
-
-function updateMobileNavigation() {
-    if (window.innerWidth <= 768) {
-        const scrollPosition = window.scrollY + 100;
-        
-        const sections = [
-            { id: 'hero', navIndex: 0 },
-            { id: 'services', navIndex: 1 },
-            { id: 'packages', navIndex: 2 },
-            { id: 'ai-assistant', navIndex: 3 },
-            { id: 'contact', navIndex: 4 }
-        ];
-        
-        const navItems = document.querySelectorAll('#mobile-nav a');
-        navItems.forEach(item => item.classList.remove('active'));
-        
-        let currentSection = sections[0];
-        
-        sections.forEach(section => {
-            const element = document.getElementById(section.id);
-            if (element && scrollPosition >= element.offsetTop) {
-                currentSection = section;
-            }
-        });
-        
-        if (navItems[currentSection.navIndex]) {
-            navItems[currentSection.navIndex].classList.add('active');
-        }
-    }
+function toggleMenu(force) {
+  const isOpen = force !== undefined ? force : !burger.classList.contains('open');
+  burger.classList.toggle('open', isOpen);
+  mobMenu.classList.toggle('open', isOpen);
+  burger.setAttribute('aria-expanded', isOpen);
+  mobMenu.setAttribute('aria-hidden', !isOpen);
+  document.body.style.overflow = isOpen ? 'hidden' : '';
 }
 
-document.addEventListener('keydown', (e) => {
-    if (e.key === 'Escape') {
-        const mobileMenu = document.getElementById('mobile-menu');
-        if (mobileMenu.classList.contains('active')) {
-            mobileMenu.classList.remove('active');
-            document.body.style.overflow = '';
-        }
-    }
+burger.addEventListener('click', () => toggleMenu());
+
+mobMenu.querySelectorAll('a').forEach(a => {
+  a.addEventListener('click', () => toggleMenu(false));
 });
 
-function preloadImages() {
-    const imageUrls = [
-        'https://hebbkx1anhila5yf.public.blob.vercel-storage.com/InflectoLogoPNG%20%281%29-LVuqqd1yiPC8KA5Ek1xJKebBo90156.png',
-        'https://hebbkx1anhila5yf.public.blob.vercel-storage.com/InflectoLogoPNG%20%281%29-LVuqqd1yiPC8KA5Ek1xJKebBo90156.png'
-    ];
-    
-    imageUrls.forEach(url => {
-        const img = new Image();
-        img.src = url;
-    });
-}
-
-preloadImages();
-
-document.addEventListener('DOMContentLoaded', () => {
-    updateMobileNavigation();
-    initializeChat();
-    
-    document.body.style.opacity = '0';
-    document.body.style.transition = 'opacity 0.5s ease';
-    
-    setTimeout(() => {
-        document.body.style.opacity = '1';
-    }, 100);
+document.addEventListener('click', e => {
+  if (!nav.contains(e.target) && !mobMenu.contains(e.target)) {
+    toggleMenu(false);
+  }
 });
 
 window.addEventListener('resize', () => {
-    updateMobileNavigation();
-});
-
-// Performance optimization for low-end devices
-if (navigator.hardwareConcurrency && navigator.hardwareConcurrency < 4) {
-    // Reduce animations for low-end devices
-    document.documentElement.style.setProperty('--animation-duration', '0.3s');
-}
+  if (window.innerWidth > 900) toggleMenu(false);
+}, { passive: true });
 </script>
 </body>
 </html>
-
-
