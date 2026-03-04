@@ -35,11 +35,7 @@ body{
   -moz-osx-font-smoothing:grayscale;
 }
 
-body::before{
-  content:'';position:fixed;inset:0;
-  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='256' height='256'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='256' height='256' filter='url(%23n)' opacity='.028'/%3E%3C/svg%3E");
-  pointer-events:none;z-index:9999;opacity:.6;mix-blend-mode:overlay;
-}
+/* body::before noise removed — caused mobile scroll jitter */
 
 /* NAV */
 nav{
@@ -72,7 +68,7 @@ nav.scrolled{
 
 /* HERO */
 .hero{
-  min-height:100vh;
+  min-height:100dvh;
   display:flex;align-items:center;justify-content:center;
   padding:108px 40px 80px;
   position:relative;overflow:hidden;
@@ -768,7 +764,7 @@ footer p{font-size:12px;color:rgba(255,255,255,.4);}
   .mob-menu{display:block;}
 
   /* Hero */
-  .hero{padding:100px 20px 72px;min-height:100svh;}
+  .hero{padding:100px 20px 72px;min-height:100dvh;}
   .hero-sub{font-size:15px;max-width:340px;}
 
   /* Global padding */
@@ -898,6 +894,13 @@ footer p{font-size:12px;color:rgba(255,255,255,.4);}
   .mini-ms{grid-template-columns:1fr;}
   .mini-ms .mm:last-child{grid-column:auto;max-width:100%;margin:0;}
   .bm-val{font-size:22px;}
+}
+
+@media(hover:none){
+  .case-card:hover{transform:none !important;box-shadow:none !important;}
+  .bm:hover{transform:none !important;}
+  .pk:hover{transform:none !important;box-shadow:none !important;}
+  .btn-w:hover,.btn-g:hover{transform:none !important;}
 }
 </style>
 </head>
@@ -1588,7 +1591,7 @@ function openMenu() {
   mobMenu.classList.add('open');
   burger.setAttribute('aria-expanded', 'true');
   mobMenu.setAttribute('aria-hidden', 'false');
-  document.body.style.overflow = 'hidden';
+  if(window.innerWidth <= 900){ document.body.style.overflow = 'hidden'; }
 }
 
 function closeMenu() {
